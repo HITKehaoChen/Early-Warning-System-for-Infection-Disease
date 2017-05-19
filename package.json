@@ -5,16 +5,21 @@
   "main": "Test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node ./src/Test.js"
+    "run": "node app.js"
   },
   "author": "lty96117 <sense.96117@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "fs-extra": "^3.0.1",
+    "jquery": "^3.2.1",
     "koa": "^2.2.0",
     "koa-ejs": "^4.0.0",
     "koa-static-cache": "^5.0.1",
     "materialize-css": "^0.98.2",
     "sprintf-js": "^1.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
