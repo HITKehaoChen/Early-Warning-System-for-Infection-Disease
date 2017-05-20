@@ -1,0 +1,60 @@
+<!--drawerlayout-->
+<ul id="mobile-nav" class="side-nav">
+  <li>
+    <div class="userView">
+      <div id="user-bg" class="background">
+        <!--<img id="user-bg" src="images/bg.jpg">-->
+      </div>
+      <a href="#"><img class="circle" src="images/user-default.png"></a>
+      <a href="#"><span class="white-text name">Tianyu Li</span></a>
+      <a href="#"><span class="white-text email">qwerty@gmail.com</span></a>
+    </div>
+  </li>
+  <li><a class="waves-effect" href="#"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a class="waves-effect" href="#">Second Link</a></li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><a class="waves-effect" href="#">Third Link With Waves</a></li>
+  <li>
+    <ul class="collapsible collapsible-accordion">
+      <li>
+        <a class="collapsible-header"><i class="material-icons md-dark ">filter_drama</i>First</a>
+        <div class="collapsible-body">
+          <ul>
+            <ul>
+              <% for (let i = 0; i < 5; i++){ %>
+              <li><a href="#">Test <%= i %></a></li>
+              <% } %>
+            </ul>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header"><i class="material-icons">place</i>Second</a>
+        <div class="collapsible-body">
+          <ul>
+            <ul>
+              <% for ( let i = 0; i < 5;i++){ %>
+              <li><a href="#">Test <%= i %></a></li>
+              <% } %>
+            </ul>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a class="collapsible-header"><i class="material-icons">whatshot</i>Third</a>
+        <div class="collapsible-body">
+          <ul>
+            <% for ( let i = 0; i < 5;i++){ %>
+            <li><a href="#">Test <%= i %></a></li>
+            <% } %>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+
+</ul>
+<!-- end of drawer -->
