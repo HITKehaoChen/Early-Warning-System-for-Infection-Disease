@@ -1,3 +1,32 @@
+
+html {
+  font-family: "Roboto", "Noto Sans CJK SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+ul.side-nav ul.collapsible-accordion .collapsible-body li a {
+  padding: 0 38px 0 45px;
+}
+
+.side-nav .collapsible-header {
+  padding: 0 32px;
+}
+
+nav ul a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media only screen and (max-width: 992px) {
+  .side-nav li > a, .side-nav .collapsible-header {
+    padding: 0 16px;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  nav.nav-extended .nav-wrapper {
+    margin: 0 14px;
+  }
+}
+
 #title {
   margin: 0;
   font-size: 1.5em;
@@ -11,4 +40,44 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+#user-bg {
+  background: url("../images/user-bg.jpg") center / cover;
+
+}
+
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+  color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+  color: rgba(255, 255, 255, 0.3);
 }

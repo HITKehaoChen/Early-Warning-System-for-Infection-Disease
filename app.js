@@ -3,7 +3,7 @@ const render = require('koa-ejs');
 const fs = require('fs-extra');
 const path = require('path');
 const staticCache = require('koa-static-cache');
-
+const opn = require('opn');
 const app = new koa();
 
 
@@ -23,8 +23,7 @@ app.use(
 );
 app.use(async (ctx, next) => {
   if (ctx.request.path === '/') {
-    ctx.response.body = '<h1>index page</h1>';
-
+    ctx.response.redirect('/index');
   } else {
     await next();
   }
@@ -35,3 +34,4 @@ app.use(async function (ctx, next) {
 
 app.listen(3000);
 console.log('listened at the port 3000');
+opn('http://localhost:3000');
