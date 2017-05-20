@@ -46,6 +46,21 @@ nav ul a:hover {
 
 }
 
+.card-tabs.cyan.darken-3 .tabs.tabs-transparent .indicator {
+  background-color: #FEEA3D;
+}
+.card-tabs.cyan.darken-3 .tabs.tabs-transparent .active {
+  color: #FEEA3D;
+}
+
+#modal1 {
+  max-width: 450px;
+  height: 900px;
+}
+
+.modal-content.signin {
+  padding: 48px;
+}
 
 .collapsible-header:after {
   font-family: "Material Icons";
@@ -58,7 +73,6 @@ nav ul a:hover {
 .collapsible-header.active:after {
   content: "\e313"
 }
-
 
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
