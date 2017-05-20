@@ -1,4 +1,14 @@
-
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+  url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+  url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
 html {
   font-family: "Roboto", "Noto Sans CJK SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
@@ -46,6 +56,20 @@ nav ul a:hover {
   background: url("../images/user-bg.jpg") center / cover;
 
 }
+
+
+.collapsible-header:after {
+  font-family: "Material Icons";
+  content: "\e315";
+  float: right;
+  color: #9e9e9e;
+  font-size: 18px
+}
+
+.collapsible-header.active:after {
+  content: "\e313"
+}
+
 
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
