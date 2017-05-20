@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Early Warning System for Infection Disease</title>
-  <!--Import materialize.css-->
-  <link rel="stylesheet" type="text/css" href="css/materialize.css">
 
-  <!--perfect-scrollbar-->
-  <link rel="stylesheet" type="text/css" href="css/perfect-scrollbar.css"/>
-  <!--favicon for test-->
-  <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
-  <!--Import Google Icon Font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
-  <link rel="stylesheet" type="text/css" href="css/init.css">
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-</head>
-<style>
-
-</style>
+<%- include ../_partial/head.ejs %>
 <body>
 
 
@@ -30,7 +9,7 @@
     <div class="nav-wrapper">
       <!--<a class="page-title">Early Warning System for Infection Disease</a>-->
       <a href="#" data-activates="mobile-nav" class="button-collapse show-on-large"><i
-              class="material-icons ">menu</i></a>
+                class="material-icons ">menu</i></a>
       <p id="title"><a href="/">Early Warning System for Infection Disease</a></p>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="waves-effect" href="./test">Test1</a></li>
@@ -39,7 +18,7 @@
       </ul>
 
       <!--drawerlayout-->
-      <ul id="mobile-nav" class="side-nav" >
+      <ul id="mobile-nav" class="side-nav">
         <li>
           <div class="userView">
             <div id="user-bg" class="background">
@@ -63,12 +42,11 @@
               <a class="collapsible-header"><i class="material-icons md-dark ">filter_drama</i>First</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#">Test 0</a></li>
-                  <li><a href="#">Test 1</a></li>
-                  <li><a href="#">Test 2</a></li>
-                  <li><a href="#">Test 3</a></li>
-                  <li><a href="#">Test 4</a></li>
-                  <li><a href="#">Test 5</a></li>
+                  <ul>
+                    <% for (let i = 0; i < 5; i++){ %>
+                    <li><a href="#">Test <%= i %></a></li>
+                    <% } %>
+                  </ul>
                 </ul>
               </div>
             </li>
@@ -76,12 +54,11 @@
               <a class="collapsible-header"><i class="material-icons">place</i>Second</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#">Test 0</a></li>
-                  <li><a href="#">Test 1</a></li>
-                  <li><a href="#">Test 2</a></li>
-                  <li><a href="#">Test 3</a></li>
-                  <li><a href="#">Test 4</a></li>
-                  <li><a href="#">Test 5</a></li>
+                  <ul>
+                    <% for ( let i = 0; i < 5;i++){ %>
+                    <li><a href="#">Test <%= i %></a></li>
+                    <% } %>
+                  </ul>
                 </ul>
               </div>
             </li>
@@ -89,12 +66,9 @@
               <a class="collapsible-header"><i class="material-icons">whatshot</i>Third</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#">Test 0</a></li>
-                  <li><a href="#">Test 1</a></li>
-                  <li><a href="#">Test 2</a></li>
-                  <li><a href="#">Test 3</a></li>
-                  <li><a href="#">Test 4</a></li>
-                  <li><a href="#">Test 5</a></li>
+                  <% for ( let i = 0; i < 5;i++){ %>
+                  <li><a href="#">Test <%= i %></a></li>
+                  <% } %>
                 </ul>
               </div>
             </li>
