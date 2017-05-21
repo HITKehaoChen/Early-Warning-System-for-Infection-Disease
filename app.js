@@ -6,6 +6,8 @@ const staticCache = require('koa-static-cache');
 const opn = require('opn');
 const bodyParser = require('koa-bodyparser');
 const router = require('koa-router')();
+const controller = require('./src/frontend/controllers/controller');
+
 const app = new koa();
 
 render(app, {
@@ -29,34 +31,12 @@ app.use(async (ctx, next) => {
   await next();
 });
 
-
+// body parse for post method
 app.use(bodyParser());
+//add controllers:
+app.use(controller());
 
-router.get('/', async (ctx, next) => {
-  ctx.response.redirect('/index');
-});
-
-router.post('/signin', async (ctx, next) => {
-  let name = ctx.request.body.name || '';
-  let password = ctx.request.body.pwd || '';
-  console.log(`signin with name: ${name}, password: ${password}`);
-  if (name === 'koa@koa.com' && password === '12345') {
-    ctx.response.body = `<h1>Welcome, ${name}!</h1>`;
-  } else {
-    ctx.response.body = `<h1>Login failed!</h1>
-        <p><a href="/">Try again</a></p>`;
-  }
-});
-
-router.post('/signup', async (ctx, next) => {
-  let name = ctx.request.body.name || '';
-  let password = ctx.request.body.pwd || '';
-  let password2 = ctx.request.body.pwd2 || '';
-  console.log(`signup with name: ${name}, password: ${password}, password2: ${password2}`);
-  ctx.response.redirect('/index');
-});
-
-app.use(router.routes());
+//render views
 app.use(async function (ctx, next) {
   await ctx.render(ctx.path);
 });

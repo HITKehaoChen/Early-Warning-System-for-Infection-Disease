@@ -32,4 +32,5 @@ $(document).ready(function () {
 $(function () {
   $('#mobile-nav').perfectScrollbar();
   $('#modal1').perfectScrollbar();
+
 });
