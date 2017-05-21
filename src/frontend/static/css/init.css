@@ -14,6 +14,11 @@ nav ul a:hover {
   background-color: rgba(0, 0, 0, 0);
 }
 
+/*fixed for nav-extended*/
+.navbar-fixed {
+  height: 110px;
+}
+
 @media only screen and (max-width: 992px) {
   .side-nav li > a, .side-nav .collapsible-header {
     padding: 0 16px;
@@ -23,6 +28,10 @@ nav ul a:hover {
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
     margin: 0 14px;
+  }
+
+  .navbar-fixed {
+    height: 130px;
   }
 }
 
@@ -57,10 +66,6 @@ nav ul a:hover {
 #modal1 {
   max-width: 450px;
   height: 900px;
-}
-/*fixed for nav-extended*/
-.navbar-fixed {
-  height: 110px;
 }
 
 .modal-content.signin {
