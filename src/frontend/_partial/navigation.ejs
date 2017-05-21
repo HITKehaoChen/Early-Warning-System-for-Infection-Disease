@@ -1,9 +1,12 @@
-<nav class="nav-extended cyan darken-1">
-  <div class="nav-wrapper">
-    <%- include ../_partial/title_link.ejs %>
-    <%- include side_nav.ejs %>
-  </div>
-  <div class="nav-content">
-    <%- include ../_partial/nav-content.ejs%>
-  </div>
-</nav>
+<div class="navbar-fixed">
+  <nav class="nav-extended cyan darken-1">
+    <div class="nav-wrapper">
+      <%- include ../_partial/title_link.ejs %>
+    </div>
+    <div class="nav-content">
+      <%- include ../_partial/nav-content.ejs %>
+    </div>
+  </nav>
+</div>
+<!--ps here!!! if there is a navbar-fixed class the side_nac must be out of the nav-->
+<%- include side_nav.ejs %>

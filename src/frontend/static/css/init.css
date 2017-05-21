@@ -58,6 +58,10 @@ nav ul a:hover {
   max-width: 450px;
   height: 900px;
 }
+/*fixed for nav-extended*/
+.navbar-fixed {
+  height: 110px;
+}
 
 .modal-content.signin {
   padding: 48px;
