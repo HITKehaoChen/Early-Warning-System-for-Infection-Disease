@@ -24,25 +24,27 @@ nav ul a:hover {
   background-color: rgba(0, 0, 0, 0);
 }
 
-/*fixed for nav-extended*/
-.navbar-fixed {
-  height: 130px;
-}
-
+/*if screen <= 992px*/
 @media only screen and (max-width: 992px) {
   .side-nav li > a, .side-nav .collapsible-header {
     padding: 0 16px;
   }
+  .navbar-fixed {
+    height: 150px;
+  }
 }
-
+/*screen >= 993 then height = 130px*/
+@media only screen and (min-width: 993px) {
+  .navbar-fixed {
+    height: 130px;
+  }
+}
+/*if screen >= 601px*/
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
     margin: 0 14px;
   }
 
-  .navbar-fixed {
-    height: 130px;
-  }
 }
 
 #title {
@@ -107,18 +109,22 @@ nav ul a:hover {
   background-image: url('../images/google-earth-view-1157.jpg');
   background-size: cover
 }
+
 #c-two {
   background-image: url('../images/google-earth-view-1695.jpg');
   background-size: cover
 }
+
 #c-three {
   background-image: url('../images/google-earth-view-1799.jpg');
   background-size: cover
 }
+
 #c-four {
   background-image: url('../images/google-earth-view-6293.jpg');
   background-size: cover
 }
+
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
   font-size: 18px;
