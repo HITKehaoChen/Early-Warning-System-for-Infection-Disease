@@ -102,6 +102,23 @@ nav ul a:hover {
   content: "\e313"
 }
 
+/*images for carousel*/
+#c-one {
+  background-image: url('../images/google-earth-view-1157.jpg');
+  background-size: cover
+}
+#c-two {
+  background-image: url('../images/google-earth-view-1695.jpg');
+  background-size: cover
+}
+#c-three {
+  background-image: url('../images/google-earth-view-1799.jpg');
+  background-size: cover
+}
+#c-four {
+  background-image: url('../images/google-earth-view-6293.jpg');
+  background-size: cover
+}
 /* Rules for sizing the icon. */
 .material-icons.md-18 {
   font-size: 18px;

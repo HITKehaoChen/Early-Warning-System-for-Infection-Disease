@@ -66,10 +66,15 @@ $(document).ready(()=>{
   let timer = setInterval(() => {
     $('.carousel').carousel('next');
   }, 2000);
-  $('.carousel.carousel-slider').on('click',(e)=>{
+  $('.carousel.carousel-slider').on('tap',(e)=>{
     clearInterval(timer);
-    console.log('cleared setInterval func...');
+    console.log('tap cleared setInterval func...');
+    $(this).off(e);// unbind successfully!
+  }).on('click',(e)=>{
+    clearInterval(timer);
+    console.log('click cleared setInterval func...');
     $(this).off(e);// unbind successfully!
   })
+
 });
 
