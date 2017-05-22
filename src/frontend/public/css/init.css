@@ -55,6 +55,14 @@ nav ul a:hover {
 
 }
 
+.toast-success {
+  background-color: darkcyan;
+}
+
+.toast-fail {
+  background-color: red;
+}
+
 .card-tabs.cyan.darken-3 .tabs.tabs-transparent .indicator {
   background-color: #FEEA3D;
 }

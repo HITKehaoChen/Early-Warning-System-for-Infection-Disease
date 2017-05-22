@@ -29,6 +29,33 @@ $(document).ready(function () {
   });
 });
 
+$(document).ready(function () {
+  //get the signin form
+  $('#form-signin').submit(function (e) {
+    e.preventDefault();//prevents the submit
+    $.ajax({
+      url: '/signin',
+      data: $('#form-signin').serialize(),
+      type: 'POST',
+      success: function (data, textStatus) {
+        console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
+        setTimeout(() => {
+          $('#modal1').modal('close')
+        }, 200);
+        let $toastContent = $('<h4>Sign in successfully !</h4>');
+        Materialize.toast($toastContent, 3000,'toast-success');
+      },
+      error: function (data, textStatus) {
+        console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
+        let $toastContent = $('<h4>Sign in Failed !</h4>');
+        Materialize.toast($toastContent, 3000,'toast-fail');
+      },
+    });
+
+  });
+
+});
+
 $(function () {
   $('#mobile-nav').perfectScrollbar();
   $('#modal1').perfectScrollbar();

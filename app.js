@@ -20,14 +20,14 @@ render(app, {
 
 //set static file
 app.use(
-  staticCache(path.join(__dirname, '/src/frontend/static'), {
+  staticCache(path.join(__dirname, '/src/frontend/public'), {
     buffer: false
   })
 );
 
-// log request URL:
+// log all request URLs:
 app.use(async (ctx, next) => {
-  console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
+  console.log(`url request -> process ${ctx.request.method} ${ctx.request.url}...`);
   await next();
 });
 
@@ -36,11 +36,15 @@ app.use(bodyParser());
 //add controllers:
 app.use(controller());
 
-//render views
-app.use(async function (ctx, next) {
-  await ctx.render(ctx.path);
+//render views with jsons for now
+app.use(async (ctx, next) =>{
+  // get the json according to the ctx.path
+  const data = fs.readJsonSync(path.join(__dirname, 'src/frontend/models', ctx.path + '.json'),{throws: false});
+  await ctx.render(ctx.path.substring(1),data);
 });
 
+
 app.listen(3000);
+
 console.log('listened at the port 3000...');
 opn('http://localhost:3000');

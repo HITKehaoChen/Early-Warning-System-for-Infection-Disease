@@ -12,19 +12,20 @@
   </div>
 
   <div class="card-content">
-    <form action="/signin" method="post">
+    <form id="form-signin" action="/signin" method="post">
       <div id="sign-in">
         <div class="input-field">
-          <input name="name" type="email" class="validate">
+          <input id="signin-name" name="name" type="email" class="validate">
           <label for="email">Email</label>
         </div>
         <div class="input-field">
-          <input name="pwd" type="password" class="validate">
+          <input id="signin-pwd" name="pwd" type="password" class="validate">
           <label for="password">Password</label>
         </div>
 
         <div class="row">
-          <button style="width: 100%" class="btn waves-effect waves-light right" type="submit" name="action">SIGN IN
+          <button id="signin" style="width: 100%" class="btn waves-effect waves-light right" type="submit" name="action"
+                  onsubmit="validateForm()">SIGN IN
           </button>
         </div>
       </div>
@@ -33,19 +34,20 @@
     <div id="sign-up">
       <form action="/signup" method="post">
         <div class="input-field">
-          <input name="name" type="email" class="validate">
+          <input id="signup-name" name="name" type="email" class="validate">
           <label for="email">Username</label>
         </div>
         <div class="input-field">
-          <input name="pwd" type="password" class="validate">
+          <input id="signup-pwd" name="pwd" type="password" class="validate">
           <label for="password">Password</label>
         </div>
         <div class="input-field">
-          <input name="pwd2" type="password" class="validate">
+          <input id="signup-pwd2" name="pwd2" type="password" class="validate">
           <label for="password2">Repeat Password</label>
         </div>
         <div class="row">
-          <button style="width: 100%;" class="btn waves-effect waves-light right" type="submit" name="action">SIGN UP
+          <button id="signup" style="width: 100%;" class="btn waves-effect waves-light right" type="submit"
+                  name="action">SIGN UP
           </button>
         </div>
       </form>
