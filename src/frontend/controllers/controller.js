@@ -45,7 +45,7 @@ function addControllers(router, dir) {
     .filter(f => {return f.endsWith('.js')})
     .forEach(f => {
       console.log(`process controller: ${f}...`);
-      // 导入js文件:
+      // import js files
       let mapping = require(__dirname + '/' + dir + '/' + f);
       addMapping(router, mapping);
   })

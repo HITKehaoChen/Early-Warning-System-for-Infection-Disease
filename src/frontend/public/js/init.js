@@ -66,15 +66,26 @@ $(document).ready(() => {
   let timer = setInterval(() => {
     $('.carousel').carousel('next');
   }, 2000);
-  $('.carousel.carousel-slider').on('swipe', (e) => {
+  $('.carousel.carousel-slider').on('click', (e) => {
     clearInterval(timer);
-    console.log('tap cleared setInterval func...');
-    $(this).off(e);
-  }).on('click', (e) => {
-    clearInterval(timer);
+    // alert('clicked me!');
     console.log('click cleared setInterval func...');
     $(this).off(e);// unbind successfully!
-  })
-
+  });
+  //   .on('tap', (e) => {
+  //   clearInterval(timer);
+  //   alert('tapped me!');
+  //   console.log('tap cleared setInterval func...');
+  //   $(this).off(e);
+  // });
+  // $('#c-btn').on('click', (e) => {
+  //   clearInterval(timer);
+  //   // alert('clicked btn!');
+  //   $(this).off(e);
+  // });
+  // $('#c-btn2').on('click', (e) => {
+  //   clearInterval(timer);
+  //   // alert('clicked btn!');
+  //   $(this).off(e);
+  // })
 });
-
