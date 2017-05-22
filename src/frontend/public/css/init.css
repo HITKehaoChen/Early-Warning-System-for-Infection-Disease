@@ -26,7 +26,7 @@ nav ul a:hover {
 
 /*fixed for nav-extended*/
 .navbar-fixed {
-  height: 110px;
+  height: 130px;
 }
 
 @media only screen and (max-width: 992px) {

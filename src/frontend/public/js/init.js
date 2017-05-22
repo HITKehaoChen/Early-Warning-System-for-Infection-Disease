@@ -43,12 +43,12 @@ $(document).ready(function () {
           $('#modal1').modal('close')
         }, 200);
         let $toastContent = $('<h4>Sign in successfully !</h4>');
-        Materialize.toast($toastContent, 3000,'toast-success');
+        Materialize.toast($toastContent, 3000, 'toast-success');
       },
       error: function (data, textStatus) {
         console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
         let $toastContent = $('<h4>Sign in Failed !</h4>');
-        Materialize.toast($toastContent, 3000,'toast-fail');
+        Materialize.toast($toastContent, 3000, 'toast-fail');
       },
     });
 
@@ -61,3 +61,15 @@ $(function () {
   $('#modal1').perfectScrollbar();
 
 });
+$('.carousel.carousel-slider').carousel({fullWidth: true});
+$(document).ready(()=>{
+  let timer = setInterval(() => {
+    $('.carousel').carousel('next');
+  }, 2000);
+  $('.carousel.carousel-slider').on('click',(e)=>{
+    clearInterval(timer);
+    console.log('cleared setInterval func...');
+    $(this).off(e);// unbind successfully!
+  })
+});
+
