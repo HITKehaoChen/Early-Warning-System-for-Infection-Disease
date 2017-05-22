@@ -16,23 +16,22 @@
     <div class="divider"></div>
   </li>
   <!--login end-->
-  <li><a class="waves-effect" href="#"><i class="material-icons">cloud</i>Link With Icon</a></li>
-  <li><a class="waves-effect" href="#">Second Link No Icon</a></li>
+  <li><a class="waves-effect" href="/"><i class="material-icons">home</i>Home</a></li>
   <li><a class="waves-effect" href="#"><i class="material-icons">tag_faces</i>Third Link With Icon</a></li>
   <li>
     <div class="divider"></div>
   </li>
   <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#">Third Link With Waves</a></li>
+  <li><a class="waves-effect" href="/warning"><i class="material-icons md-dark">domain</i>Warning for Citys</a></li>
   <li>
     <ul class="collapsible collapsible-accordion">
       <li>
-        <a class="collapsible-header"><i class="material-icons md-dark ">filter_drama</i>First</a>
+        <a class="collapsible-header"><i class="material-icons md-dark">chat</i>First</a>
         <div class="collapsible-body">
           <ul>
             <ul>
-              <% for (let i = 0; i < 5; i++){ %>
-              <li><a href="#">Test <%= i %></a></li>
+              <% for (let i = 0; i < 4; i++){ %>
+              <li><a href="#">Chat <%= i + 1 %></a></li>
               <% } %>
             </ul>
           </ul>
@@ -44,7 +43,7 @@
           <ul>
             <ul>
               <% for ( let i = 0; i < 5;i++){ %>
-              <li><a href="#">Test <%= i %></a></li>
+              <li><a href="#">Place <%= i %></a></li>
               <% } %>
             </ul>
           </ul>
@@ -55,13 +54,14 @@
         <div class="collapsible-body">
           <ul>
             <% for ( let i = 0; i < 5;i++){ %>
-            <li><a href="#">Test <%= i %></a></li>
+            <li><a href="#"> <%= i %></a></li>
             <% } %>
           </ul>
         </div>
       </li>
     </ul>
   </li>
+  <li><a class="waves-effect" href="/about"><i class="material-icons">info</i>About</a></li>
 
 </ul>
 <!-- end of drawer -->
