@@ -38,4 +38,4 @@ out
 # intellij idea directory
 .idea
 
-dist
+#src/frontend/public/dist/
