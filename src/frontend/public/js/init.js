@@ -89,15 +89,3 @@ $(document).ready(() => {
   //   $(this).off(e);
   // })
 });
-import {MDCSnackbar, MDCSnackbarFoundation} from '@material/snackbar';
-const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
-$('#show-snackbar').click(() => {
-  snackbar.show({
-    message: "Hello World",
-    actionText: "UNDO",
-    actionHandler: function () {
-      console.log('action triggered');
-
-    }
-  });
-});
