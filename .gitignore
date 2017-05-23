@@ -37,3 +37,5 @@ out
 
 # intellij idea directory
 .idea
+
+dist
