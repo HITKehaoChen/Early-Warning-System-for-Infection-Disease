@@ -25,9 +25,10 @@
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
     "opn": "^5.0.0",
-    "uglify-es": "^3.0.10",
-    "uglify-es-webpack-plugin": "0.0.2",
+    "url-loader": "^0.5.8",
     "webpack": "^2.6.0"
   }
 }

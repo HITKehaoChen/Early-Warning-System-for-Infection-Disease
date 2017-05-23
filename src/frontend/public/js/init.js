@@ -2,6 +2,9 @@
  *
  * Created by lty96117 on 5/19/2017.
  */
+
+import '../css/init.css';
+
 //set the menu btn for mobile
 $(".button-collapse").sideNav({
   closeOnClick: true,
@@ -59,7 +62,6 @@ $(document).ready(function () {
 $(function () {
   $('#mobile-nav').perfectScrollbar();
   $('#modal1').perfectScrollbar();
-
 });
 $('.carousel.carousel-slider').carousel({fullWidth: true});
 $(document).ready(() => {
