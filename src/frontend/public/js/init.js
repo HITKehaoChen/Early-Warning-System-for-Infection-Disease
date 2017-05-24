@@ -60,7 +60,9 @@ $(document).ready(function () {
 });
 
 $(function () {
-  $('#mobile-nav').perfectScrollbar();
+  $('#mobile-nav').perfectScrollbar({
+    
+  });
   $('#modal1').perfectScrollbar();
 });
 $('.carousel.carousel-slider').carousel({fullWidth: true});

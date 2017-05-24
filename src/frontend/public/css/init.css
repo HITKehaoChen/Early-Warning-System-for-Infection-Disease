@@ -29,10 +29,12 @@ nav ul a:hover {
   .side-nav li > a, .side-nav .collapsible-header {
     padding: 0 16px;
   }
+
   /*.navbar-fixed {*/
-    /*height: 130px;*/
+  /*height: 130px;*/
   /*}*/
 }
+
 /*if not title fab then only this*/
 .navbar-fixed {
   height: 70px;
@@ -41,17 +43,24 @@ nav ul a:hover {
 /*screen >= 993 then height = 130px*/
 @media only screen and (min-width: 993px) {
   /*.navbar-fixed {*/
-    /*height: 130px;*/
+  /*height: 130px;*/
   /*}*/
 }
+
 /*if screen >= 601px*/
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
     margin: 0 14px;
   }
+
   .navbar-fixed {
     height: 130px;
   }
+}
+
+.ps > .ps__scrollbar-y-rail > .ps__scrollbar-y {
+  width: 4px;
+  border-radius: 0
 }
 
 #title {
