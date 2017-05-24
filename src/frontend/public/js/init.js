@@ -43,7 +43,7 @@ $(document).ready(function () {
       success: function (data, textStatus) {
         console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
         setTimeout(() => {
-          $('#modal1').modal('close')
+          $('#modal1').modal('close');
         }, 200);
         let $toastContent = $('<h4>Sign in successfully !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-success');
@@ -92,6 +92,6 @@ $(document).ready(() => {
   // })
 });
 $("a[href='#top']").click(function () {
-  $("html, body").animate({scrollTop: 0}, 400);
+  $('html, body').animate({scrollTop: 0}, 400);
   return false;
 });

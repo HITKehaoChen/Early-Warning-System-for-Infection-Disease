@@ -6,5 +6,5 @@ using node.js(>=7.6) with koa2
 $ git clone https://github.com/lty96117/alarm_test.git
 $ cd alarm_test
 $ npm i
-$ npm run server
+$ npm start
 ```
