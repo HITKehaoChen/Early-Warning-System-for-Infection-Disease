@@ -26,19 +26,22 @@ module.exports = {
               options: {
                 minimize: true
               }
+            },
+            {
+              loader: 'postcss-loader'
             }
           ]
         })
       },
       {//loader img
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        query: {
-          name: 'images/img-[hash].[ext]'
-        }
-        //   'file-loader&name=images/img-[hash].[ext]!.image.png',
-        //   // 'url-loader?limit=50000'
-        // ]
+        use: [{
+          loader: 'file-loader',
+          query: {
+            name: 'images/img-[hash].[ext]'
+          }
+        }]
+
 
       }
     ]
