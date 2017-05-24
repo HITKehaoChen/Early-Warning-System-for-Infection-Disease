@@ -34,9 +34,9 @@ nav ul a:hover {
   /*}*/
 }
 /*if not title fab then only this*/
-.navbar-fixed {
-  height: 130px;
-}
+/*.navbar-fixed {*/
+  /*height: 130px;*/
+/*}*/
 
 /*screen >= 993 then height = 130px*/
 @media only screen and (min-width: 993px) {
@@ -49,7 +49,9 @@ nav ul a:hover {
   nav.nav-extended .nav-wrapper {
     margin: 0 14px;
   }
-
+  .navbar-fixed {
+    height: 130px;
+  }
 }
 
 #title {

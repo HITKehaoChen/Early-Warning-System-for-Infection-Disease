@@ -3,9 +3,16 @@
     <div class="nav-wrapper">
       <%- include ../_partial/title_link.ejs %>
     </div>
-    <div class="nav-content">
-      <%- include ../_partial/nav-content.ejs %>
+    <div class="nav-wrapper hide-on-small-and-down">
+      <ul id="nav-mobile2" class="right hide-on-med-and-down">
+        <li><a class="waves-effect" href="/">Home</a></li>
+        <li><a class="waves-effect" href="/warning">Warning</a></li>
+        <li><a class="waves-effect" href="/about">About</a></li>
+      </ul>
     </div>
+    <!--<div class="nav-content">-->
+    <!-- include ../_partial/nav-content.ejs -->
+    <!--</div>-->
   </nav>
 </div>
 <!--ps here!!! if there is a navbar-fixed class the side_nac must be out of the nav-->
