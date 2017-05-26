@@ -11,7 +11,7 @@ const controller = require('./src/frontend/controllers/controller');
 const app = new koa();
 
 render(app, {
-  root: path.join(__dirname, '/src/frontend/view'),
+  root: path.join(__dirname, '/src/frontend/views'),
   layout: 'template',
   viewExt: 'ejs',
   cache: false,
@@ -27,7 +27,7 @@ app.use(
 
 // log all request URLs:
 app.use(async (ctx, next) => {
-  console.log(`url request -> process ${ctx.request.method} ${ctx.request.url}...`);
+  console.log(`***url request -> process ${ctx.request.method} ${ctx.request.url}...`);
   await next();
 });
 
@@ -37,10 +37,11 @@ app.use(bodyParser());
 app.use(controller());
 
 //render views with jsons for now
-app.use(async (ctx, next) =>{
+app.use(async (ctx, next) => {
   // get the json according to the ctx.path
-  const data = fs.readJsonSync(path.join(__dirname, 'src/frontend/models', ctx.path + '.json'),{throws: false});
-  await ctx.render(ctx.path.substring(1),data);
+  const data = fs.readJsonSync(path.join(__dirname, 'src/frontend/models', ctx.path + '.json'), {throws: false});
+  await ctx.render(ctx.path.substring(1), data);
+  await next();
 });
 
 

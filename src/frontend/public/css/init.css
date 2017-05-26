@@ -63,6 +63,13 @@ nav ul a:hover {
   border-radius: 0
 }
 
+.ps > .ps__scrollbar-y-rail:hover > .ps__scrollbar-y,
+.ps > .ps__scrollbar-y-rail:active > .ps__scrollbar-y {
+  width: 6px;
+}
+.ps > .ps__scrollbar-y-rail {
+  width: 10px;
+}
 #title {
   margin: 0;
   font-size: 1.5em;
