@@ -89,7 +89,11 @@ nav ul a:hover {
   background: url("../images/user-bg.jpg") center / cover;
 
 }
-
+#img-train-form {
+  height: 350px;
+  background-size: cover;
+  background-image: url('../images/office.jpg');
+}
 .toast-success {
   background-color: darkcyan;
 }

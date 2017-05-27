@@ -54,9 +54,7 @@ $(document).ready(function () {
         Materialize.toast($toastContent, 3000, 'toast-fail');
       },
     });
-
   });
-
 });
 
 $(function () {

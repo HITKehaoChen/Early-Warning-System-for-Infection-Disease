@@ -44,8 +44,9 @@ app.use(async (ctx, next) => {
   await next();
 });
 
+const listening_port = 3000;
 
-app.listen(3000);
-
-console.log('listened at the port 3000...');
-opn('http://localhost:3000');
+app.listen(listening_port, () => {
+  console.log(`listened at the port ${listening_port}...`);
+});
+opn(`http://localhost:${listening_port}`);
