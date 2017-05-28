@@ -1,6 +1,8 @@
 /**
  * Created by lty96117 on 5/21/2017.
  */
+
+
 let fn_index = async (ctx, next) => {
   ctx.response.redirect('/index');
 };
@@ -28,6 +30,8 @@ let fn_signup = async (ctx, next) => {
   ctx.response.redirect('/index');
 
 };
+
+
 module.exports = {
   'GET /': fn_index,
   'POST /signin': fn_signin,

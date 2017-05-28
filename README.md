@@ -1,5 +1,5 @@
 # Refactored Early Warning System for Infection Disease
-using node.js(>=7.6) with koa2
+using node.js (>=7.10.x) with koa2
 # Installation
 
 ```bash

@@ -5,13 +5,16 @@
 
 import '../css/init.css';
 
-//set the menu btn for mobile
-$(".button-collapse").sideNav({
-  closeOnClick: true,
-  draggable: true
-});
 
-$(document).ready(function () {
+$(document).ready(() => {
+
+  //set the menu btn for mobile
+  $(".button-collapse").sideNav({
+    closeOnClick: true,
+    draggable: true
+  });
+
+
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal({
     dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -20,7 +23,7 @@ $(document).ready(function () {
     outDuration: 200, // Transition out duration
     startingTop: '0%', // Starting top style attribute
     endingTop: '10%', // Ending top style attribute
-    ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+    ready: (modal, trigger) => { // Callback for Modal open. Modal and trigger parameters available.
       window.dispatchEvent(new Event('resize'));
       // alert("Ready");
       // console.log(modal, trigger);
@@ -30,11 +33,28 @@ $(document).ready(function () {
     //   alert('Closed');
     // } // Callback for Modal close
   });
-});
+  //
+  $('#form-train').submit((e) => {
+    e.preventDefault();
 
-$(document).ready(function () {
+    $.ajax({
+      url: '/train',
+      data: new FormData($('#form-train')[0]),
+      type: 'POST',
+      contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+      processData: false, // NEEDED, DON'T OMIT THIS
+      success: function (data, textStatus) {
+        console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
+
+      },
+      error: function (data, textStatus) {
+        console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
+
+      },
+    });
+  });//prevents the submit});
   //get the signin form
-  $('#form-signin').submit(function (e) {
+  $('#form-signin').submit((e) => {
     e.preventDefault();//prevents the submit
     $.ajax({
       url: '/signin',
@@ -55,14 +75,17 @@ $(document).ready(function () {
       },
     });
   });
-});
 
-$(function () {
-  $('#mobile-nav').perfectScrollbar();
-  $('#modal1').perfectScrollbar();
-});
-$('.carousel.carousel-slider').carousel({fullWidth: true});
-$(document).ready(() => {
+
+  $(function () {
+    $('#mobile-nav').perfectScrollbar();
+    $('#modal1').perfectScrollbar();
+  });
+
+
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+
   let timer = setInterval(() => {
     $('.carousel').carousel('next');
   }, 2000);
@@ -88,8 +111,12 @@ $(document).ready(() => {
   //   // alert('clicked btn!');
   //   $(this).off(e);
   // })
+
+
+  $("a[href='#top']").click(() => {
+    $('html, body').animate({scrollTop: 0}, 400);
+    return false;
+  });
 });
-$("a[href='#top']").click(function () {
-  $('html, body').animate({scrollTop: 0}, 400);
-  return false;
-});
+
+console.log('initialization completed');

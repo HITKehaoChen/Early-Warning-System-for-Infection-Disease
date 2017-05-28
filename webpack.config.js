@@ -5,13 +5,14 @@ module.exports = {
   entry: __dirname + "/src/frontend/public/js/init.js",
   output: {
     path: __dirname + '/src/frontend/public/dist',
+    publicPath: "/dist/",
     filename: 'bundle.js'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           presets: ['es2015']
