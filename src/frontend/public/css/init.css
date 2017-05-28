@@ -9,7 +9,11 @@ html {
 ul.side-nav ul.collapsible-accordion .collapsible-body li a {
   padding: 0 38px 0 45px;
 }
-
+#admin {
+  /*height: 350px;*/
+  background-size: cover;
+  background-image: url('../images/bg.jpg');
+}
 #about-img {
   height: 350px;
   background-size: cover;

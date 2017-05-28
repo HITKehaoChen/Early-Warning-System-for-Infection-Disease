@@ -82,19 +82,17 @@ $(document).ready(() => {
     $('#modal1').perfectScrollbar();
   });
 
-
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
-
-
   let timer = setInterval(() => {
     $('.carousel').carousel('next');
   }, 2000);
-  $('.carousel.carousel-slider').on('click', (e) => {
-    clearInterval(timer);
-    // alert('clicked me!');
-    console.log('click cleared setInterval func...');
-    $(this).off(e);// unbind successfully!
-  });
+  $('.carousel.carousel-slider')
+    .carousel({fullWidth: true})
+    .on('click', (e) => {
+      clearInterval(timer);
+      // alert('clicked me!');
+      console.log('click cleared setInterval func...');
+      $(this).off(e);// unbind successfully!
+    });
   //   .on('tap', (e) => {
   //   clearInterval(timer);
   //   alert('tapped me!');
@@ -117,6 +115,9 @@ $(document).ready(() => {
     $('html, body').animate({scrollTop: 0}, 400);
     return false;
   });
+  $('select').material_select();
+
+
 });
 
 console.log('initialization completed');

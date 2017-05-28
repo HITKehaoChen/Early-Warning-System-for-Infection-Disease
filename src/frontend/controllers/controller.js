@@ -66,8 +66,9 @@ function addControllers(router, dir) {
     } else {
       console.log('No upload file!');
     }
-    let train_cnt = ctx.request.body.training_count || -1;
-    let neurons_cnt = ctx.request.body.neurons_count || -1;
+    // not ctx.resquest here
+    let train_cnt = ctx.req.body.training_count || -1;
+    let neurons_cnt = ctx.req.body.neurons_count || -1;
     ctx.response.status = 200;
     console.log(`training with ${train_cnt} times and ${neurons_cnt} neurons from file...`);
   });

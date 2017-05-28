@@ -1,0 +1,178 @@
+<div class="col s12">
+
+  <div class="card blue darken-3">
+    <div id="admin" class="card-image">
+
+      <div class="card-content white-text">
+        <h3 class="light">训练管理</h3>
+      </div>
+      <div class="card-tabs">
+        <ul class="tabs tabs-fixed-width tabs-transparent">
+          <li class="tab"><a class="active waves-effect" href="#train">Train</a></li>
+          <li class="tab"><a class="waves-effect" href="#test">Test</a></li>
+          <li class="tab"><a class="waves-effect" href="#apply">Apply</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-content white">
+      <div id="train">
+        <div class="row">
+
+          <form class="col s12">
+
+            <div class="row">
+
+              <div class="file-field input-field col s12 m6">
+                <div class="btn waves-effect">
+                  <span>File</span>
+                  <input type="file" name="train_file1">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload a file">
+                </div>
+              </div>
+
+              <div class="file-field input-field col s12 m6">
+                <div class="btn waves-effect">
+                  <span>File</span>
+                  <input type="file" name="train_file2">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload a file">
+                </div>
+              </div>
+
+              <div class="col s12 right">
+                <a class="btn waves-effect right yellow black-text">Check
+                </a>
+              </div>
+
+
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>the amounts of neurons in input layer</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>the amounts of neurons in hidden layer</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>
+                  the amounts of neurons in output layer</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>speed</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>momentum</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>round</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>remaining time / round</label>
+              </div>
+              <div class="col s12">
+                <div class="right">
+                  <a class="btn waves-effect right yellow black-text">train
+                  </a>
+                </div>
+                <div class="right col">
+                  <a class="btn waves-effect right yellow black-text">refresh
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+
+          </form>
+        </div>
+
+      </div>
+      <div id="test">
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="file-field input-field col s12 m6">
+                <div class="btn waves-effect">
+                  <span>File</span>
+                  <input type="file" name="train_file1">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload a file">
+                </div>
+              </div>
+
+              <div class="file-field input-field col s12 m6">
+                <div class="btn waves-effect">
+                  <span>File</span>
+                  <input type="file" name="train_file2">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload a file">
+                </div>
+              </div>
+
+              <div class="col s12 right">
+                <a class="btn waves-effect right yellow black-text">Test
+                </a>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>Accuracy</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div id="apply">
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="file-field input-field col s12 m6">
+                <div class="btn waves-effect">
+                  <span>File</span>
+                  <input type="file" name="train_file1">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload a file">
+                </div>
+              </div>
+
+              <div class="file-field input-field col s12 m6">
+                <div class="btn waves-effect">
+                  <span>File</span>
+                  <input type="file" name="train_file2">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload a file">
+                </div>
+              </div>
+
+              <div class="col s12 right">
+                <a class="btn waves-effect right yellow black-text">Test
+                </a>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input type="number" class="validate">
+                <label>Age</label>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
