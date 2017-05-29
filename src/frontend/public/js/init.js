@@ -38,8 +38,10 @@ $(document).ready(() => {
     e.preventDefault();
 
     $.ajax({
-      url: '/train',
+      url: '/test',
       data: new FormData($('#form-train')[0]),
+      // data: $('#form-train').serialize(),
+
       type: 'POST',
       contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
       processData: false, // NEEDED, DON'T OMIT THIS

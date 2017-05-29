@@ -27,13 +27,15 @@ let fn_signup = async (ctx, next) => {
   let password = ctx.request.body.pwd || '';
   let password2 = ctx.request.body.pwd2 || '';
   console.log(`signup with name: ${name}, password: ${password}, password2: ${password2}`);
-  ctx.response.redirect('/index');
-
+  ctx.response.status = 200;
+  ctx.response.redirect('index');
+  console.log('redirecting...');
 };
+
 
 
 module.exports = {
   'GET /': fn_index,
   'POST /signin': fn_signin,
-  'POST /signup': fn_signup
+  'POST /signup': fn_signup,
 };

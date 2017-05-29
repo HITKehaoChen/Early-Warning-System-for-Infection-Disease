@@ -52,13 +52,15 @@ function addControllers(router, dir) {
       console.log(`process controller: ${f}...`);
       // import js files
       let mapping = require(__dirname + '/' + dir + '/' + f);
+      // console.log('mapping: ' + mapping);
+      // console.log('dir: ' + dir);
       addMapping(router, mapping);
     });
 
-  //for multer
-  router.post('/train', upload.single('training_file'), async (ctx, next) => {
+//  for multer
+  router.post('/test', upload.single('training_file'), async (ctx, next) => {
     let file = ctx.req.file;
-    if (file !== null) {
+    if (typeof file !== 'undefined' && file !== null) {
       console.log('File type: %s', file.mimetype);
       console.log('Original file name: %s', file.originalname);
       console.log('Size of file: %s bytes', file.size);
@@ -66,16 +68,25 @@ function addControllers(router, dir) {
     } else {
       console.log('No upload file!');
     }
-    // not ctx.resquest here
+    // not ctx.request !
     let train_cnt = ctx.req.body.training_count || -1;
     let neurons_cnt = ctx.req.body.neurons_count || -1;
-    ctx.response.status = 200;
+    ctx.response.body = '<h1>Hello, koa2!</h1>';
+    console.log(ctx.req.body);
+
     console.log(`training with ${train_cnt} times and ${neurons_cnt} neurons from file...`);
+
+    ctx.response.redirect('/index');
+    // ctx.response.redirect('/index');
+    console.log('redirecting...');
   });
-  console.log(`registered url mapping: POST -> /train`);
+
+
+  // console.log(`registered url mapping: POST -> /train`);
 }
 
 module.exports = dir => {
+  //current: js_lib\alarm\src\frontend\controllers\ and dir is ''
   let controllers_dir = dir || '';
   let router = require('koa-router')();
   addControllers(router, controllers_dir);

@@ -19,7 +19,7 @@
       <div id="train">
         <div class="row">
 
-          <form class="col s12">
+          <form class="col s12" method="post" enctype="multipart/form-data">
 
             <div class="row">
 
@@ -80,7 +80,7 @@
 
       <div id="test">
         <div class="row">
-          <form class="col s12">
+          <form class="col s12" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="file-field input-field col s12 m6">
                 <div class="btn waves-effect">
@@ -119,7 +119,7 @@
 
       <div id="apply">
         <div class="row">
-          <form class="col s12">
+          <form class="col s12" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="file-field input-field col s12 m6">
                 <div class="btn waves-effect">
@@ -329,7 +329,7 @@
                 </button>
               </div>
               <div class="input-field col s12">
-                <input type="number" id="analysis_res" name="analysis_res" class="validate">
+                <input type="number" id="analysis_res" name="analysis_res" formnovalidate>
                 <label for="analysis_res">Analysis Result</label>
               </div>
             </div>
