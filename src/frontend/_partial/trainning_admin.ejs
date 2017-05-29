@@ -47,55 +47,37 @@
                 <a class="btn waves-effect right yellow black-text">Check
                 </a>
               </div>
-
-
+              <% const list = [
+                ["amounts-input", "Amounts of neurons in input layer"],
+                ["amounts-hidden", "Amounts of neurons in hidden layer"],
+                ["amounts-output", "Amounts of neurons in output layer"],
+                ["speed", "Speed"], ["momentum", "Momentum"], ["round", "Round"],
+                ["remaining", "Remaining time / round"]
+              ] %>
+              <% for (let i = 0; i < list.length;i++) { %>
               <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>the amounts of neurons in input layer</label>
+                <input type="number" id=<%= list[i][0] %> name=<%= list[i][0] %> class="validate">
+                <label for="<%= list[i][0] %>"><%= list[i][1] %></label>
               </div>
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>the amounts of neurons in hidden layer</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>
-                  the amounts of neurons in output layer</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>speed</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>momentum</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>round</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>remaining time / round</label>
-              </div>
+              <% } %>
               <div class="col s12">
                 <div class="right">
-                  <a class="btn waves-effect right yellow black-text">train
-                  </a>
+                  <a class="btn waves-effect right yellow black-text">train</a>
                 </div>
                 <div class="right col">
-                  <a class="btn waves-effect right yellow black-text">refresh
-                  </a>
+                  <a class="btn waves-effect right yellow black-text">refresh</a>
+
                 </div>
+                <!--<button class="btn waves-effect waves-light" type="submit" name="action">Submit-->
+                <!--<i class="material-icons right">send</i>-->
+                <!--</button>-->
               </div>
-
             </div>
-
-
           </form>
         </div>
-
       </div>
+
+
       <div id="test">
         <div class="row">
           <form class="col s12">
@@ -119,16 +101,16 @@
                   <input class="file-path validate" type="text" placeholder="Upload a file">
                 </div>
               </div>
-
+              <div class="input-field col s12 m6">
+                <input type="number" id="accuracy" name="accuracy" class="validate">
+                <label for="accuracy">Accuracy</label>
+              </div>
               <div class="col s12 right">
                 <a class="btn waves-effect right yellow black-text">Test
                 </a>
               </div>
 
-              <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>Accuracy</label>
-              </div>
+
             </div>
           </form>
         </div>
@@ -159,14 +141,196 @@
                 </div>
               </div>
 
-              <div class="col s12 right">
-                <a class="btn waves-effect right yellow black-text">Test
-                </a>
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+                <label>Gender</label>
               </div>
 
               <div class="input-field col s12 m6">
-                <input type="number" class="validate">
-                <label>Age</label>
+                <input type="number" id="age" name="age" class="validate">
+                <label for="age">Age</label>
+              </div>
+              <div class="input-field col s12">
+                <select>
+                  <option value="0">Typical Angina</option>
+                  <option value="1">Atypical Angina</option>
+                  <option value="2">Non-Anginal Pain</option>
+                  <option value="3">Asymptomatic</option>
+                </select>
+                <label>Chest Pain Type</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="number" id="blood_pressure" name="blood_pressure" class="validate">
+                <label for="blood_pressure">Resting blood pressure (in mm Hg on admission to the hospital)</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" id="serum_cholesterol" name="serum_cholesterol" class="validate">
+                <label for="serum_cholesterol">Serum cholestoral in mg/dl</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <label>Fasting blood sugar > 120 mg/dl ?</label>
+              </div>
+
+              <div class="input-field col s12">
+                <select>
+                  <option value="0">Normal</option>
+                  <option value="1">Having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of
+                    > 0.05 mV)
+                  </option>
+                  <option value="2">Showing probable or definite left ventricular hypertrophy by Estes' criteria
+                  </option>
+                </select>
+                <label>Resting electrocardiographic results</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" id="max_heart_rate" name="max_heart_rate" class="validate">
+                <label for="max_heart_rate">Maximum heart rate achieved</label>
+              </div>
+
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <label>Exercise induced angina ?</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="number" id="depression" name="depression" class="validate">
+                <label for="depression">ST depression induced by exercise relative to rest</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="0">Upsloping</option>
+                  <option value="1">Flat</option>
+                  <option value="2">Downsloping</option>
+                </select>
+                <label>The slope of the peak exercise ST segment</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="number" id="vessels_number" name="vessels_number" class="validate">
+                <label for="vessels_number">Number of major vessels (0-3) colored by flourosopy</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="0">Normal</option>
+                  <option value="1">Fixed Defect</option>
+                  <option value="2">Reversable Defect</option>
+                </select>
+                <label>Defect Type</label>
+              </div>
+
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="0">Normal</option>
+                  <option value="1">Abnormal</option>
+                </select>
+                <label>Red Blood Cells</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="0">Normal</option>
+                  <option value="1">Abnormal</option>
+                </select>
+                <label>Pus Cells</label>
+              </div>
+
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="0">Exist</option>
+                  <option value="1">Not Exist</option>
+                </select>
+                <label>Pus Cells Clupms</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="0">Exist</option>
+                  <option value="1">Not Exist</option>
+                </select>
+                <label>bacteria</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input type="number" id="blood_glucose" name="blood_glucose" class="validate">
+                <label for="blood_glucose">Blood glucose random(mgs/dl)</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <input type="number" id="blood_urea" name="blood_urea" class="validate">
+                <label for="blood_urea">Blood urea(mgs/dl)</label>
+              </div>
+
+
+              <div class="input-field col s12 m6">
+                <input type="number" id="serum_creatinine" name="serum_creatinine" class="validate">
+                <label for="serum_creatinine">serum creatinine(mgs/dl)</label>
+              </div>
+
+
+              <div class="input-field col s12">
+                <input type="number" id="red_blood_cell_cnt" name="red_blood_cell_cnt" class="validate">
+                <label for="red_blood_cell_cnt">Red blood cell count(millions/cmm)</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <label>Hypertension</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <label>Diabetes mellitus</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="good">Good</option>
+                  <option value="bad">Bad</option>
+                </select>
+                <label>Appetite</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <label>Pedal edema</label>
+              </div>
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+                <label>Anemia</label>
+              </div>
+
+              <div class="col s12">
+                <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">Analyze
+                </button>
+              </div>
+              <div class="input-field col s12">
+                <input type="number" id="analysis_res" name="analysis_res" class="validate">
+                <label for="analysis_res">Analysis Result</label>
               </div>
             </div>
           </form>
