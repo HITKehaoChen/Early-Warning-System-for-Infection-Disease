@@ -120,8 +120,6 @@ $(document).ready(() => {
 
 
 
-
-
 });
 
 console.log('initialization completed');
