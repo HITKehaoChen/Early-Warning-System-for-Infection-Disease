@@ -9,13 +9,15 @@ html {
 ul.side-nav ul.collapsible-accordion .collapsible-body li a {
   padding: 0 38px 0 45px;
 }
-#admin {
+
+#admin, #warning-img {
   /*height: 350px;*/
   background-size: cover;
   background-image: url('../images/bg.jpg');
 }
+
 #about-img {
-  /*height: 350px;*/
+  height: 200px;
   background-size: cover;
   background-image: url('../images/office.jpg');
 }
@@ -58,7 +60,7 @@ nav ul a:hover {
   }
 
   .navbar-fixed {
-    height: 130px;
+    height: 146px;
   }
 }
 
@@ -71,9 +73,11 @@ nav ul a:hover {
 .ps > .ps__scrollbar-y-rail:active > .ps__scrollbar-y {
   width: 6px;
 }
+
 .ps > .ps__scrollbar-y-rail {
   width: 10px;
 }
+
 #title {
   margin: 0;
   font-size: 1.5em;
@@ -93,11 +97,13 @@ nav ul a:hover {
   background: url("../images/user-bg.jpg") center / cover;
 
 }
+
 #img-train-form {
   height: 350px;
   background-size: cover;
   background-image: url('../images/office.jpg');
 }
+
 .toast-success {
   background-color: darkcyan;
 }
