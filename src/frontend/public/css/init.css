@@ -15,7 +15,7 @@ ul.side-nav ul.collapsible-accordion .collapsible-body li a {
   background-image: url('../images/bg.jpg');
 }
 #about-img {
-  height: 350px;
+  /*height: 350px;*/
   background-size: cover;
   background-image: url('../images/office.jpg');
 }

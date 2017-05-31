@@ -5,7 +5,6 @@
 
 import '../css/init.css';
 
-
 $(document).ready(() => {
 
   //set the menu btn for mobile
@@ -118,6 +117,9 @@ $(document).ready(() => {
     return false;
   });
   $('select').material_select();
+
+
+
 
 
 });

@@ -12,6 +12,7 @@
   "author": "lty96117 <sense.96117@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "echarts": "^3.6.1",
     "fs-extra": "^3.0.1",
     "jquery": "^3.2.1",
     "koa": "^2.2.0",
