@@ -1,0 +1,152 @@
+<div class="row">
+  <div class="col s12">
+
+    <div class="card blue darken-3">
+      <div id="admin" class="card-image">
+        <div class="card-content white-text">
+          <h3 class="light">智能导诊</h3>
+        </div>
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width tabs-transparent">
+            <li class="tab"><a class="active waves-effect" href="#diagnosis">疾病诊断</a></li>
+            <li class="tab"><a class="waves-effect" href="#recommend">医院推荐</a></li>
+            <li class="tab"><a class="waves-effect" href="#review">医院评价</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card-content white">
+        <div id="diagnosis">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="col s12">
+                  <h5 class="light"><i class="material-icons prefix">mode_edit</i>
+                    输入自己的症状:</h5>
+                </div>
+                <div class="input-field col s12">
+                  <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                  <label for=" textarea1">Textarea</label>
+                </div>
+                <div class="col s12 right">
+                  <a class="btn waves-effect right yellow black-text">Submit
+                  </a>
+                </div>
+              </div>
+            </form>
+            <div class="col s12">
+              <h5 class="light">诊断结果:</h5>
+              <ul class="collapsible z-depth-0" data-collapsible="accordion">
+                <li class="">
+                  <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </span>
+                  </div>
+                </li>
+                <li class="">
+                  <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                  </div>
+                </li>
+                <li class="active">
+                  <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div id="recommend">
+          <div class="row">
+            <div class="col s12">
+              <h5 class="light"><i class="material-icons" style="vertical-align: top">local_hospital</i>&nbsp;附近的医院推荐信息：</h5>
+
+
+              <ul class="collection">
+                <li class="collection-item avatar">
+                  <img src="images/user-default.png" alt="" class="circle">
+                  <span class="title">医院 1</span>
+                  <p>地理位置：XXXXXXX<br>
+                    综合评分：XXX
+                  </p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle">folder</i>
+                  <span class="title">医院 2</span>
+                  <p>地理位置：XXXXXXX<br>
+                    综合评分：XXX
+                  </p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle green">insert_chart</i>
+                  <span class="title">医院 3</span>
+                  <p>地理位置：XXXXXXX<br>
+                    综合评分：XXX
+                  </p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                  <i class="material-icons circle red">play_arrow</i>
+                  <span class="title">医院 4</span>
+                  <p>地理位置：XXXXXXX<br>
+                    综合评分：XXX
+                  </p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="review">
+          <div class="row">
+            <form class="col s12" action="#" method="post">
+              <div class="row">
+                <div class="col s12">
+                  <h5 class="light">医院评价: (1—10分)</h5>
+                </div>
+                <div class="input-field col s12 m6">
+                  <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                  </select>
+                  <label>诊疗效果:</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                  </select>
+                  <label>收费水平</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                    <% } %>
+                  </select>
+                  <label>服务态度</label>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -117,7 +117,7 @@ $(document).ready(() => {
     return false;
   });
   $('select').material_select();
-
+  $('textarea#textarea1').characterCounter();
 
 
 });
