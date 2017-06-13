@@ -10,7 +10,6 @@ const controller = require('./src/frontend/controllers/controller');
 const favicon = require('koa-favicon');
 
 
-
 const app = new koa();
 
 render(app, {
@@ -38,6 +37,7 @@ app.use(async (ctx, next) => {
 
 // body parse for post method
 app.use(bodyParser());
+
 // add controllers:
 app.use(controller());
 
