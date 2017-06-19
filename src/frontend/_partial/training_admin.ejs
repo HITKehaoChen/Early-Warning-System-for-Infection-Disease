@@ -46,7 +46,7 @@
               </div>
 
               <div class="col s12 right">
-                <a class="btn waves-effect right yellow black-text">上传</a>
+                <a class="btn waves-effect right yellow black-text">检查</a>
               </div>
               <% const list = [
                 ["amounts-input", "输入层神经元个数"],
@@ -147,7 +147,15 @@
                 </div>
               </div>
 
-              <div class="input-field col s12">
+
+              <div class="input-field col s12 m6">
+                <select>
+                  <option value="male">男</option>
+                  <option value="Female">女</option>
+                </select>
+                <label>性别</label>
+              </div>
+              <div class="input-field col s12 m6">
                 <input type="number" id="age" name="age" class="validate">
                 <label for="age">年龄</label>
               </div>
@@ -320,7 +328,7 @@
               </div>
 
               <div class="col s12">
-                <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">Analyze
+                <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">分析
                 </button>
               </div>
               <div class="input-field col s12">
@@ -328,14 +336,6 @@
                 <label for="analysis_res">分析结果</label>
               </div>
 
-              <div class="col s12">
-                <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">Analyze
-                </button>
-              </div>
-              <div class="input-field col s12">
-                <input type="number" id="analysis_res" name="analysis_res" formnovalidate>
-                <label for="analysis_res">Analysis Result</label>
-              </div>
             </div>
           </form>
         </div>
