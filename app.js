@@ -43,14 +43,14 @@ app.use(controller());
 
 
 app.use(favicon(__dirname + '/src/frontend/public/images/favicon.ico'));
-
-// render views with jsons for now
-app.use(async (ctx, next) => {
-  // get the json according to the ctx.path
-  const data = fs.readJsonSync(path.join(__dirname, 'src/frontend/models', ctx.path + '.json'), {throws: false});
-  await ctx.render(ctx.path.substring(1), data);
-  await next();
-});
+//
+// // render views with jsons for now
+// app.use(async (ctx, next) => {
+//   // get the json according to the ctx.path
+//   const data = fs.readJsonSync(path.join(__dirname, 'src/frontend/models', ctx.path + '.json'), {throws: false});
+//   await ctx.render(ctx.path.substring(1), data);
+//   await next();
+// });
 
 const listening_port = 3000;
 

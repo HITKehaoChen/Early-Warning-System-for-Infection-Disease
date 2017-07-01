@@ -1,41 +1,45 @@
 /**
  * Created by lty96117 on 5/21/2017.
  */
+// fake data
+const data = {
+  "user": {
+    "id": 28370,
+    "name": "王小明",
+    "gender": "male",
+    "age": 22,
+    "email": "12345@qq.com"
+  }
+};
 
 
 let fn_index = async (ctx, next) => {
-  ctx.response.redirect('/index');
+  await ctx.render('index', data);
+  await next();
 };
 
-let fn_signin = async (ctx, next) => {
-  let name = ctx.request.body.name || '';
-  let password = ctx.request.body.pwd || '';
-  console.log(`[server]: sign in with name: ${name}, password: ${password}`);
-  if (name === 'koa@koa.com' && password === '12345') {
-    ctx.response.status = 200;
-    console.log('[server]: sigin succeeded');
-  } else {
-    ctx.response.status = 401;
-    console.log('[server]: signin failed');
-  }
-  console.log('[server]: response end...')
+let fn_warning = async (ctx, next) => {
+  await ctx.render('warning', data);
+  await next();
 };
-
-let fn_signup = async (ctx, next) => {
-
-  let name = ctx.request.body.name || '';
-  let password = ctx.request.body.pwd || '';
-  let password2 = ctx.request.body.pwd2 || '';
-  console.log(`signup with name: ${name}, password: ${password}, password2: ${password2}`);
-  ctx.response.status = 200;
-  ctx.response.redirect('index');
-  console.log('redirecting...');
+let fn_training = async (ctx, next) => {
+  await ctx.render('training', data);
+  await next();
 };
-
-
+let fn_diagnosis = async (ctx, next) => {
+  await ctx.render('diagnosis', data);
+  await next();
+};
+let fn_health = async (ctx, next) => {
+  await ctx.render('health', data);
+  await next();
+};
 
 module.exports = {
   'GET /': fn_index,
-  'POST /signin': fn_signin,
-  'POST /signup': fn_signup,
+  'GET /warning': fn_warning,
+  'GET /training': fn_training,
+  'GET /diagnosis': fn_diagnosis,
+  'GET /health': fn_health,
+
 };
