@@ -119,7 +119,7 @@ $(document).ready(() => {
   $('select').material_select();
   $('textarea#textarea1').characterCounter();
 
-
+  $('.demo_link').attr('href', 'javascript:;');
 });
 
 console.log('initialization completed');
