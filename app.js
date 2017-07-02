@@ -5,8 +5,7 @@ const path = require('path');
 const staticCache = require('koa-static-cache');
 const opn = require('opn');
 const bodyParser = require('koa-bodyparser');
-const router = require('koa-router')();
-const controller = require('./src/frontend/controllers/controller');
+const router = require('./src/frontend/routes/router');
 const favicon = require('koa-favicon');
 
 
@@ -37,20 +36,10 @@ app.use(async (ctx, next) => {
 
 // body parse for post method
 app.use(bodyParser());
-
-// add controllers:
-app.use(controller());
-
-
+// favicon
 app.use(favicon(__dirname + '/src/frontend/public/images/favicon.ico'));
-//
-// // render views with jsons for now
-// app.use(async (ctx, next) => {
-//   // get the json according to the ctx.path
-//   const data = fs.readJsonSync(path.join(__dirname, 'src/frontend/models', ctx.path + '.json'), {throws: false});
-//   await ctx.render(ctx.path.substring(1), data);
-//   await next();
-// });
+// add routes:
+app.use(router.router);
 
 const listening_port = 3000;
 
