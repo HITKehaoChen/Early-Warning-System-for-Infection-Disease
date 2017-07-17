@@ -12,7 +12,7 @@ router.get('/diagnosis', routes.systems.diagnosis);
 router.get('/health', routes.systems.health);
 
 // 404
-//  router.get('/*', routes.notfound.notfound);
+// router.get('*', routes.notfound.notfound);
 
 module.exports = {
   'router': router.routes()

@@ -10,9 +10,9 @@ let fn_signin = async (ctx, next) => {
   console.log(`[server]: sign in with name: ${email}, password: ${password}`);
   if (email === 'koa@koa.com' && password === '12345') {
 
-    await ctx.render('warning', data.success);
+    await ctx.render('index', data.success);
     await next();
-    console.log('[server]: sigin succeeded');
+    console.log('[server]: signin succeeded');
     ctx.response.status = 200;
   } else {
     ctx.response.status = 401;
