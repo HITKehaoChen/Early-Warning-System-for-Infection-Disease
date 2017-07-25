@@ -5,14 +5,14 @@ const path = require('path');
 const staticCache = require('koa-static-cache');
 const opn = require('opn');
 const bodyParser = require('koa-bodyparser');
-const router = require('./src/frontend/routes/router');
+const router = require('./src/server/routes/router');
 const favicon = require('koa-favicon');
 
 
 const app = new koa();
 
 render(app, {
-  root: path.join(__dirname, '/src/frontend/views'),
+  root: path.join(__dirname, '/src/server/views'),
   layout: 'template',
   viewExt: 'ejs',
   cache: false,
@@ -21,7 +21,7 @@ render(app, {
 
 //set static file
 app.use(
-  staticCache(path.join(__dirname, '/src/frontend/public'), {
+  staticCache(path.join(__dirname, '/src/server/public'), {
     buffer: false
   })
 );
@@ -37,7 +37,7 @@ app.use(async (ctx, next) => {
 // body parse for post method
 app.use(bodyParser());
 // favicon
-app.use(favicon(__dirname + '/src/frontend/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/src/server/public/images/favicon.ico'));
 // add routes:
 app.use(router.router);
 
