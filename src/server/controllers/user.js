@@ -1,9 +1,15 @@
 const user = require('../models/user');
 
-const getUserInfo = async () => {
-  const id = this.params.id;
+const getUserInfo = async (ctx, next) => {
+  const id = ctx.params.id; //id from url request
   const res = await user.getUserById(id);
-  this.body = res;
+  console.log('res: ', res);
+  console.log('id: ', id);
+  if (res)
+    ctx.body = res;
+  else
+    ctx.body = 'not existed!';
+  next();
 };
 
 module.exports = {

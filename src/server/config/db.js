@@ -2,6 +2,9 @@ const Sequelize = require('sequelize');
 const config = require('./config');
 
 const alarmDB = new Sequelize(config.database, config.username, config.password, {
+  define: {
+    timestamps: false,
+  },
   host: config.host,
   dialect: 'mysql',
   pool: {
