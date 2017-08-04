@@ -8,7 +8,7 @@ const getUserInfo = async (ctx, next) => {
   if (res)
     ctx.body = res;
   else
-    ctx.body = 'not existed!';
+    ctx.body = 'id ' + id + ' not existed!';
   next();
 };
 
