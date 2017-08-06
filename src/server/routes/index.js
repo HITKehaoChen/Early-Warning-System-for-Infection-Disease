@@ -6,7 +6,6 @@ const notfound = require('./404');
 
 const fn_index = async (ctx, next) => {
   await ctx.render('index', data.default);
-  await next();
 };
 
 module.exports = {

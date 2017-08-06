@@ -14,7 +14,7 @@ router.get('/health', routes.systems.health);
 //api
 router.get('/user/:id', auth.getUserInfo);
 // 404
-// router.get('*', routes.notfound.notfound);
+router.get('*', routes.notfound.notfound);
 
 module.exports = {
   'router': router.routes()
