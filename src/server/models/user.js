@@ -16,7 +16,7 @@ const getUserByName = async (name) => {
     where: {
       user_name: name
     }
-  })
+  });
 
   return userInfo;
 };

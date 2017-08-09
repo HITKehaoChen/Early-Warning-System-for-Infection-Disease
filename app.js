@@ -1,12 +1,12 @@
 const koa = require('koa');
 const render = require('koa-ejs');
-const fs = require('fs-extra');
 const path = require('path');
 const staticCache = require('koa-static-cache');
 const opn = require('opn');
 const bodyParser = require('koa-bodyparser');
 const router = require('./src/server/routes/router');
 const favicon = require('koa-favicon');
+
 
 
 const app = new koa();
@@ -40,6 +40,7 @@ app.use(bodyParser());
 app.use(favicon(__dirname + '/src/server/public/images/favicon.ico'));
 // add routes:
 app.use(router.router);
+
 
 const listening_port = 3000;
 

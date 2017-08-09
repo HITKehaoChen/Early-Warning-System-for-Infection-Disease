@@ -1,21 +1,26 @@
-const routes = require('./index');
 const router = require('koa-router')();
+const index = require('../controllers/index');
+const account = require('../controllers/account');
+const systems = require('../controllers/systems');
+const not_found = require('../controllers/not_found');
 const auth = require('../controllers/user');
-// index router
-router.get('/', routes.index);
-// account router
-router.post('/signin', routes.account.signin);
-router.post('/signup', routes.account.signup);
-// systems router
-router.get('/warning', routes.systems.warning);
-router.get('/training', routes.systems.training);
-router.get('/diagnosis', routes.systems.diagnosis);
-router.get('/health', routes.systems.health);
-//api
+
+
+router.get('/', index.index);
+// to be deprecated///
+router.post('/signin', account.signin);
+router.post('/signup', account.signup);
+//four systems
+router.get('/warning', systems.warning);
+router.get('/training', systems.training);
+router.get('/diagnosis', systems.diagnosis);
+router.get('/health', systems.health);
+//auth
 router.get('/user/:id', auth.getUserInfo);
-// 404
-router.get('*', routes.notfound.notfound);
+router.post('/user', auth.postUserAuth);
+
+router.all('*', not_found.not_found);
 
 module.exports = {
-  'router': router.routes()
+'router': router.routes()
 };

@@ -12,6 +12,7 @@
   "author": "lty96117 <sense.96117@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
+    "axios": "^0.16.2",
     "echarts": "^3.6.2",
     "fs-extra": "^3.0.1",
     "jquery": "^3.2.1",
@@ -19,6 +20,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-ejs": "^4.1.0",
     "koa-favicon": "^2.0.0",
+    "koa-jwt": "^3.2.2",
     "koa-multer": "^1.0.1",
     "koa-router": "^7.2.1",
     "koa-static-cache": "^5.1.1",

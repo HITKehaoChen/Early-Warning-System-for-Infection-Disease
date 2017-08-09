@@ -6,17 +6,16 @@ const data = require('../fake_data/data');
 
 let fn_signin = async (ctx, next) => {
   let email = ctx.request.body.name || '';
-  let password = ctx.request.body.pwd || '';
+  let password = ctx.request.body.password || '';
   console.log(`[server]: sign in with name: ${email}, password: ${password}`);
   if (email === 'koa@koa.com' && password === '12345') {
 
-    await ctx.render('index', data.success);
+    await ctx.render('index', data.success); //mock data for now
     await next();
     console.log('[server]: signin succeeded');
     ctx.response.status = 200;
   } else {
     ctx.response.status = 401;
-
     console.log('[server]: signin failed');
 
   }
@@ -29,6 +28,9 @@ let fn_signup = async (ctx, next) => {
   let password = ctx.request.body.pwd || '';
   let password2 = ctx.request.body.pwd2 || '';
   console.log(`signup with name: ${name}, password: ${password}, password2: ${password2}`);
+
+  
+
   ctx.response.status = 200;
   ctx.response.redirect('/');
 

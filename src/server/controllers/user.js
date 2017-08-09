@@ -12,6 +12,40 @@ const getUserInfo = async (ctx, next) => {
   next();
 };
 
+const postUserAuth = async ctx => {
+  const data = ctx.request.body;
+  const res = await user.getUserByName(data.name);
+
+  if (userInfo !== null) {
+    if (userInfo.password !== data.password) {
+      ctx.body = {
+        success: false,
+        info: 'Incorrect PIN!'
+      }
+    } else {
+      const userToken = {
+        name: userInfo.user_name,
+        id: userInfo.id
+      }
+      const secrect = 'alarm_test_demo';
+
+      const token = jwt.sign(userToken, secret); //sign the token
+      ctx.body = {
+        success: true,
+        token: token
+      }
+    }
+  } else {
+    ctx.body = {
+      success: false,
+      info: 'THE USER DOES NOT EXIST!'
+    }
+  }
+
+};
+
 module.exports = {
-  getUserInfo //func to get userInfo
+  getUserInfo, //func to get userInfo
+  postUserAuth
+
 };
