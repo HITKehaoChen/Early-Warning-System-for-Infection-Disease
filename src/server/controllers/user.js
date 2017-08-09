@@ -1,6 +1,6 @@
 const user = require('../models/user');
 
-const getUserInfo = async (ctx, next) => {
+const getUserInfo = async (ctx) => {
   const id = ctx.params.id; //id from url request
   const res = await user.getUserById(id);
   console.log('res: ', res);
@@ -9,7 +9,6 @@ const getUserInfo = async (ctx, next) => {
     ctx.body = res;
   else
     ctx.body = 'id ' + id + ' not existed!';
-  next();
 };
 
 const postUserAuth = async ctx => {
