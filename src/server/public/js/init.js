@@ -5,6 +5,7 @@
 
 import '../css/init.css';
 
+const Axios = require('axios');
 $(document).ready(() => {
 
   //set the menu btn for mobile
@@ -57,69 +58,99 @@ $(document).ready(() => {
   //get the signin form
   $('#form-signin').submit((e) => {
     e.preventDefault();//prevents the submit
-    $.ajax({
-      url: '/signin',
-      data: $('#form-signin').serialize(),
-      type: 'POST',
-      success: function (data, textStatus) {
-        console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
+
+    // $.ajax({
+    //   url: '/user',
+    //   data: $('#form-signin').serialize(),
+    //   type: 'POST',
+    //   success: function (data, textStatus) {
+    //     console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
+    //     setTimeout(() => {
+    //       $('#modal1').modal('close');
+    //     }, 200);
+    //     let $toastContent = $('<h4>Sign in successfully !</h4>');
+    //     Materialize.toast($toastContent, 3000, 'toast-success');
+    //   },
+    //   error: function (data, textStatus) {
+    //     console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
+    //     let $toastContent = $('<h4>Sign in Failed !</h4>');
+    //     Materialize.toast($toastContent, 3000, 'toast-fail');
+    //   },
+    // });
+    const obj = {
+      name: $('#signin-name').val(),
+      password: $('#signin-pwd').val()
+    };
+    console.log('obj:', obj);
+    Axios.post('/user', obj).then((res) => {
+      console.log(res);
+      console.log(res.data);
+
+      if (res.data.success) {
+        sessionStorage.setItem('alarm-token', res.data.token);
         setTimeout(() => {
           $('#modal1').modal('close');
         }, 200);
         let $toastContent = $('<h4>Sign in successfully !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-success');
-      },
-      error: function (data, textStatus) {
-        console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
-        let $toastContent = $('<h4>Sign in Failed !</h4>');
+      } else {
+        let $toastContent = res.data.info;
         Materialize.toast($toastContent, 3000, 'toast-fail');
-      },
+        sessionStorage.setItem('alarm-token', null);
+
+      }
+    }, (err) => {
+      let $toastContent = $('<h4>INVALID REQUEST !</h4>');
+      Materialize.toast($toastContent, 3000, 'toast-fail');
+      sessionStorage.setItem('alarm-token', null);
+      console.log(err)
     });
+
   });
-
-
-  $(function () {
-    $('#mobile-nav').perfectScrollbar();
-    $('#modal1').perfectScrollbar();
-  });
-
-  let timer = setInterval(() => {
-    $('.carousel').carousel('next');
-  }, 2000);
-  $('.carousel.carousel-slider')
-    .carousel({fullWidth: true})
-    .on('click', (e) => {
-      clearInterval(timer);
-      // alert('clicked me!');
-      console.log('click cleared setInterval func...');
-      $(this).off(e);// unbind successfully!
-    });
-  //   .on('tap', (e) => {
-  //   clearInterval(timer);
-  //   alert('tapped me!');
-  //   console.log('tap cleared setInterval func...');
-  //   $(this).off(e);
-  // });
-  // $('#c-btn').on('click', (e) => {
-  //   clearInterval(timer);
-  //   // alert('clicked btn!');
-  //   $(this).off(e);
-  // });
-  // $('#c-btn2').on('click', (e) => {
-  //   clearInterval(timer);
-  //   // alert('clicked btn!');
-  //   $(this).off(e);
-  // })
-
-
-  $("a[href='#top']").click(() => {
-    $('html, body').animate({scrollTop: 0}, 400);
-    return false;
-  });
-  $('select').material_select();
-  $('textarea#textarea1').characterCounter();
-
-  $('.demo_link').attr('href', 'javascript:;');
 });
+
+
+$(function () {
+  $('#mobile-nav').perfectScrollbar();
+  $('#modal1').perfectScrollbar();
+});
+
+let timer = setInterval(() => {
+  $('.carousel').carousel('next');
+}, 2000);
+$('.carousel.carousel-slider')
+  .carousel({fullWidth: true})
+  .on('click', (e) => {
+    clearInterval(timer);
+    // alert('clicked me!');
+    console.log('click cleared setInterval func...');
+    $(this).off(e);// unbind successfully!
+  });
+//   .on('tap', (e) => {
+//   clearInterval(timer);
+//   alert('tapped me!');
+//   console.log('tap cleared setInterval func...');
+//   $(this).off(e);
+// });
+// $('#c-btn').on('click', (e) => {
+//   clearInterval(timer);
+//   // alert('clicked btn!');
+//   $(this).off(e);
+// });
+// $('#c-btn2').on('click', (e) => {
+//   clearInterval(timer);
+//   // alert('clicked btn!');
+//   $(this).off(e);
+// })
+
+
+$("a[href='#top']").click(() => {
+  $('html, body').animate({scrollTop: 0}, 400);
+  return false;
+});
+$('select').material_select();
+$('textarea#textarea1').characterCounter();
+
+$('.demo_link').attr('href', 'javascript:;');
 
 console.log('initialization completed');

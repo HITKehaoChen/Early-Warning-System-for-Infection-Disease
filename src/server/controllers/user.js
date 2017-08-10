@@ -1,6 +1,6 @@
 const user = require('../models/user');
-
-const getUserInfo = async (ctx) => {
+const jwt = require('jsonwebtoken');
+const getUserInfo = async ctx => {
   const id = ctx.params.id; //id from url request
   const res = await user.getUserById(id);
   console.log('res: ', res);
@@ -9,11 +9,14 @@ const getUserInfo = async (ctx) => {
     ctx.body = res;
   else
     ctx.body = 'id ' + id + ' not existed!';
+
 };
 
 const postUserAuth = async ctx => {
   const data = ctx.request.body;
-  const res = await user.getUserByName(data.name);
+  console.log('post data', data);
+  const userInfo = await user.getUserByName(data.name);
+  console.log('userInfo', userInfo);
 
   if (userInfo !== null) {
     if (userInfo.password !== data.password) {
@@ -23,16 +26,28 @@ const postUserAuth = async ctx => {
       }
     } else {
       const userToken = {
-        name: userInfo.user_name,
+        name: userInfo.name,
         id: userInfo.id
-      }
-      const secrect = 'alarm_test_demo';
+      };
+      const secret = 'alarm_test_demo';
 
       const token = jwt.sign(userToken, secret); //sign the token
       ctx.body = {
         success: true,
         token: token
-      }
+      };
+      // get the data from Sequelize
+      // mock data for test first
+      const data = {
+        "user": {
+          "id": userInfo.id,
+          "name": userInfo.name,
+          "gender": "male",
+          "age": 22,
+          "email": '12345@gmail.com'
+
+        }
+      };
     }
   } else {
     ctx.body = {

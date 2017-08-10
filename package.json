@@ -16,6 +16,7 @@
     "echarts": "^3.6.2",
     "fs-extra": "^3.0.1",
     "jquery": "^3.2.1",
+    "jsonwebtoken": "^7.4.2",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-ejs": "^4.1.0",
