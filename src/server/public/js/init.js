@@ -87,10 +87,10 @@ $(document).ready(() => {
       console.log(res.data);
 
       if (res.data.success) {
-        sessionStorage.setItem('alarm-token', res.data.token);
         setTimeout(() => {
           $('#modal1').modal('close');
         }, 200);
+        sessionStorage.setItem('alarm-token', res.data.token);
         let $toastContent = $('<h4>Sign in successfully !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-success');
       } else {
@@ -106,6 +106,33 @@ $(document).ready(() => {
       console.log(err)
     });
 
+  });
+  $('#id_alarm').click(() => {
+    const token = sessionStorage.getItem('alarm-token');
+    console.log(token);
+    const tmp = 'Bearer ' + token;
+    if (token !== null) {
+       window.location.href = '/warning?Authorization='+tmp;
+      // Axios.get('/warning',{
+      //   method: 'get',
+      //   timeout: 1000,
+      //
+      //   headers: {
+      //     'Accept':' text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+      //     'Authorization': 'Bearer ' + token,
+      //
+      //   },
+      //   responseType: 'document'
+      //
+      // });
+
+    } else {
+      Axios({
+        responseType: 'document',
+        method: 'get',
+        url: '/'
+      })
+    }
   });
 });
 

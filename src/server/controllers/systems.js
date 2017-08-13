@@ -4,6 +4,9 @@
 const data = require('../fake_data/data');
 
 let fn_warning = async (ctx, next) => {
+  let token = ctx.request.query;
+  console.log(token);
+  console.log("token: " , token);
   await ctx.render('warning', data.default);
 };
 let fn_training = async (ctx, next) => {

@@ -1,5 +1,7 @@
 const user = require('../models/user');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
 const getUserInfo = async ctx => {
   const id = ctx.params.id; //id from url request
   const res = await user.getUserById(id);
@@ -14,12 +16,13 @@ const getUserInfo = async ctx => {
 
 const postUserAuth = async ctx => {
   const data = ctx.request.body;
-  console.log('post data', data);
+  console.log('post data: ', data);
   const userInfo = await user.getUserByName(data.name);
-  console.log('userInfo', userInfo);
+  console.log('userInfo: ', userInfo);
 
   if (userInfo !== null) {
     if (userInfo.password !== data.password) {
+      ctx.status = 401;
       ctx.body = {
         success: false,
         info: 'Incorrect PIN!'
@@ -29,7 +32,7 @@ const postUserAuth = async ctx => {
         name: userInfo.name,
         id: userInfo.id
       };
-      const secret = 'alarm_test_demo';
+      const secret = 'alarm_test_token';
 
       const token = jwt.sign(userToken, secret); //sign the token
       ctx.body = {
@@ -54,6 +57,7 @@ const postUserAuth = async ctx => {
       success: false,
       info: 'THE USER DOES NOT EXIST!'
     }
+    ctx.status = 401;
   }
 
 };
