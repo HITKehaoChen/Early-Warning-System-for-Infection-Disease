@@ -3,12 +3,27 @@
  */
 const data = require('../fake_data/data');
 
+const jwt = require('jsonwebtoken');
+
 let fn_warning = async (ctx, next) => {
-  let token = ctx.request.query;
-  console.log(token);
-  console.log("token: " , token);
-  await ctx.render('warning', data.default);
+  let token = ctx.request.query.token;
+  console.log('token: ', token);
+
+  let userInfo = jwt.verify(token, 'alarm_test_token');
+  console.log('data ', userInfo);
+
+  await ctx.render('warning', {
+    "user": {
+      "id": userInfo.id,
+      "name": userInfo.name,
+      "gender": "male",
+      "age": 22,
+      "email": '12345@gmail.com'
+    }
+  });
 };
+
+
 let fn_training = async (ctx, next) => {
   await ctx.render('training', data.default);
 };
@@ -24,5 +39,4 @@ module.exports = {
   'training': fn_training,
   'diagnosis': fn_diagnosis,
   'health': fn_health,
-
-}
+};

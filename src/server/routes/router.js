@@ -5,13 +5,12 @@ const systems = require('../controllers/systems');
 const not_found = require('../controllers/not_found');
 const auth = require('../controllers/user');
 
-
 router.get('/', index.index);
 // to be deprecated///
 router.post('/signin', account.signin);
 router.post('/signup', account.signup);
 //four systems
-router.get('/warning', systems.warning);
+router.get('/warning',systems.warning);
 router.get('/training', systems.training);
 router.get('/diagnosis', systems.diagnosis);
 router.get('/health', systems.health);

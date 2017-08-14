@@ -27,20 +27,26 @@ const postUserAuth = async ctx => {
         success: false,
         info: 'Incorrect PIN!'
       }
+
     } else {
+
       const userToken = {
         name: userInfo.name,
         id: userInfo.id
       };
-      const secret = 'alarm_test_token';
 
+      console.log("user token ", userInfo);
+
+      const secret = 'alarm_test_token';
       const token = jwt.sign(userToken, secret); //sign the token
+
+      //body for post request
       ctx.body = {
         success: true,
         token: token
       };
       // get the data from Sequelize
-      // mock data for test first
+
       const data = {
         "user": {
           "id": userInfo.id,
@@ -51,12 +57,14 @@ const postUserAuth = async ctx => {
 
         }
       };
+      // test user info
+      // await ctx.render('index', data);
     }
   } else {
     ctx.body = {
       success: false,
       info: 'THE USER DOES NOT EXIST!'
-    }
+    };
     ctx.status = 401;
   }
 

@@ -93,6 +93,11 @@ $(document).ready(() => {
         sessionStorage.setItem('alarm-token', res.data.token);
         let $toastContent = $('<h4>Sign in successfully !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-success');
+        const token = sessionStorage.getItem('alarm-token');
+        if(token !== null) {
+          window.location.href = '/?token=' + token;
+        }
+
       } else {
         let $toastContent = res.data.info;
         Materialize.toast($toastContent, 3000, 'toast-fail');
@@ -112,7 +117,7 @@ $(document).ready(() => {
     console.log(token);
     const tmp = 'Bearer ' + token;
     if (token !== null) {
-       window.location.href = '/warning?Authorization='+tmp;
+       window.location.href = '/warning?token='+token;
       // Axios.get('/warning',{
       //   method: 'get',
       //   timeout: 1000,
