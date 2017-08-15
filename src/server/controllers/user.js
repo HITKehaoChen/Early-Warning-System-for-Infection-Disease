@@ -14,7 +14,7 @@ const getUserInfo = async ctx => {
 
 };
 
-const postUserAuth = async ctx => {
+const postUserSignInAuth = async ctx => {
   const data = ctx.request.body;
   console.log('post data: ', data);
   const userInfo = await user.getUserByName(data.name);
@@ -45,20 +45,7 @@ const postUserAuth = async ctx => {
         success: true,
         token: token
       };
-      // get the data from Sequelize
 
-      const data = {
-        "user": {
-          "id": userInfo.id,
-          "name": userInfo.name,
-          "gender": "male",
-          "age": 22,
-          "email": '12345@gmail.com'
-
-        }
-      };
-      // test user info
-      // await ctx.render('index', data);
     }
   } else {
     ctx.body = {
@@ -70,8 +57,16 @@ const postUserAuth = async ctx => {
 
 };
 
+const postUserSignUpAuth = async ctx => {
+
+  const data = ctx.request.body;
+
+  const isSuccess = await user.createUser(data);
+  
+}
+
 module.exports = {
   getUserInfo, //func to get userInfo
-  postUserAuth
+ postUserSignInAuth,
 
 };

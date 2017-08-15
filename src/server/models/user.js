@@ -21,7 +21,14 @@ const getUserByName = async (name) => {
   return userInfo;
 };
 
+const createUser = async (data) => {
+  await User.create({
+
+  })
+}
+
 module.exports = {
   getUserById,
-  getUserByName
+  getUserByName,
+  createUser
 };

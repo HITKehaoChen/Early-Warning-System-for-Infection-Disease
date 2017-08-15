@@ -1,6 +1,6 @@
 /* jshint indent: 2 */
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   return sequelize.define('user_info', {
     id: {
       type: DataTypes.INTEGER(11),
@@ -10,21 +10,17 @@ module.exports = function (sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     password: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    nick: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    detail_info: {
+    home_address: {
       type: DataTypes.TEXT,
       allowNull: true
     },

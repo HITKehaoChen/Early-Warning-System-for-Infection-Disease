@@ -16,7 +16,7 @@ router.get('/diagnosis', systems.diagnosis);
 router.get('/health', systems.health);
 //auth
 router.get('/user/:id', auth.getUserInfo);
-router.post('/user', auth.postUserAuth);
+router.post('/userSignIn', auth.postUserSignInAuth);
 
 router.all('*', not_found.not_found);
 

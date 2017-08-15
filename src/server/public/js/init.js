@@ -6,6 +6,7 @@
 import '../css/init.css';
 
 const Axios = require('axios');
+const _ = require('underscore');
 $(document).ready(() => {
 
   //set the menu btn for mobile
@@ -82,7 +83,7 @@ $(document).ready(() => {
       password: $('#signin-pwd').val()
     };
     console.log('obj:', obj);
-    Axios.post('/user', obj).then((res) => {
+    Axios.post('/userSignIn', obj).then((res) => {
       console.log(res);
       console.log(res.data);
 
@@ -94,7 +95,7 @@ $(document).ready(() => {
         let $toastContent = $('<h4>Sign in successfully !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-success');
         const token = sessionStorage.getItem('alarm-token');
-        if(token !== null) {
+        if (token !== null) {
           window.location.href = '/?token=' + token;
         }
 
@@ -112,12 +113,32 @@ $(document).ready(() => {
     });
 
   });
+  $('#form-signup').submit((e) => {
+    e.preventDefault();
+    const obj = _.object($("#form-signup").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+    console.log(obj);
+
+    Axios.post('/userSignUp', obj).then((res) => {
+      console.log(res);
+
+      if (res.data.success) {
+
+      } else {
+
+      }
+
+    })
+  });
+
+
   $('#id_alarm').click(() => {
     const token = sessionStorage.getItem('alarm-token');
     console.log(token);
     const tmp = 'Bearer ' + token;
     if (token !== null) {
-       window.location.href = '/warning?token='+token;
+      window.location.href = '/warning?token=' + token;
       // Axios.get('/warning',{
       //   method: 'get',
       //   timeout: 1000,
@@ -132,11 +153,7 @@ $(document).ready(() => {
       // });
 
     } else {
-      Axios({
-        responseType: 'document',
-        method: 'get',
-        url: '/'
-      })
+      window.location.href = '/';
     }
   });
 });

@@ -8,3 +8,12 @@ $ cd alarm_test
 $ npm i
 $ npm start
 ```
+
+# Database Design
+
+|  id  | name | birthday | gender | home_address | password | level |
+| :--: | :--: | :------: | :----: | :----------: | :------: | :---: |
+|      |      |          |        |              |          |       |
+|      |      |          |        |              |          |       |
+|      |      |          |        |              |          |       |
+
