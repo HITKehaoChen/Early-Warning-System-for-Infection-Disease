@@ -22,7 +22,6 @@ const postUserSignInAuth = async ctx => {
 
   if (userInfo !== null) {
     if (userInfo.password !== data.password) {
-      ctx.status = 401;
       ctx.body = {
         success: false,
         info: 'Incorrect PIN!'
@@ -43,7 +42,8 @@ const postUserSignInAuth = async ctx => {
       //body for post request
       ctx.body = {
         success: true,
-        token: token
+        token: token,
+        info: 'success!'
       };
 
     }
@@ -52,7 +52,6 @@ const postUserSignInAuth = async ctx => {
       success: false,
       info: 'THE USER DOES NOT EXIST!'
     };
-    ctx.status = 401;
   }
 
 };
@@ -62,11 +61,11 @@ const postUserSignUpAuth = async ctx => {
   const data = ctx.request.body;
 
   const isSuccess = await user.createUser(data);
-  
+
 }
 
 module.exports = {
   getUserInfo, //func to get userInfo
- postUserSignInAuth,
+  postUserSignInAuth,
 
 };

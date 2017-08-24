@@ -8,19 +8,26 @@ const jwt = require('jsonwebtoken');
 let fn_warning = async (ctx, next) => {
   let token = ctx.request.query.token;
   console.log('token: ', token);
+  if (token !== undefined) {
+    let userInfo = jwt.verify(token, 'alarm_test_token');
+    console.log('data ', userInfo);
 
-  let userInfo = jwt.verify(token, 'alarm_test_token');
-  console.log('data ', userInfo);
+    await ctx.render('warning', {
+      "user": {
+        "id": userInfo.id,
+        "name": userInfo.name,
+        "gender": "male",
+        "age": 22,
+        "email": '12345@gmail.com'
+      }
+    });
+  } else {
+    ctx.status = 401;
+    ctx.redirect('/');
+    // await ctx.render('warning', data.default);
 
-  await ctx.render('warning', {
-    "user": {
-      "id": userInfo.id,
-      "name": userInfo.name,
-      "gender": "male",
-      "age": 22,
-      "email": '12345@gmail.com'
-    }
-  });
+
+  }
 };
 
 

@@ -82,17 +82,19 @@ $(document).ready(() => {
       name: $('#signin-name').val(),
       password: $('#signin-pwd').val()
     };
-    console.log('obj:', obj);
+    console.log('post obj: ', obj);
     Axios.post('/userSignIn', obj).then((res) => {
-      console.log(res);
-      console.log(res.data);
+      console.log('res: ', res);
+      console.log('res.data: ', res.data);
 
       if (res.data.success) {
         setTimeout(() => {
           $('#modal1').modal('close');
         }, 200);
         sessionStorage.setItem('alarm-token', res.data.token);
-        let $toastContent = $('<h4>Sign in successfully !</h4>');
+
+        // let $toastContent = $('<h4>Sign in successfully !</h4>');
+        let $toastContent = res.data.info;
         Materialize.toast($toastContent, 3000, 'toast-success');
         const token = sessionStorage.getItem('alarm-token');
         if (token !== null) {
@@ -100,19 +102,23 @@ $(document).ready(() => {
         }
 
       } else {
-        let $toastContent = res.data.info;
+
+        let $toastContent = res.data.info || $('<h4>INVALID REQUEST !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-fail');
         sessionStorage.setItem('alarm-token', null);
 
       }
     }, (err) => {
+
+      console.log('err: ', err);
+      // let $toastContent = $('<h4>INVALID REQUEST !</h4>');
       let $toastContent = $('<h4>INVALID REQUEST !</h4>');
       Materialize.toast($toastContent, 3000, 'toast-fail');
       sessionStorage.setItem('alarm-token', null);
-      console.log(err)
     });
 
   });
+
   $('#form-signup').submit((e) => {
     e.preventDefault();
     const obj = _.object($("#form-signup").serializeArray().map(function (v) {
@@ -132,49 +138,50 @@ $(document).ready(() => {
     })
   });
 
+  // for four systems redirect
 
-  $('#id_alarm').click(() => {
+  function auth_post(id) {
     const token = sessionStorage.getItem('alarm-token');
-    console.log(token);
-    const tmp = 'Bearer ' + token;
-    if (token !== null) {
-      window.location.href = '/warning?token=' + token;
-      // Axios.get('/warning',{
-      //   method: 'get',
-      //   timeout: 1000,
-      //
-      //   headers: {
-      //     'Accept':' text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-      //     'Authorization': 'Bearer ' + token,
-      //
-      //   },
-      //   responseType: 'document'
-      //
-      // });
-
-    } else {
+    if (token === null) {
       window.location.href = '/';
+      Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
+      console.log('Unauthorized!!');
+    }
+    console.log(token);
+    if (token !== null) {
+      window.location.href = '/' + id.substring(4) + '?token=' + token;
+    }
+  }
+
+  $('#id_warning').click(()=>{
+    const token = sessionStorage.getItem('alarm-token');
+    if (token === null) {
+      // window.location.href = '/';
+      Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
+      console.log('Unauthorized!!');
+    }
+    console.log(token);
+    if (token !== null) {
+      window.location.href = '/' + '#id_warning'.substring(4) + '?token=' + token;
     }
   });
-});
 
-
-$(function () {
-  $('#mobile-nav').perfectScrollbar();
-  $('#modal1').perfectScrollbar();
-});
-
-let timer = setInterval(() => {
-  $('.carousel').carousel('next');
-}, 2000);
-$('.carousel.carousel-slider')
-  .carousel({fullWidth: true})
-  .on('click', (e) => {
-    clearInterval(timer);
-    // alert('clicked me!');
-    console.log('click cleared setInterval func...');
-    $(this).off(e);// unbind successfully!
+  $(function () {
+    $('#mobile-nav').perfectScrollbar();
+    $('#modal1').perfectScrollbar();
   });
+
+  let timer = setInterval(() => {
+    $('.carousel').carousel('next');
+  }, 2000);
+  $('.carousel.carousel-slider')
+    .carousel({fullWidth: true})
+    .on('click', (e) => {
+      clearInterval(timer);
+      // alert('clicked me!');
+      console.log('click cleared setInterval func...');
+      $(this).off(e);// unbind successfully!
+    });
 //   .on('tap', (e) => {
 //   clearInterval(timer);
 //   alert('tapped me!');
@@ -193,13 +200,13 @@ $('.carousel.carousel-slider')
 // })
 
 
-$("a[href='#top']").click(() => {
-  $('html, body').animate({scrollTop: 0}, 400);
-  return false;
+  $("a[href='#top']").click(() => {
+    $('html, body').animate({scrollTop: 0}, 400);
+    return false;
+  });
+  $('select').material_select();
+  $('textarea#textarea1').characterCounter();
+
+  $('.demo_link').attr('href', 'javascript:;');
 });
-$('select').material_select();
-$('textarea#textarea1').characterCounter();
-
-$('.demo_link').attr('href', 'javascript:;');
-
 console.log('initialization completed');
