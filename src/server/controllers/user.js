@@ -62,7 +62,9 @@ const postUserSignUpAuth = async ctx => {
 
   const isSuccess = await user.createUser(data);
 
-}
+
+
+};
 
 module.exports = {
   getUserInfo, //func to get userInfo

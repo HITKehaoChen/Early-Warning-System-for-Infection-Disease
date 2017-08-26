@@ -60,24 +60,6 @@ $(document).ready(() => {
   $('#form-signin').submit((e) => {
     e.preventDefault();//prevents the submit
 
-    // $.ajax({
-    //   url: '/user',
-    //   data: $('#form-signin').serialize(),
-    //   type: 'POST',
-    //   success: function (data, textStatus) {
-    //     console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
-    //     setTimeout(() => {
-    //       $('#modal1').modal('close');
-    //     }, 200);
-    //     let $toastContent = $('<h4>Sign in successfully !</h4>');
-    //     Materialize.toast($toastContent, 3000, 'toast-success');
-    //   },
-    //   error: function (data, textStatus) {
-    //     console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
-    //     let $toastContent = $('<h4>Sign in Failed !</h4>');
-    //     Materialize.toast($toastContent, 3000, 'toast-fail');
-    //   },
-    // });
     const obj = {
       name: $('#signin-name').val(),
       password: $('#signin-pwd').val()
@@ -93,13 +75,9 @@ $(document).ready(() => {
         }, 200);
         sessionStorage.setItem('alarm-token', res.data.token);
 
-        // let $toastContent = $('<h4>Sign in successfully !</h4>');
         let $toastContent = res.data.info;
         Materialize.toast($toastContent, 3000, 'toast-success');
-        // const token = sessionStorage.getItem('alarm-token');
-        // if (token !== null) {
-        //   window.location.href = '/?token=' + token;
-        // }
+
 
       } else {
 
@@ -182,29 +160,13 @@ $(document).ready(() => {
     $('.carousel').carousel('next');
   }, 2000);
   $('.carousel.carousel-slider')
-    .carousel({fullWidth: true})
-    .on('click', (e) => {
-      clearInterval(timer);
-      // alert('clicked me!');
-      console.log('click cleared setInterval func...');
-      $(this).off(e);// unbind successfully!
-    });
-//   .on('tap', (e) => {
-//   clearInterval(timer);
-//   alert('tapped me!');
-//   console.log('tap cleared setInterval func...');
-//   $(this).off(e);
-// });
-// $('#c-btn').on('click', (e) => {
-//   clearInterval(timer);
-//   // alert('clicked btn!');
-//   $(this).off(e);
-// });
-// $('#c-btn2').on('click', (e) => {
-//   clearInterval(timer);
-//   // alert('clicked btn!');
-//   $(this).off(e);
-// })
+    .carousel({fullWidth: true});
+    // .on('click', (e) => {
+    //   clearInterval(timer);
+    //   // alert('clicked me!');
+    //   console.log('click cleared setInterval func...');
+    //   $(this).off(e);// unbind successfully!
+    // });
 
 
   $("a[href='#top']").click(() => {
