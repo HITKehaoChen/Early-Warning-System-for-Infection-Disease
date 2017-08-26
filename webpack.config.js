@@ -1,8 +1,12 @@
 const webpack = require('webpack');
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: __dirname + "/src/server/public/js/init.js",
+  devtool: 'inline-source-map',
+
   output: {
     path: __dirname + '/src/server/public/dist',
     publicPath: "/dist/",
@@ -51,6 +55,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({
       filename: 'main.css'
-    })
+    }),
+    new CleanWebpackPlugin(['src/server/public/dist'])
   ]
 };

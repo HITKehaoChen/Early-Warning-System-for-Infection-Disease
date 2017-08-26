@@ -96,10 +96,10 @@ $(document).ready(() => {
         // let $toastContent = $('<h4>Sign in successfully !</h4>');
         let $toastContent = res.data.info;
         Materialize.toast($toastContent, 3000, 'toast-success');
-        const token = sessionStorage.getItem('alarm-token');
-        if (token !== null) {
-          window.location.href = '/?token=' + token;
-        }
+        // const token = sessionStorage.getItem('alarm-token');
+        // if (token !== null) {
+        //   window.location.href = '/?token=' + token;
+        // }
 
       } else {
 
@@ -140,31 +140,38 @@ $(document).ready(() => {
 
   // for four systems redirect
 
-  function auth_post(id) {
-    const token = sessionStorage.getItem('alarm-token');
-    if (token === null) {
-      window.location.href = '/';
-      Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
-      console.log('Unauthorized!!');
-    }
-    console.log(token);
-    if (token !== null) {
-      window.location.href = '/' + id.substring(4) + '?token=' + token;
+
+
+  function getOnClick(id) {
+    return function () {
+      const token = sessionStorage.getItem('alarm-token');
+      if (token === null) {
+        Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
+        console.log('Unauthorized!!');
+        // window.location.href = '/';
+      } else {
+        window.location.href = '/' + id + '?token=' + token;
+      }
     }
   }
 
-  $('#id_warning').click(()=>{
-    const token = sessionStorage.getItem('alarm-token');
-    if (token === null) {
-      // window.location.href = '/';
-      Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
-      console.log('Unauthorized!!');
-    }
-    console.log(token);
-    if (token !== null) {
-      window.location.href = '/' + '#id_warning'.substring(4) + '?token=' + token;
-    }
-  });
+  $('.warning_auth').click(getOnClick('warning'));
+  $('.training_auth').click(getOnClick('training'));
+  $('.diagnosis_auth').click(getOnClick('diagnosis'));
+  $('.health_auth').click(getOnClick('health'));
+
+  // $('#id_warning').click(() => {
+  //   const token = sessionStorage.getItem('alarm-token');
+  //   if (token === null) {
+  //     // window.location.href = '/';
+  //     Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
+  //     console.log('Unauthorized!!');
+  //   }
+  //   console.log(token);
+  //   if (token !== null) {
+  //     window.location.href = '/' + '#id_warning'.substring(4) + '?token=' + token;
+  //   }
+  // });
 
   $(function () {
     $('#mobile-nav').perfectScrollbar();
