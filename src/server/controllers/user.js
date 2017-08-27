@@ -1,10 +1,10 @@
-const user = require('../models/user');
+const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const getUserInfo = async ctx => {
   const id = ctx.params.id; //id from url request
-  const res = await user.getUserById(id);
+  const res = await User.getUserById(id);
   console.log('res: ', res);
   console.log('id: ', id);
   if (res)
@@ -17,7 +17,7 @@ const getUserInfo = async ctx => {
 const postUserSignInAuth = async ctx => {
   const data = ctx.request.body;
   console.log('post data: ', data);
-  const userInfo = await user.getUserByName(data.name);
+  const userInfo = await User.getUserByName(data.name);
   console.log('userInfo: ', userInfo);
 
   if (userInfo !== null) {
@@ -59,9 +59,28 @@ const postUserSignInAuth = async ctx => {
 const postUserSignUpAuth = async ctx => {
 
   const data = ctx.request.body;
-
-  const isSuccess = await user.createUser(data);
-
+  console.log('sign up data: ',data);
+  let user_data = await User.getUserByName(data.name);
+  if (user_data !== null) {
+    ctx.body = {
+      success: false,
+      info: 'The username has been signed up!'
+    };
+    console.log('The username has been signed up!');
+    return ;
+  }
+  const userInfo = await User.createUser(data);
+  if (userInfo !== null) {
+    ctx.body = {
+      success: true,
+      info: '注册成功！'
+    }
+  } else {
+    ctx.body = {
+      success: false,
+      info: 'Failed!'
+    };
+  }
 
 
 };
@@ -69,5 +88,5 @@ const postUserSignUpAuth = async ctx => {
 module.exports = {
   getUserInfo, //func to get userInfo
   postUserSignInAuth,
-
+  postUserSignUpAuth
 };

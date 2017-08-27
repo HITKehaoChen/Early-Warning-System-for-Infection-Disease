@@ -22,11 +22,24 @@ const getUserByName = async (name) => {
 };
 
 const createUser = async (data) => {
-  await User.create(data)
+  console.log('data to be inserted: ', data);
+  let user = await User.create(data);
+  console.log(user);
+  return user;
+
 };
+
+
+const deleteUserByName = async (name) => {
+  let user = getUserByName(name);
+  console.log('user', user);
+  user.destroy();
+  console.log('user ', user);
+}
 
 module.exports = {
   getUserById,
   getUserByName,
-  createUser
+  createUser,
+  deleteUserByName
 };
