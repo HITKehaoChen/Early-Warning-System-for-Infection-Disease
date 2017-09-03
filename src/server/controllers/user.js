@@ -64,10 +64,10 @@ const postUserSignUpAuth = async ctx => {
   if (user_data !== null) {
     ctx.body = {
       success: false,
-      info: 'The username has been signed up!'
+      info: 'The username has existed!'
     };
-    console.log('The username has been signed up!');
-    return ;
+    console.log('The username has existed!');
+    return ctx.body;
   }
   const userInfo = await User.createUser(data);
   if (userInfo !== null) {
@@ -78,7 +78,7 @@ const postUserSignUpAuth = async ctx => {
   } else {
     ctx.body = {
       success: false,
-      info: 'Failed!'
+      info: '注册失败!'
     };
   }
 

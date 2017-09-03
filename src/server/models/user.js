@@ -24,7 +24,7 @@ const getUserByName = async (name) => {
 const createUser = async (data) => {
   console.log('data to be inserted: ', data);
   let user = await User.create(data);
-  console.log(user);
+  console.log('added user: ', user);
   return user;
 
 };

@@ -4,11 +4,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: __dirname + "/src/server/public/js/init.js",
+  entry: path.join(__dirname, '/src/server/public/js/init.js'),
   devtool: 'inline-source-map',
 
   output: {
-    path: __dirname + '/src/server/public/dist',
+    path: path.join(__dirname, '/src/server/public/dist'),
     publicPath: "/dist/",
     filename: 'bundle.js'
   },

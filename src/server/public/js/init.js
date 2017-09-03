@@ -108,9 +108,11 @@ $(document).ready(() => {
       console.log(res);
 
       if (res.data.success) {
-
+        let $toastContent = '注册成功！';
+        Materialize.toast($toastContent, 3000, 'toast-success');
       } else {
-
+        let $toastContent = '注册失败： ' + res.data.info;
+        Materialize.toast($toastContent, 3000, 'toast-fail');
       }
 
     })
