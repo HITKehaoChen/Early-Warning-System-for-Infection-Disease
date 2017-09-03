@@ -5,6 +5,11 @@ const data = require('../fake_data/data');
 
 const jwt = require('jsonwebtoken');
 
+function AuthwithJWT() {
+
+
+}
+
 let fn_warning = async (ctx, next) => {
   let token = ctx.request.query.token;
   console.log('token: ', token);
@@ -18,7 +23,7 @@ let fn_warning = async (ctx, next) => {
         "name": userInfo.name,
         "gender": "male",
         "age": 22,
-        "email": '12345@gmail.com'
+        "email": userInfo.email
       }
     });
   } else {

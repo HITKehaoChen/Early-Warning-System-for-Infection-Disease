@@ -102,6 +102,8 @@ $(document).ready(() => {
     const obj = _.object($("#form-signup").serializeArray().map(function (v) {
       return [v.name, v.value];
     }));
+    let formData = new FormData(document.getElementById('form-signup'));
+    console.log('formData: ', formData);
     console.log(obj);
 
     Axios.post('/userSignUp', obj).then((res) => {
@@ -119,7 +121,6 @@ $(document).ready(() => {
   });
 
   // for four systems redirect
-
 
 
   function getOnClick(id) {
@@ -163,12 +164,12 @@ $(document).ready(() => {
   }, 2000);
   $('.carousel.carousel-slider')
     .carousel({fullWidth: true});
-    // .on('click', (e) => {
-    //   clearInterval(timer);
-    //   // alert('clicked me!');
-    //   console.log('click cleared setInterval func...');
-    //   $(this).off(e);// unbind successfully!
-    // });
+  // .on('click', (e) => {
+  //   clearInterval(timer);
+  //   // alert('clicked me!');
+  //   console.log('click cleared setInterval func...');
+  //   $(this).off(e);// unbind successfully!
+  // });
 
 
   $("a[href='#top']").click(() => {
