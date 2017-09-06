@@ -73,12 +73,13 @@ $(document).ready(() => {
         setTimeout(() => {
           $('#modal1').modal('close');
         }, 200);
-        sessionStorage.setItem('alarm-token', res.data.token);
-
         let $toastContent = res.data.info;
         Materialize.toast($toastContent, 3000, 'toast-success');
+        sessionStorage.setItem('alarm-token', res.data.token);
 
-
+        setTimeout(() => {
+          window.location.href = '/?token=' + res.data.token;
+        }, 500);
       } else {
 
         let $toastContent = res.data.info || $('<h4>INVALID REQUEST !</h4>');
@@ -102,14 +103,17 @@ $(document).ready(() => {
     const obj = _.object($("#form-signup").serializeArray().map(function (v) {
       return [v.name, v.value];
     }));
-    let formData = new FormData(document.getElementById('form-signup'));
-    console.log('formData: ', formData);
+    // let formData = new FormData(document.getElementById('form-signup'));
+    // console.log('formData: ', formData);
     console.log(obj);
 
     Axios.post('/userSignUp', obj).then((res) => {
       console.log(res);
 
       if (res.data.success) {
+        setTimeout(() => {
+          $('#modal1').modal('close');
+        }, 200);
         let $toastContent = '注册成功！';
         Materialize.toast($toastContent, 3000, 'toast-success');
       } else {
@@ -119,6 +123,32 @@ $(document).ready(() => {
 
     })
   });
+
+  $('#training_train').submit((e) => {
+    e.preventDefault();
+    const obj = _.object($("#training_train").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+    const formData = new FormData();
+    window.myObj = obj;
+    console.log("form data: ", obj);
+    for (let val in obj) {
+      formData.append(val, obj[val]);
+      console.log(val + ", " + obj[val]);
+    }
+    //upload file
+    formData.append('train_file1', document.getElementById('train_file1'));
+    formData.append('train_file2', document.getElementById('train_file2'));
+    console.log(formData);
+    Axios.post('/forTest', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(res => {
+      console.log('res: ', res);
+    });
+  });
+
 
   // for four systems redirect
 
@@ -140,6 +170,15 @@ $(document).ready(() => {
   $('.training_auth').click(getOnClick('training'));
   $('.diagnosis_auth').click(getOnClick('diagnosis'));
   $('.health_auth').click(getOnClick('health'));
+  $('.index_auth').click(function () {
+    const token = sessionStorage.getItem('alarm-token');
+    if (token === null) {
+      window.location.href = '/';
+      console.log('token is null');
+    } else {
+      window.location.href = '/?token=' + token;
+    }
+  });
 
   // $('#id_warning').click(() => {
   //   const token = sessionStorage.getItem('alarm-token');

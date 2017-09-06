@@ -84,9 +84,16 @@ const postUserSignUpAuth = async ctx => {
 
 
 };
-
+const forTest = async ctx => {
+  const data = ctx.request.body;
+  console.log(ctx.request);
+  console.log('Test data: ', data);
+  ctx.status = 200;
+  ctx.body = data;
+};
 module.exports = {
   getUserInfo, //func to get userInfo
   postUserSignInAuth,
-  postUserSignUpAuth
+  postUserSignUpAuth,
+  forTest
 };

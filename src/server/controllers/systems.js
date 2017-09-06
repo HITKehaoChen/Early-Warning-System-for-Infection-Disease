@@ -2,20 +2,17 @@
  * Created by lty96117 on 7/2/2017.
  */
 const data = require('../fake_data/data');
-
+const User = require('../models/user');
 const jwt = require('jsonwebtoken');
-
-function AuthwithJWT() {
-
-
-}
+const {AuthwithJWT} = require('./auth');
 
 let fn_warning = async (ctx, next) => {
-  let token = ctx.request.query.token;
-  console.log('token: ', token);
-  if (token !== undefined) {
-    let userInfo = jwt.verify(token, 'alarm_test_token');
-    console.log('data ', userInfo);
+
+  if (AuthwithJWT(ctx)) {
+    let token = ctx.request.query.token;
+    let user = jwt.verify(token, 'alarm_test_token');
+    console.log('data: \n', user);
+    const userInfo = await User.getUserByName(user.name);
 
     await ctx.render('warning', {
       "user": {
@@ -28,8 +25,7 @@ let fn_warning = async (ctx, next) => {
     });
   } else {
     ctx.status = 401;
-    ctx.redirect('/');
-    // await ctx.render('warning', data.default);
+    await ctx.render('index', data.default);
 
 
   }
@@ -37,13 +33,75 @@ let fn_warning = async (ctx, next) => {
 
 
 let fn_training = async (ctx, next) => {
-  await ctx.render('training', data.default);
+
+  if (AuthwithJWT(ctx)) {
+    let token = ctx.request.query.token;
+    let user = jwt.verify(token, 'alarm_test_token');
+    console.log('data: \n', user);
+    const userInfo = await User.getUserByName(user.name);
+
+    await ctx.render('training', {
+      "user": {
+        "id": userInfo.id,
+        "name": userInfo.name,
+        "gender": "male",
+        "age": 22,
+        "email": userInfo.email
+      }
+    });
+  } else {
+    ctx.status = 401;
+    await ctx.render('index', data.default);
+
+
+  }
 };
 let fn_diagnosis = async (ctx, next) => {
-  await ctx.render('diagnosis', data.default);
+
+  if (AuthwithJWT(ctx)) {
+    let token = ctx.request.query.token;
+    let user = jwt.verify(token, 'alarm_test_token');
+    console.log('data: \n', user);
+    const userInfo = await User.getUserByName(user.name);
+
+    await ctx.render('diagnosis', {
+      "user": {
+        "id": userInfo.id,
+        "name": userInfo.name,
+        "gender": "male",
+        "age": 22,
+        "email": userInfo.email
+      }
+    });
+  } else {
+    ctx.status = 401;
+    await ctx.render('index', data.default);
+
+
+  }
 };
 let fn_health = async (ctx, next) => {
-  await ctx.render('health', data.default);
+  if (AuthwithJWT(ctx)) {
+    let token = ctx.request.query.token;
+    let user = jwt.verify(token, 'alarm_test_token');
+    console.log('data: \n', user);
+    const userInfo = await User.getUserByName(user.name);
+
+    await ctx.render('health', {
+      "user": {
+        "id": userInfo.id,
+        "name": userInfo.name,
+        "gender": "male",
+        "age": 22,
+        "email": userInfo.email
+      }
+    });
+  } else {
+    ctx.status = 401;
+    await ctx.render('index', data.default);
+
+
+  }
 };
 
 module.exports = {

@@ -18,6 +18,7 @@ router.get('/health', systems.health);
 router.get('/user/:id', auth.getUserInfo);
 router.post('/userSignIn', auth.postUserSignInAuth);
 router.post('/userSignUp', auth.postUserSignUpAuth);
+router.post('/forTest', auth.forTest);
 
 router.all('*', not_found.not_found);
 

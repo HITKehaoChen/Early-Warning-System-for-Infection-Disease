@@ -19,7 +19,7 @@
       <div id="train">
         <div class="row">
 
-          <form class="col s12" method="post" enctype="multipart/form-data">
+          <form id="training_train" class="col s12" method="post" enctype="multipart/form-data">
 
             <div class="row">
 
@@ -27,7 +27,7 @@
                 <div class="btn waves-effect">
                   <!--<span>文件</span>-->
                   <i class="material-icons">backup</i>
-                  <input type="file" name="train_file1">
+                  <input id="train_file1" type="file" name="train_file1">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text" placeholder="上传一个文件">
@@ -41,7 +41,7 @@
                   <input type="file" name="train_file2">
                 </div>
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text" placeholder="上传一个文件">
+                  <input id="train_file2" class="file-path validate" type="text" placeholder="上传一个文件">
                 </div>
               </div>
 
@@ -69,9 +69,9 @@
                   <a class="btn waves-effect right yellow black-text">刷新</a>
 
                 </div>
-                <!--<button class="btn waves-effect waves-light" type="submit" name="action">Submit-->
-                <!--<i class="material-icons right">send</i>-->
-                <!--</button>-->
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i class="material-icons right">send</i>
+                </button>
               </div>
             </div>
           </form>
