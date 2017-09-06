@@ -5,6 +5,7 @@
 
 import '../css/init.css';
 
+const utf = require('utf8');
 const Axios = require('axios');
 const _ = require('underscore');
 $(document).ready(() => {
@@ -146,8 +147,71 @@ $(document).ready(() => {
       }
     }).then(res => {
       console.log('res: ', res);
+
     });
   });
+  $('#diagnosis-form').submit(e => {
+    e.preventDefault();
+    const obj = _.object($("#diagnosis-form").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+
+    const formData = new FormData(document.getElementById('diagnosis-form'));
+    console.log("Form data:", obj);
+    // $.ajax({
+    //   type: "POST",
+    //   url: "http://localhost:8080/personalDiagnosis/diagnosis.do",
+    //   data: obj,
+    //   success: (res)=>{
+    //     console.log(res);
+    //
+    //   },
+    //   error: (err)=>{
+    //     console.log(err);
+    //   }
+    //
+    // });
+    let json_obj = JSON.stringify(obj);
+    Axios.post('http://localhost:8080/personalDiagnosis/diagnosis.do', formData, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+
+    }).then(res => {
+      console.log('res: ', res.data[0].name);
+      Materialize.toast(res.data[0].name, 4000);
+      // let div = document.getElementById('res_test');
+      // div.innerText = utf.decode(res.data[0].name);
+      let tmp = "";
+      let name = "";
+      let no = "";
+      let similarity = "";
+      console.log(res.data);
+      window.data = res.data;
+      for (let val in res.data) {
+        console.log(val);
+        name = res.data[val].name;
+        no = res.data[val].no;
+        similarity = res.data[val].similarity;
+        tmp += "<tr><td>" + name + "</td><td>" + no + "</td><td>" + similarity + "</td></tr>";
+      }
+
+      document.getElementById('diagnosis-body').innerHTML = tmp;
+    }).catch(err => {
+      console.log("Error: ", err);
+    });
+  });
+  $('#mental-test').submit(e => {
+    e.preventDefault();
+    const obj = _.object($("#mental-test").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+    console.log("FormInfo: ", obj);
+    Axios.post('/mentalTest', obj).then(res => {
+      console.log('res: ', res.data);
+      document.getElementById('mental_test_data').innerHTML = res.data;
+    });
+  })
 
 
   // for four systems redirect

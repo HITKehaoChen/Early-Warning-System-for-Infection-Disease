@@ -1,6 +1,6 @@
 const config = {
   database: 'koa_demo',
-  usename: 'lty96117',
+  username: 'lty96117',
   password: 'password',
   host: 'localhost',
   port: 3306

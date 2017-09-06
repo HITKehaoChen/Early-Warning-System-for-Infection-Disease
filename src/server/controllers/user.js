@@ -59,7 +59,7 @@ const postUserSignInAuth = async ctx => {
 const postUserSignUpAuth = async ctx => {
 
   const data = ctx.request.body;
-  console.log('sign up data: ',data);
+  console.log('sign up data: ', data);
   let user_data = await User.getUserByName(data.name);
   if (user_data !== null) {
     ctx.body = {
@@ -86,14 +86,35 @@ const postUserSignUpAuth = async ctx => {
 };
 const forTest = async ctx => {
   const data = ctx.request.body;
-  console.log(ctx.request);
-  console.log('Test data: ', data);
+  console.log('Received data: ', data);
   ctx.status = 200;
   ctx.body = data;
 };
+
+const mentalTest = async (ctx) => {
+  const data = ctx.request.body;
+  console.log('Received data: ', data);
+  let sum = 0;
+  for (let val in data) {
+    sum += parseInt(data[val]);
+  }
+  console.log(sum);
+  let res = "没有抑郁";
+  if (sum >= 31) {
+    res = "有严重抑郁症并需要立即治疗!";
+  } else if (sum >= 21) {
+    res = "有中度抑郁症";
+  } else if (sum >= 11) {
+    res = "有轻度抑郁症";
+  } else if (sum >= 5) res = "偶尔有";
+  ctx.body = res;
+};
+
 module.exports = {
   getUserInfo, //func to get userInfo
   postUserSignInAuth,
   postUserSignUpAuth,
-  forTest
+  forTest,
+  mentalTest
+
 };

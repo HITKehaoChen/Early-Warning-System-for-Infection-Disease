@@ -14,11 +14,14 @@ router.get('/warning',systems.warning);
 router.get('/training', systems.training);
 router.get('/diagnosis', systems.diagnosis);
 router.get('/health', systems.health);
+
 //auth
 router.get('/user/:id', auth.getUserInfo);
 router.post('/userSignIn', auth.postUserSignInAuth);
 router.post('/userSignUp', auth.postUserSignUpAuth);
 router.post('/forTest', auth.forTest);
+
+router.post('/mentalTest',auth.mentalTest)
 
 router.all('*', not_found.not_found);
 
