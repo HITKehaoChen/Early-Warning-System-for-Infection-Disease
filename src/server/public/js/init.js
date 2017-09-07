@@ -158,48 +158,87 @@ $(document).ready(() => {
 
     const formData = new FormData(document.getElementById('diagnosis-form'));
     console.log("Form data:", obj);
+
+
+    $.ajax({
+      url: "http://45.55.148.21:8080/BigDataHealth/personalDiagnosis/diagnosis.do",
+      type: "POST",
+      data: obj,
+      success: function (datas) {
+        datas = eval(datas);
+        console.log(datas);
+
+        let tmp = "";
+        let name = "";
+        let no = "";
+        let similarity = "";
+        window.data = datas;
+        for (let val in datas) {
+          console.log(val);
+          name = datas[val].name;
+          no = datas[val].no;
+          similarity = datas[val].similarity;
+          tmp += "<tr><td>" + name + "</td><td>" + no + "</td><td>" + similarity + "</td></tr>";
+        }
+
+        document.getElementById('diagnosis-body').innerHTML = tmp;
+      },
+      error: function () {
+
+      }
+    });
+
+
     // $.ajax({
     //   type: "POST",
-    //   url: "http://localhost:8080/personalDiagnosis/diagnosis.do",
-    //   data: obj,
-    //   success: (res)=>{
-    //     console.log(res);
+    //   url: "http://45.55.148.21:8080/BigDataHealth/personalDiagnosis/diagnosis.do",
+    //   data: formData,
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   },
+    //   scriptCharset: 'utf-8',
+    //   success: (res) => {
+    //     console.log(res.data[0].name);
     //
     //   },
-    //   error: (err)=>{
+    //   error: (err) => {
     //     console.log(err);
     //   }
     //
     // });
     let json_obj = JSON.stringify(obj);
-    Axios.post('http://localhost:8080/personalDiagnosis/diagnosis.do', formData, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-
-    }).then(res => {
-      console.log('res: ', res.data[0].name);
-      Materialize.toast(res.data[0].name, 4000);
-      // let div = document.getElementById('res_test');
-      // div.innerText = utf.decode(res.data[0].name);
-      let tmp = "";
-      let name = "";
-      let no = "";
-      let similarity = "";
-      console.log(res.data);
-      window.data = res.data;
-      for (let val in res.data) {
-        console.log(val);
-        name = res.data[val].name;
-        no = res.data[val].no;
-        similarity = res.data[val].similarity;
-        tmp += "<tr><td>" + name + "</td><td>" + no + "</td><td>" + similarity + "</td></tr>";
-      }
-
-      document.getElementById('diagnosis-body').innerHTML = tmp;
-    }).catch(err => {
-      console.log("Error: ", err);
-    });
+    // Axios.post('http://localhost:8080/personalDiagnosis/diagnosis.do', formData, {
+    //   Axios.post('http://45.55.148.21:8080/BigDataHealth/personalDiagnosis/diagnosis.do', {
+    //     "symptom": "皮肤干燥，皲裂"
+    //   }, {
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+    //     },
+    //     // scriptCharset: 'utf-8'
+    //
+    //   }).then(res => {
+    //     console.log('res: ', res.data[0].name);
+    //     // Materialize.toast(res.data[0].name, 4000);
+    //     // let div = document.getElementById('res_test');
+    //     // div.innerText = utf.decode(res.data[0].name);
+    //     let tmp = "";
+    //     let name = "";
+    //     let no = "";
+    //     let similarity = "";
+    //     console.log(res.data);
+    //     window.data = res.data;
+    //     for (let val in res.data) {
+    //       console.log(val);
+    //       name = res.data[val].name;
+    //       no = res.data[val].no;
+    //       similarity = res.data[val].similarity;
+    //       tmp += "<tr><td>" + name + "</td><td>" + no + "</td><td>" + similarity + "</td></tr>";
+    //     }
+    //
+    //     document.getElementById('diagnosis-body').innerHTML = tmp;
+    //   }).catch(err => {
+    //     console.log("Error: ", err);
+    //   });
   });
   $('#mental-test').submit(e => {
     e.preventDefault();
