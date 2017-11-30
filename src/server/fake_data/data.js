@@ -4,7 +4,8 @@ const default_data = {
     "name": "未登录",
     "gender": "n/a",
     "age": 'n/a',
-    "email": 'n/a'
+    "email": 'n/a',
+    "default": true,
   }
 };
 

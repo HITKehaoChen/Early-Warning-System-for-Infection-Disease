@@ -4,7 +4,7 @@
 const data = require('../fake_data/data');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
-const {AuthwithJWT} = require('./auth');
+const { AuthwithJWT } = require('./auth');
 
 let fn_warning = async (ctx, next) => {
 
@@ -52,8 +52,6 @@ let fn_training = async (ctx, next) => {
   } else {
     ctx.status = 401;
     await ctx.render('index', data.default);
-
-
   }
 };
 let fn_diagnosis = async (ctx, next) => {

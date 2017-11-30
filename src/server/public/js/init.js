@@ -36,27 +36,28 @@ $(document).ready(() => {
     // } // Callback for Modal close
   });
   //
-  $('#form-train').submit((e) => {
-    e.preventDefault();
-
-    $.ajax({
-      url: '/test',
-      data: new FormData($('#form-train')[0]),
-      // data: $('#form-train').serialize(),
-
-      type: 'POST',
-      contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-      processData: false, // NEEDED, DON'T OMIT THIS
-      success: function (data, textStatus) {
-        console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
-
-      },
-      error: function (data, textStatus) {
-        console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
-
-      },
-    });
-  });//prevents the submit});
+  //
+  // $('#form-train').submit((e) => {
+  //   e.preventDefault();
+  //
+  //   $.ajax({
+  //     url: '/test',
+  //     data: new FormData($('#form-train')[0]),
+  //     // data: $('#form-train').serialize(),
+  //
+  //     type: 'POST',
+  //     contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+  //     processData: false, // NEEDED, DON'T OMIT THIS
+  //     success: function (data, textStatus) {
+  //       console.log('succeeded with data: ' + this.data + "," + this.url + "," + textStatus);
+  //
+  //     },
+  //     error: function (data, textStatus) {
+  //       console.log('failed with data' + this.data + "," + this.url + "," + textStatus);
+  //
+  //     },
+  //   });
+  // });//prevents the submit});
   //get the signin form
   $('#form-signin').submit((e) => {
     e.preventDefault();//prevents the submit
@@ -66,36 +67,37 @@ $(document).ready(() => {
       password: $('#signin-pwd').val()
     };
     console.log('post obj: ', obj);
-    Axios.post('/userSignIn', obj).then((res) => {
-      console.log('res: ', res);
-      console.log('res.data: ', res.data);
+    Axios.post('/userSignIn', obj)
+      .then((res) => {
+        console.log('res: ', res);
+        console.log('res.data: ', res.data);
 
-      if (res.data.success) {
-        setTimeout(() => {
-          $('#modal1').modal('close');
-        }, 200);
-        let $toastContent = res.data.info;
-        Materialize.toast($toastContent, 3000, 'toast-success');
-        sessionStorage.setItem('alarm-token', res.data.token);
+        if (res.data.success) {
+          setTimeout(() => {
+            $('#modal1').modal('close');
+          }, 200);
+          let $toastContent = res.data.info;
+          Materialize.toast($toastContent, 3000, 'toast-success');
+          sessionStorage.setItem('alarm-token', res.data.token);
 
-        setTimeout(() => {
-          window.location.href = '/?token=' + res.data.token;
-        }, 500);
-      } else {
+          setTimeout(() => {
+            window.location.href = '/?token=' + res.data.token;
+          }, 500);
+        } else {
 
-        let $toastContent = res.data.info || $('<h4>INVALID REQUEST !</h4>');
+          let $toastContent = res.data.info || $('<h4>INVALID REQUEST !</h4>');
+          Materialize.toast($toastContent, 3000, 'toast-fail');
+          sessionStorage.setItem('alarm-token', null);
+
+        }
+      }, (err) => {
+
+        console.log('err: ', err);
+        // let $toastContent = $('<h4>INVALID REQUEST !</h4>');
+        let $toastContent = $('<h4>INVALID REQUEST !</h4>');
         Materialize.toast($toastContent, 3000, 'toast-fail');
         sessionStorage.setItem('alarm-token', null);
-
-      }
-    }, (err) => {
-
-      console.log('err: ', err);
-      // let $toastContent = $('<h4>INVALID REQUEST !</h4>');
-      let $toastContent = $('<h4>INVALID REQUEST !</h4>');
-      Materialize.toast($toastContent, 3000, 'toast-fail');
-      sessionStorage.setItem('alarm-token', null);
-    });
+      });
 
   });
 
@@ -108,22 +110,39 @@ $(document).ready(() => {
     // console.log('formData: ', formData);
     console.log(obj);
 
-    Axios.post('/userSignUp', obj).then((res) => {
-      console.log(res);
+    Axios.post('/userSignUp', obj)
+      .then((res) => {
+        console.log('res: ', res);
 
-      if (res.data.success) {
-        setTimeout(() => {
-          $('#modal1').modal('close');
-        }, 200);
-        let $toastContent = '注册成功！';
-        Materialize.toast($toastContent, 3000, 'toast-success');
-      } else {
-        let $toastContent = '注册失败： ' + res.data.info;
-        Materialize.toast($toastContent, 3000, 'toast-fail');
-      }
+        if (res.data.success) {
+          setTimeout(() => {
+            $('#modal1').modal('close');
+          }, 200);
+          let $toastContent = '注册成功！';
+          Materialize.toast($toastContent, 3000, 'toast-success');
+        } else {
+          let $toastContent = '注册失败： ' + res.data.info;
+          Materialize.toast($toastContent, 3000, 'toast-fail');
+        }
 
-    })
+      })
   });
+
+
+  $('#checkFile').click(() => {
+    const checkData = new FormData();
+    // checkData.append('train_file1', document.getElementById('train_file1'));
+    checkData.append('file2', $('#train_file2')[0].files[0]);
+
+    console.log('file2:', $('#train_file2')[0].files[0]);
+    Axios.post('http://localhost:8080/untitled3/check.do', checkData)
+      .then(res => {
+        console.log('res: ', res);
+      }).catch(err => {
+      console.log("ERROR: ", err);
+    });
+  });
+
 
   $('#training_train').submit((e) => {
     e.preventDefault();
@@ -138,18 +157,54 @@ $(document).ready(() => {
       console.log(val + ", " + obj[val]);
     }
     //upload file
-    formData.append('train_file1', document.getElementById('train_file1'));
-    formData.append('train_file2', document.getElementById('train_file2'));
-    console.log(formData);
-    Axios.post('/forTest', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(res => {
+    formData.append('file1', $('#train_file1')[0].files[0]);
+    formData.append('file2', $('#train_file2')[0].files[0]);
+    console.log('file2', $('#train_file2')[0].files[0]);
+    console.log('file1', $('#train_file1')[0].files[0]);
+    Axios.post('http://localhost:8080/untitled3/helloworld.do', formData, {}).then(res => {
       console.log('res: ', res);
 
-    });
+      (() => {
+        $('#refresh').click(() => {
+
+          let circle = 1;
+          let circleEl = document.getElementById('lastCircles');
+          let globalError = document.getElementById('globalError');
+          let input = document.getElementById('sr');
+          let end = setInterval(() => {
+            if (circle == 0) {
+              clearInterval(end);
+              console.log('done');
+            } else {
+              Axios.get('http://localhost:8080/untitled3/dong.do', {
+                params: {
+                  sr: input.value
+                }
+              }, {
+                headers: {
+                  'Content-Type': "application/x-www-form-urlencoded;charset=utf-8"
+                }
+              })
+                .then(res => {
+                  let { data } = res;
+                  circleEl.innerHTML = "<h5>剩余轮数：" + data.circle + "</h5>";
+                  globalError.innerHTML = "<h5>全局错误率：" + (+data.error).toFixed(2) + "%</h5>";
+                  circle = data.circle;
+                }).catch(err => {
+                console.log("ERROR: ", err);
+              });
+            }
+          }, 500);
+
+
+        });
+
+      })();
+
+
+    }).catch(console.log);
   });
+
   $('#diagnosis-form').submit(e => {
     e.preventDefault();
     const obj = _.object($("#diagnosis-form").serializeArray().map(function (v) {
@@ -161,7 +216,8 @@ $(document).ready(() => {
 
 
     $.ajax({
-      url: "http://45.55.148.21:8080/BigDataHealth/personalDiagnosis/diagnosis.do",
+      // url: "http://45.55.148.21:8080/BigDataHealth/personalDiagnosis/diagnosis.do",
+      url: "http://localhost:8080/personalDiagnosis/diagnosis.do",
       type: "POST",
       data: obj,
       success: function (datas) {
@@ -253,7 +309,7 @@ $(document).ready(() => {
   })
 
 
-  // for four systems redirect
+// for four systems redirect
 
 
   function getOnClick(id) {
@@ -283,18 +339,18 @@ $(document).ready(() => {
     }
   });
 
-  // $('#id_warning').click(() => {
-  //   const token = sessionStorage.getItem('alarm-token');
-  //   if (token === null) {
-  //     // window.location.href = '/';
-  //     Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
-  //     console.log('Unauthorized!!');
-  //   }
-  //   console.log(token);
-  //   if (token !== null) {
-  //     window.location.href = '/' + '#id_warning'.substring(4) + '?token=' + token;
-  //   }
-  // });
+// $('#id_warning').click(() => {
+//   const token = sessionStorage.getItem('alarm-token');
+//   if (token === null) {
+//     // window.location.href = '/';
+//     Materialize.toast('Unauthorized, need to login in first!', 3000, 'toast-fail');
+//     console.log('Unauthorized!!');
+//   }
+//   console.log(token);
+//   if (token !== null) {
+//     window.location.href = '/' + '#id_warning'.substring(4) + '?token=' + token;
+//   }
+// });
 
   $(function () {
     $('#mobile-nav').perfectScrollbar();
@@ -305,22 +361,23 @@ $(document).ready(() => {
     $('.carousel').carousel('next');
   }, 2000);
   $('.carousel.carousel-slider')
-    .carousel({fullWidth: true});
-  // .on('click', (e) => {
-  //   clearInterval(timer);
-  //   // alert('clicked me!');
-  //   console.log('click cleared setInterval func...');
-  //   $(this).off(e);// unbind successfully!
-  // });
+    .carousel({ fullWidth: true });
+// .on('click', (e) => {
+//   clearInterval(timer);
+//   // alert('clicked me!');
+//   console.log('click cleared setInterval func...');
+//   $(this).off(e);// unbind successfully!
+// });
 
 
   $("a[href='#top']").click(() => {
-    $('html, body').animate({scrollTop: 0}, 400);
+    $('html, body').animate({ scrollTop: 0 }, 400);
     return false;
   });
   $('select').material_select();
   $('textarea#textarea1').characterCounter();
 
   $('.demo_link').attr('href', 'javascript:;');
-});
+})
+;
 console.log('initialization completed');

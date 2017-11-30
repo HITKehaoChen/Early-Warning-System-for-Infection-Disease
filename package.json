@@ -7,7 +7,7 @@
     "start": "webpack && node app.js",
     "server": "node app.js",
     "build": "webpack",
-    "lint": "eslint app.js"
+    "lint": "eslint src"
   },
   "author": "lty96117 <sense.96117@gmail.com>",
   "license": "GPL-3.0",

@@ -11,12 +11,17 @@
     </div>
   </li>
   <!--login begin-->
+  <li>
+    <% if (user.default === true) {
+      console.log('default user!');
+    } %>
+  </li>
   <li><a class="waves-effect" href="#modal1"><i class="material-icons">add</i>注册 / 登录</a></li>
   <li>
     <div class="divider"></div>
   </li>
   <!--login end-->
-  <li><a class="waves-effect index_auth" ><i class="material-icons">home</i>首页</a></li>
+  <li><a class="waves-effect index_auth"><i class="material-icons">home</i>首页</a></li>
   <li><a class="waves-effect warning_auth"><i class="material-icons md-dark">domain</i>疫情预警</a></li>
   <li><a class="waves-effect training_auth"><i class="material-icons md-dark">attachment</i>训练管理</a></li>
   <li><a class="waves-effect diagnosis_auth"><i class="material-icons md-dark">add_alert</i>智能导诊</a></li>

@@ -38,7 +38,7 @@
                 <div class="btn waves-effect">
                   <!--<span>文件</span>-->
                   <i class="material-icons">backup</i>
-                  <input type="file" name="train_file2">
+                  <input id="train_file2" type="file" name="train_file2">
                 </div>
                 <div class="file-path-wrapper">
                   <input id="train_file2" class="file-path validate" type="text" placeholder="上传一个文件">
@@ -46,32 +46,42 @@
               </div>
 
               <div class="col s12 right">
-                <a class="btn waves-effect right yellow black-text">检查</a>
+                <a id="checkFile" class="btn waves-effect right yellow black-text">检查</a>
               </div>
               <% const list = [
-                ["amounts-input", "输入层神经元个数"],
-                ["amounts-hidden", "输出层神经元个数"],
-                ["amounts-output", "隐藏层神经元个数"],
-                ["speed", "速度"], ["momentum", "动量"], ["round", "训练轮数"],
-                ["remaining", "剩余时间/轮"]
+                ["sr", "输入层神经元个数"],
+                ["yc", "隐藏层神经元个数"],
+                ["sc", "输出层神经元个数"],
+                ["xlsl", "速度"],
+                ["xldl", "动量"],
+                ["xlcs", "训练轮数"]
+                // ["remaining", "剩余时间/轮"]
               ] %>
               <% for (let i = 0; i < list.length;i++) { %>
               <div class="input-field col s12 m6">
-                <input type="number" id=<%= list[i][0] %> name=<%= list[i][0] %> class="validate">
+                <input type="number" step="any" id=<%= list[i][0] %> name=<%= list[i][0] %> class="validate">
                 <label for="<%= list[i][0] %>"><%= list[i][1] %></label>
               </div>
               <% } %>
               <div class="col s12">
+
                 <div class="right">
-                  <a class="btn waves-effect right yellow black-text">训练</a>
+                  <!--<a class="btn waves-effect right yellow black-text">训练</a>-->
+                  <button class="btn waves-effect yellow black-text" type="submit" name="action">训练
+                    <!--<i class="material-icons right">send</i>-->
+                  </button>
                 </div>
                 <div class="right col">
-                  <a class="btn waves-effect right yellow black-text">刷新</a>
-
+                  <a id="refresh" class="btn waves-effect yellow black-text">刷新</a>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                  <i class="material-icons right">send</i>
-                </button>
+                <!--<button class="btn waves-effect waves-light" type="submit" name="action">Submit-->
+                  <!--&lt;!&ndash;<i class="material-icons right">send</i>&ndash;&gt;-->
+                <!--</button>-->
+
+              </div>
+              <div class="col s12">
+                <h5 id="lastCircles"></h5>
+                <h5 id="globalError"></h5>
               </div>
             </div>
           </form>
