@@ -221,7 +221,66 @@ $(document).ready(() => {
     }
   );
 
+  $('#training_apply').submit((e) => {
+    e.preventDefault();
 
+    const obj = _.object($("#training_apply").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+    const formData = new FormData();
+    console.log("apply form data: ", obj);
+    window.obj = obj;
+    // for (let val in obj) {
+    //   formData.append(val, obj[val]);
+    //   console.log(val + ", " + obj[val]);
+    // }
+
+
+    let testObj = {
+      sex: 1,
+      age: 67,
+      hurttype: 3,
+      trestbps: 160,
+      chol: 286,
+      fbs: 1,
+      restecg: 2,
+      thalach: 108,
+      exang: 1,
+      oldpeak: 0.15,
+      slope: 1,
+      ca: 3,
+      thal: 0,
+      hxb: 1,
+      nb: 0,
+      nbtk: 1,
+      xj: 1,
+      xt: 140,
+      xns: 10,
+      xjg: 1.2,
+      hxbjs: 4.5,
+      gxy: 0,
+      tnb: 0,
+      sy: 1,
+      zsz: 0,
+      px: 0,
+    };
+    for (let val in testObj) {
+      formData.append(val, testObj[val]);
+      console.log(val + ", " + testObj[val]);
+    }
+
+
+    formData.append('file1', $('#apply_file1')[0].files[0]);
+    formData.append('file2', $('#apply_file2')[0].files[0]);
+    window.test = formData;
+    window.testObj = testObj;
+
+    Axios.post('http://localhost:8080/untitled3/page.do', formData)
+      .then(console.log)
+      .catch(console.log);
+
+
+  });
   $('#diagnosis-form').submit(e => {
     e.preventDefault();
     const obj = _.object($("#diagnosis-form").serializeArray().map(function (v) {

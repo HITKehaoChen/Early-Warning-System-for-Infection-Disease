@@ -136,13 +136,13 @@
 
       <div id="apply">
         <div class="row">
-          <form class="col s12" method="post" enctype="multipart/form-data">
+          <form id="training_apply" class="col s12" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="file-field input-field col s12 m6">
                 <div class="btn waves-effect">
                   <!--<span>File</span>-->
                   <i class="material-icons">backup</i>
-                  <input type="file" name="train_file1">
+                  <input id="apply_file1" type="file" name="apply_file1">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text" placeholder="上传一个文件">
@@ -153,7 +153,7 @@
                 <div class="btn waves-effect">
                   <!--<span>File</span>-->
                   <i class="material-icons">backup</i>
-                  <input type="file" name="train_file2">
+                  <input id="apply_file2" type="file" name="apply_file2">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text" placeholder="上传一个文件">
@@ -163,8 +163,8 @@
 
               <div class="input-field col s12 m6">
                 <select name="sex">
-                  <option value="male">男</option>
-                  <option value="Female">女</option>
+                  <option value="1">男</option>
+                  <option value="0">女</option>
                 </select>
                 <label>性别</label>
               </div>
@@ -192,14 +192,14 @@
 
               <div class="input-field col s12 m6">
                 <select name="fbs">
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
+                  <option value="1">是</option>
+                  <option value="0">否</option>
                 </select>
                 <label>空腹血糖 > 120mg/dl？</label>
               </div>
 
               <div class="input-field col s12">
-                <select name="">
+                <select name="restecg">
                   <option value="0">正常</option>
                   <option value="1">具有ST-T波异常(T波反转和/或ST升高或抑制>0.05mV)</option>
                   <option value="2">根据Estes标准显示可能左心室肥大</option>
@@ -214,8 +214,8 @@
 
               <div class="input-field col s12 m6">
                 <select name="exang">
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
+                  <option value="1">是</option>
+                  <option value="0">否</option>
                 </select>
                 <label>运动引起心绞痛？</label>
               </div>
@@ -302,16 +302,16 @@
 
               <div class="input-field col s12 m6">
                 <select name="gxy">
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
+                  <option value="1">是</option>
+                  <option value="0">否</option>
                 </select>
                 <label>高血压</label>
               </div>
 
               <div class="input-field col s12 m6">
                 <select name="tnb">
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
+                  <option value="1">是</option>
+                  <option value="0">否</option>
                 </select>
                 <label>糖尿病</label>
               </div>
@@ -326,247 +326,246 @@
 
               <div class="input-field col s12 m6">
                 <select name="zsz">
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
+                  <option value="1">是</option>
+                  <option value="0">否</option>
                 </select>
                 <label>足水肿</label>
               </div>
 
               <div class="input-field col s12 m6">
                 <select name="px">
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
+                  <option value="1">是</option>
+                  <option value="0">否</option>
                 </select>
                 <label>贫血</label>
               </div>
-
 
 
               <div class="col s12">
                 <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">分析
                 </button>
               </div>
-              <div class="input-field col s12">
-                <input type="number" id="analysis_res" name="analysis_res" formnovalidate>
-                <label for="analysis_res">分析结果</label>
-              </div>
 
             </div>
           </form>
+              <!--<div class="input-field col s12">-->
+                <!--<input type="number" id="analysis_res" name="analysis_res" formnovalidate>-->
+                <!--<label for="analysis_res">分析结果</label>-->
+              <!--</div>-->
         </div>
 
       </div>
 
-      <div id="fault_tolerant">
-        <div class="row">
-          <form class="col s12" method="post" enctype="multipart/form-data">
-            <div class="row">
-              <div class="file-field input-field col s12">
-                <div class="btn waves-effect">
-                  <!--<span>File</span>-->
-                  <i class="material-icons">backup</i>
-                  <input type="file" name="train_file1">
-                </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text" placeholder="上传一个文件">
-                </div>
-              </div>
+      <!--<div id="fault_tolerant">-->
+        <!--<div class="row">-->
+          <!--<form class="col s12" method="post" enctype="multipart/form-data">-->
+            <!--<div class="row">-->
+              <!--<div class="file-field input-field col s12">-->
+                <!--<div class="btn waves-effect">-->
+                  <!--&lt;!&ndash;<span>File</span>&ndash;&gt;-->
+                  <!--<i class="material-icons">backup</i>-->
+                  <!--<input type="file" name="train_file1">-->
+                <!--</div>-->
+                <!--<div class="file-path-wrapper">-->
+                  <!--<input class="file-path validate" type="text" placeholder="上传一个文件">-->
+                <!--</div>-->
+              <!--</div>-->
 
 
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="male">男</option>
-                  <option value="Female">女</option>
-                </select>
-                <label>性别</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="male">男</option>-->
+                  <!--<option value="Female">女</option>-->
+                <!--</select>-->
+                <!--<label>性别</label>-->
+              <!--</div>-->
 
-              <div class="input-field col s12 m6">
-                <input type="number" id="age" name="age" class="validate">
-                <label for="age">年龄</label>
-              </div>
-              <div class="input-field col s12">
-                <select>
-                  <option value="0">典型心绞痛</option>
-                  <option value="1">非典型心绞痛</option>
-                  <option value="2">非心绞痛</option>
-                  <option value="3">无症状</option>
-                </select>
-                <label>胸痛类型</label>
-              </div>
-              <div class="input-field col s12">
-                <input type="number" id="blood_pressure" name="blood_pressure" class="validate">
-                <label for="blood_pressure">静息血压(入院时为毫米汞柱)</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" id="serum_cholesterol" name="serum_cholesterol" class="validate">
-                <label for="serum_cholesterol">血清胆固醇(mg/dl)</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="age" name="age" class="validate">-->
+                <!--<label for="age">年龄</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12">-->
+                <!--<select>-->
+                  <!--<option value="0">典型心绞痛</option>-->
+                  <!--<option value="1">非典型心绞痛</option>-->
+                  <!--<option value="2">非心绞痛</option>-->
+                  <!--<option value="3">无症状</option>-->
+                <!--</select>-->
+                <!--<label>胸痛类型</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12">-->
+                <!--<input type="number" id="blood_pressure" name="blood_pressure" class="validate">-->
+                <!--<label for="blood_pressure">静息血压(入院时为毫米汞柱)</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="serum_cholesterol" name="serum_cholesterol" class="validate">-->
+                <!--<label for="serum_cholesterol">血清胆固醇(mg/dl)</label>-->
+              <!--</div>-->
 
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
-                </select>
-                <label>空腹血糖 > 120mg/dl？</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="yes">是</option>-->
+                  <!--<option value="no">否</option>-->
+                <!--</select>-->
+                <!--<label>空腹血糖 > 120mg/dl？</label>-->
+              <!--</div>-->
 
-              <div class="input-field col s12">
-                <select>
-                  <option value="0">正常</option>
-                  <option value="1">具有ST-T波异常(T波反转和/或ST升高或抑制>0.05mV)</option>
-                  <option value="2">根据Estes标准显示可能左心室肥大</option>
-                </select>
-                <label>静息心电图结果</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" id="max_heart_rate" name="max_heart_rate" class="validate">
-                <label for="max_heart_rate">达到的最大心率</label>
-              </div>
-
-
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
-                </select>
-                <label>运动引起心绞痛？</label>
-              </div>
-              <div class="input-field col s12">
-                <input type="number" id="depression" name="depression" class="validate">
-                <label for="depression">运动相对于休息引起的ST下降</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="0">上升</option>
-                  <option value="1">平滑</option>
-                  <option value="2">下降</option>
-                </select>
-                <label>峰值运动ST段的坡度</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <input type="number" id="vessels_number" name="vessels_number" class="validate">
-                <label for="vessels_number">荧光镜检查的主要血管数量(0-3)</label>
-              </div>
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="0">正常</option>
-                  <option value="1">固定缺陷</option>
-                  <option value="2">可逆缺陷</option>
-                </select>
-                <label>缺陷类型</label>
-              </div>
+              <!--<div class="input-field col s12">-->
+                <!--<select>-->
+                  <!--<option value="0">正常</option>-->
+                  <!--<option value="1">具有ST-T波异常(T波反转和/或ST升高或抑制>0.05mV)</option>-->
+                  <!--<option value="2">根据Estes标准显示可能左心室肥大</option>-->
+                <!--</select>-->
+                <!--<label>静息心电图结果</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="max_heart_rate" name="max_heart_rate" class="validate">-->
+                <!--<label for="max_heart_rate">达到的最大心率</label>-->
+              <!--</div>-->
 
 
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="0">正常</option>
-                  <option value="1">不正常</option>
-                </select>
-                <label>红细胞</label>
-              </div>
-
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="0">正常</option>
-                  <option value="1">不正常</option>
-                </select>
-                <label>脓细胞</label>
-              </div>
-
-
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="0">存在</option>
-                  <option value="1">不存在</option>
-                </select>
-                <label>脓细胞团块</label>
-              </div>
-
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="0">存在</option>
-                  <option value="1">不存在</option>
-                </select>
-                <label>细菌</label>
-              </div>
-
-              <div class="input-field col s12 m6">
-                <input type="number" id="blood_glucose" name="blood_glucose" class="validate">
-                <label for="blood_glucose">随机的血糖(mgs/dl)</label>
-              </div>
-
-              <div class="input-field col s12 m6">
-                <input type="number" id="blood_urea" name="blood_urea" class="validate">
-                <label for="blood_urea">血尿素(mgs/dl)</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="yes">是</option>-->
+                  <!--<option value="no">否</option>-->
+                <!--</select>-->
+                <!--<label>运动引起心绞痛？</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12">-->
+                <!--<input type="number" id="depression" name="depression" class="validate">-->
+                <!--<label for="depression">运动相对于休息引起的ST下降</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="0">上升</option>-->
+                  <!--<option value="1">平滑</option>-->
+                  <!--<option value="2">下降</option>-->
+                <!--</select>-->
+                <!--<label>峰值运动ST段的坡度</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="vessels_number" name="vessels_number" class="validate">-->
+                <!--<label for="vessels_number">荧光镜检查的主要血管数量(0-3)</label>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="0">正常</option>-->
+                  <!--<option value="1">固定缺陷</option>-->
+                  <!--<option value="2">可逆缺陷</option>-->
+                <!--</select>-->
+                <!--<label>缺陷类型</label>-->
+              <!--</div>-->
 
 
-              <div class="input-field col s12 m6">
-                <input type="number" id="serum_creatinine" name="serum_creatinine" class="validate">
-                <label for="serum_creatinine">血清肌酐(mgs/dl)</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="0">正常</option>-->
+                  <!--<option value="1">不正常</option>-->
+                <!--</select>-->
+                <!--<label>红细胞</label>-->
+              <!--</div>-->
+
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="0">正常</option>-->
+                  <!--<option value="1">不正常</option>-->
+                <!--</select>-->
+                <!--<label>脓细胞</label>-->
+              <!--</div>-->
 
 
-              <div class="input-field col s12">
-                <input type="number" id="red_blood_cell_cnt" name="red_blood_cell_cnt" class="validate">
-                <label for="red_blood_cell_cnt">红细胞计数(millions/cmm)</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="0">存在</option>-->
+                  <!--<option value="1">不存在</option>-->
+                <!--</select>-->
+                <!--<label>脓细胞团块</label>-->
+              <!--</div>-->
 
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
-                </select>
-                <label>高血压</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="0">存在</option>-->
+                  <!--<option value="1">不存在</option>-->
+                <!--</select>-->
+                <!--<label>细菌</label>-->
+              <!--</div>-->
 
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
-                </select>
-                <label>糖尿病</label>
-              </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="blood_glucose" name="blood_glucose" class="validate">-->
+                <!--<label for="blood_glucose">随机的血糖(mgs/dl)</label>-->
+              <!--</div>-->
 
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="good">好</option>
-                  <option value="bad">差</option>
-                </select>
-                <label>食欲</label>
-              </div>
-
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
-                </select>
-                <label>足水肿</label>
-              </div>
-
-              <div class="input-field col s12 m6">
-                <select>
-                  <option value="yes">是</option>
-                  <option value="no">否</option>
-                </select>
-                <label>贫血</label>
-              </div>
-
-              <div class="col s12">
-                <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">分析
-                </button>
-              </div>
-              <div class="input-field col s12">
-                <input type="number" id="analysis_res" name="analysis_res" formnovalidate>
-                <label for="analysis_res">分析结果</label>
-              </div>
-            </div>
-          </form>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="blood_urea" name="blood_urea" class="validate">-->
+                <!--<label for="blood_urea">血尿素(mgs/dl)</label>-->
+              <!--</div>-->
 
 
-        </div>
-      </div>
+              <!--<div class="input-field col s12 m6">-->
+                <!--<input type="number" id="serum_creatinine" name="serum_creatinine" class="validate">-->
+                <!--<label for="serum_creatinine">血清肌酐(mgs/dl)</label>-->
+              <!--</div>-->
+
+
+              <!--<div class="input-field col s12">-->
+                <!--<input type="number" id="red_blood_cell_cnt" name="red_blood_cell_cnt" class="validate">-->
+                <!--<label for="red_blood_cell_cnt">红细胞计数(millions/cmm)</label>-->
+              <!--</div>-->
+
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="yes">是</option>-->
+                  <!--<option value="no">否</option>-->
+                <!--</select>-->
+                <!--<label>高血压</label>-->
+              <!--</div>-->
+
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="yes">是</option>-->
+                  <!--<option value="no">否</option>-->
+                <!--</select>-->
+                <!--<label>糖尿病</label>-->
+              <!--</div>-->
+
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="good">好</option>-->
+                  <!--<option value="bad">差</option>-->
+                <!--</select>-->
+                <!--<label>食欲</label>-->
+              <!--</div>-->
+
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="yes">是</option>-->
+                  <!--<option value="no">否</option>-->
+                <!--</select>-->
+                <!--<label>足水肿</label>-->
+              <!--</div>-->
+
+              <!--<div class="input-field col s12 m6">-->
+                <!--<select>-->
+                  <!--<option value="yes">是</option>-->
+                  <!--<option value="no">否</option>-->
+                <!--</select>-->
+                <!--<label>贫血</label>-->
+              <!--</div>-->
+
+              <!--<div class="col s12">-->
+                <!--<button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">分析-->
+                <!--</button>-->
+              <!--</div>-->
+              <!--<div class="input-field col s12">-->
+                <!--<input type="number" id="analysis_res" name="analysis_res" formnovalidate>-->
+                <!--<label for="analysis_res">分析结果</label>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</form>-->
+
+
+        <!--</div>-->
+      <!--</div>-->
     </div>
   </div>
 </div>
