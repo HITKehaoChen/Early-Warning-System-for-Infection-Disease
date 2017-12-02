@@ -10,7 +10,7 @@
           <li class="tab"><a class="active waves-effect" href="#train">训练</a></li>
           <li class="tab"><a class="waves-effect" href="#test">测试</a></li>
           <li class="tab"><a class="waves-effect" href="#apply">应用</a></li>
-          <li class="tab"><a class="waves-effect" href="#fault_tolerant">容错</a></li>
+          <!--<li class="tab"><a class="waves-effect" href="#fault_tolerant">容错</a></li>-->
         </ul>
       </div>
     </div>
@@ -91,13 +91,13 @@
 
       <div id="test">
         <div class="row">
-          <form class="col s12" method="post" enctype="multipart/form-data">
+          <form id="training_test" class="col s12" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="file-field input-field col s12 m6">
                 <div class="btn waves-effect">
                   <!--<span>File</span>-->
                   <i class="material-icons">backup</i>
-                  <input type="file" name="train_file1">
+                  <input id="test_file1" type="file" name="train_file1">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text" placeholder="上传一个文件">
@@ -108,25 +108,28 @@
                 <div class="btn waves-effect">
                   <!--<span>File</span>-->
                   <i class="material-icons">backup</i>
-                  <input type="file" name="train_file2">
+                  <input id="test_file2" type="file" name="train_file2">
 
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text" placeholder="上传一个文件">
                 </div>
               </div>
-              <div class="input-field col s12 m6">
-                <input type="number" id="accuracy" name="accuracy" class="validate">
-                <label for="accuracy">精确度</label>
-              </div>
+
               <div class="col s12 right">
-                <a class="btn waves-effect right yellow black-text">Test
-                </a>
+                <!--<a id="testBtn"  type="submit" class="btn waves-effect right yellow black-text">Test-->
+                <!--</a>-->
+                <button class="btn right waves-effect yellow black-text" type="submit" name="action">Test
+                </button>
               </div>
 
 
             </div>
           </form>
+
+          <div class="col s12">
+            <h5 id="accuracy"></h5>
+          </div>
         </div>
       </div>
 
@@ -159,7 +162,7 @@
 
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="sex">
                   <option value="male">男</option>
                   <option value="Female">女</option>
                 </select>
@@ -170,7 +173,7 @@
                 <label for="age">年龄</label>
               </div>
               <div class="input-field col s12">
-                <select>
+                <select name="hurttype">
                   <option value="0">典型心绞痛</option>
                   <option value="1">非典型心绞痛</option>
                   <option value="2">非心绞痛</option>
@@ -179,16 +182,16 @@
                 <label>胸痛类型</label>
               </div>
               <div class="input-field col s12">
-                <input type="number" id="blood_pressure" name="blood_pressure" class="validate">
+                <input type="number" id="blood_pressure" name="trestbps" class="validate">
                 <label for="blood_pressure">静息血压(入院时为毫米汞柱)</label>
               </div>
               <div class="input-field col s12 m6">
-                <input type="number" id="serum_cholesterol" name="serum_cholesterol" class="validate">
+                <input type="number" id="serum_cholesterol" name="chol" class="validate">
                 <label for="serum_cholesterol">血清胆固醇(mg/dl)</label>
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="fbs">
                   <option value="yes">是</option>
                   <option value="no">否</option>
                 </select>
@@ -196,7 +199,7 @@
               </div>
 
               <div class="input-field col s12">
-                <select>
+                <select name="">
                   <option value="0">正常</option>
                   <option value="1">具有ST-T波异常(T波反转和/或ST升高或抑制>0.05mV)</option>
                   <option value="2">根据Estes标准显示可能左心室肥大</option>
@@ -204,24 +207,24 @@
                 <label>静息心电图结果</label>
               </div>
               <div class="input-field col s12 m6">
-                <input type="number" id="max_heart_rate" name="max_heart_rate" class="validate">
+                <input type="number" id="max_heart_rate" name="thalach" class="validate">
                 <label for="max_heart_rate">达到的最大心率</label>
               </div>
 
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="exang">
                   <option value="yes">是</option>
                   <option value="no">否</option>
                 </select>
                 <label>运动引起心绞痛？</label>
               </div>
               <div class="input-field col s12">
-                <input type="number" id="depression" name="depression" class="validate">
+                <input type="number" id="depression" name="oldpeak" class="validate">
                 <label for="depression">运动相对于休息引起的ST下降</label>
               </div>
               <div class="input-field col s12 m6">
-                <select>
+                <select name="slope">
                   <option value="0">上升</option>
                   <option value="1">平滑</option>
                   <option value="2">下降</option>
@@ -229,11 +232,11 @@
                 <label>峰值运动ST段的坡度</label>
               </div>
               <div class="input-field col s12 m6">
-                <input type="number" id="vessels_number" name="vessels_number" class="validate">
+                <input type="number" id="vessels_number" name="ca" class="validate">
                 <label for="vessels_number">荧光镜检查的主要血管数量(0-3)</label>
               </div>
               <div class="input-field col s12 m6">
-                <select>
+                <select name="thal">
                   <option value="0">正常</option>
                   <option value="1">固定缺陷</option>
                   <option value="2">可逆缺陷</option>
@@ -243,7 +246,7 @@
 
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="hxb">
                   <option value="0">正常</option>
                   <option value="1">不正常</option>
                 </select>
@@ -251,7 +254,7 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="nb">
                   <option value="0">正常</option>
                   <option value="1">不正常</option>
                 </select>
@@ -260,7 +263,7 @@
 
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="nbtk">
                   <option value="0">存在</option>
                   <option value="1">不存在</option>
                 </select>
@@ -268,7 +271,7 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="xj">
                   <option value="0">存在</option>
                   <option value="1">不存在</option>
                 </select>
@@ -276,29 +279,29 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <input type="number" id="blood_glucose" name="blood_glucose" class="validate">
+                <input type="number" id="blood_glucose" name="xt" class="validate">
                 <label for="blood_glucose">随机的血糖(mgs/dl)</label>
               </div>
 
               <div class="input-field col s12 m6">
-                <input type="number" id="blood_urea" name="blood_urea" class="validate">
+                <input type="number" id="blood_urea" name="xns" class="validate">
                 <label for="blood_urea">血尿素(mgs/dl)</label>
               </div>
 
 
               <div class="input-field col s12 m6">
-                <input type="number" id="serum_creatinine" name="serum_creatinine" class="validate">
+                <input type="number" id="serum_creatinine" name="xjg" class="validate">
                 <label for="serum_creatinine">血清肌酐(mgs/dl)</label>
               </div>
 
 
               <div class="input-field col s12">
-                <input type="number" id="red_blood_cell_cnt" name="red_blood_cell_cnt" class="validate">
+                <input type="number" id="red_blood_cell_cnt" name="hxbjs" class="validate">
                 <label for="red_blood_cell_cnt">红细胞计数(millions/cmm)</label>
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="gxy">
                   <option value="yes">是</option>
                   <option value="no">否</option>
                 </select>
@@ -306,7 +309,7 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="tnb">
                   <option value="yes">是</option>
                   <option value="no">否</option>
                 </select>
@@ -314,7 +317,7 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="sy">
                   <option value="good">好</option>
                   <option value="bad">差</option>
                 </select>
@@ -322,7 +325,7 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="zsz">
                   <option value="yes">是</option>
                   <option value="no">否</option>
                 </select>
@@ -330,12 +333,14 @@
               </div>
 
               <div class="input-field col s12 m6">
-                <select>
+                <select name="px">
                   <option value="yes">是</option>
                   <option value="no">否</option>
                 </select>
                 <label>贫血</label>
               </div>
+
+
 
               <div class="col s12">
                 <button class="right btn waves-effect waves-light yellow black-text" type="submit" name="action">分析

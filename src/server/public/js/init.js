@@ -205,6 +205,23 @@ $(document).ready(() => {
     }).catch(console.log);
   });
 
+
+  $('#training_test').submit((e) => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('file1', $('#test_file1')[0].files[0]);
+      formData.append('file2', $('#test_file2')[0].files[0]);
+      Axios
+        .post('http://localhost:8080/untitled3/predict.do', formData, {})
+        .then(res => {
+          console.log('res: ', res);
+          document.getElementById('accuracy').innerHTML = "精确度" + res.data;
+        })
+        .catch(console.log);
+    }
+  );
+
+
   $('#diagnosis-form').submit(e => {
     e.preventDefault();
     const obj = _.object($("#diagnosis-form").serializeArray().map(function (v) {
