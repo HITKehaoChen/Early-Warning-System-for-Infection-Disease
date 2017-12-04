@@ -41,15 +41,21 @@
         <div id="tab2" class="row">
           <h4 class="light col s12"><i class="material-icons" style="vertical-align: middle">mode_edit</i>&nbsp;日记
           </h4>
+          <form id="health_dairy" class="col s12" method="post" enctype="multipart/form-data">
           <div class="input-field col s12">
             <label for=" textarea1">记录今天</label>
-            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+            <textarea id="textarea1" class="materialize-textarea" name="dairy" data-length="120"></textarea>
           </div>
           <div class="col s12 right">
-            <a class="btn waves-effect right yellow black-text">保存
-            </a>
+            <!--<a class="btn waves-effect right yellow black-text">保存-->
+            <!--</a>-->
+            <button class="right btn waves-effect waves-light yellow black-text" type="submit" >分析
+            </button>
           </div>
-
+          </form>
+          <div class="col s12">
+            <h5 id="dairyRes"></h5>
+          </div>
         </div>
 
 

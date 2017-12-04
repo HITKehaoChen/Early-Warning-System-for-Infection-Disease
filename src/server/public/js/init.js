@@ -163,43 +163,43 @@ $(document).ready(() => {
     console.log('file1', $('#train_file1')[0].files[0]);
     Axios.post('http://localhost:8080/untitled3/helloworld.do', formData, {}).then(res => {
       console.log('res: ', res);
+      //
+      // (() => {
+      //   $('#refresh').click(() => {
 
-      (() => {
-        $('#refresh').click(() => {
-
-          let circle = 1;
-          let circleEl = document.getElementById('lastCircles');
-          let globalError = document.getElementById('globalError');
-          let input = document.getElementById('sr');
-          let end = setInterval(() => {
-            if (circle == 0) {
-              clearInterval(end);
-              console.log('done');
-            } else {
-              Axios.get('http://localhost:8080/untitled3/dong.do', {
-                params: {
-                  sr: input.value
-                }
-              }, {
-                headers: {
-                  'Content-Type': "application/x-www-form-urlencoded;charset=utf-8"
-                }
-              })
-                .then(res => {
-                  let { data } = res;
-                  circleEl.innerHTML = "<h5>剩余轮数：" + data.circle + "</h5>";
-                  globalError.innerHTML = "<h5>全局错误率：" + (+data.error).toFixed(2) + "%</h5>";
-                  circle = data.circle;
-                }).catch(err => {
-                console.log("ERROR: ", err);
-              });
+      let circle = 1;
+      let circleEl = document.getElementById('lastCircles');
+      let globalError = document.getElementById('globalError');
+      let input = document.getElementById('sr');
+      let end = setInterval(() => {
+        if (circle == 0) {
+          clearInterval(end);
+          console.log('done');
+        } else {
+          Axios.get('http://localhost:8080/untitled3/dong.do', {
+            params: {
+              sr: input.value
             }
-          }, 500);
+          }, {
+            headers: {
+              'Content-Type': "application/x-www-form-urlencoded;charset=utf-8"
+            }
+          })
+            .then(res => {
+              let { data } = res;
+              circleEl.innerHTML = "<h5>剩余轮数：" + data.circle + "</h5>";
+              globalError.innerHTML = "<h5>全局错误率：" + (+data.error).toFixed(2) + "%</h5>";
+              circle = data.circle;
+            }).catch(err => {
+            console.log("ERROR: ", err);
+          });
+        }
+      }, 100);
 
 
-        });
-
-      })();
+      //   });
+      //
+      // })();
 
 
     }).catch(console.log);
@@ -274,7 +274,7 @@ $(document).ready(() => {
     formData.append('file2', $('#apply_file2')[0].files[0]);
 
     Axios.post('http://localhost:8080/untitled3/page.do', formData)
-      .then((res)=>{
+      .then((res) => {
         document.getElementById('trainingRes').innerHTML = "训练结果: " + res.data;
       })
       .catch(console.log);
@@ -372,6 +372,39 @@ $(document).ready(() => {
     //     console.log("Error: ", err);
     //   });
   });
+
+  $('#health_dairy').submit(e => {
+    e.preventDefault();
+
+    const obj = _.object($("#health_dairy").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+    const formData = new FormData();
+    console.log("apply form data: ", obj);
+    window.obj = obj;
+    for (let val in obj) {
+      formData.append("key", obj[val]);
+      console.log(val + ", " + obj[val]);
+    }
+
+    Axios.post('http://127.0.0.1:8000/svm/api/', formData).then(({data}) => {
+      console.log('res: ',data);
+      console.log(data.result === -1);
+
+      if (data.result === -1) {
+        document.getElementById('dairyRes').innerHTML = "分析结果: \n" + '根据您近期的日记与聊天记录，您近期的心理状态一般，建议您做心理调查问卷进行测试。建议咨询心理医生';
+
+      } else if (data.result === 1) {
+
+        document.getElementById('dairyRes').innerHTML = "分析结果: \n" + '根据您近期的日记与聊天记录，您当前的心理状态良好，希望您继续保持这种状态。';
+      } else {
+        document.getElementById('dairyRes').innerHTML = 'INVALID REQUEST';
+      }
+
+
+    }).catch(console.error)
+  });
+
   $('#mental-test').submit(e => {
     e.preventDefault();
     const obj = _.object($("#mental-test").serializeArray().map(function (v) {
