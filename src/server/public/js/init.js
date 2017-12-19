@@ -110,22 +110,50 @@ $(document).ready(() => {
     // console.log('formData: ', formData);
     console.log(obj);
 
-    Axios.post('/userSignUp', obj)
-      .then((res) => {
-        console.log('res: ', res);
+    // for patient
+    Axios.get('http://localhost:8080/personalDiagnosis/registerUser.do', {
 
-        if (res.data.success) {
-          setTimeout(() => {
-            $('#modal1').modal('close');
-          }, 200);
-          let $toastContent = '注册成功！';
-          Materialize.toast($toastContent, 3000, 'toast-success');
-        } else {
-          let $toastContent = '注册失败： ' + res.data.info;
-          Materialize.toast($toastContent, 3000, 'toast-fail');
-        }
+      params: {
+        username: obj.name,
+        password: obj.password,
+        address: obj.home_address,
+      }
 
-      })
+    }).then((data) => {
+      console.log(data.data);
+      obj.id = data.data;
+      Axios.post('/userSignUp', obj)
+        .then((res) => {
+          console.log('res: ', res);
+
+          if (res.data.success) {
+            setTimeout(() => {
+              $('#modal1').modal('close');
+            }, 200);
+            let $toastContent = '注册成功！';
+            Materialize.toast($toastContent, 3000, 'toast-success');
+          } else {
+            let $toastContent = '注册失败： ' + res.data.info;
+            Materialize.toast($toastContent, 3000, 'toast-fail');
+          }
+
+        });
+
+    }).catch(console.error);
+
+
+  });
+
+  const chunk = (arr, size) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
+  $('#form-warning').submit(e => {
+    e.preventDefault();
+    const obj = _.object($("#form-warning").serializeArray().map(function (v) {
+      return [v.name, v.value];
+    }));
+    let matrix = chunk(obj.matrix.split(' '), obj.city_number);
+    console.log(myChart1);
+    console.log(obj, matrix);
   });
 
 
@@ -387,8 +415,8 @@ $(document).ready(() => {
       console.log(val + ", " + obj[val]);
     }
 
-    Axios.post('http://127.0.0.1:8000/svm/api/', formData).then(({data}) => {
-      console.log('res: ',data);
+    Axios.post('http://127.0.0.1:8000/svm/api/', formData).then(({ data }) => {
+      console.log('res: ', data);
       console.log(data.result === -1);
 
       if (data.result === -1) {
