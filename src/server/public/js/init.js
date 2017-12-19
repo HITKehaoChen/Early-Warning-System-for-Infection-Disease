@@ -79,6 +79,7 @@ $(document).ready(() => {
           let $toastContent = res.data.info;
           Materialize.toast($toastContent, 3000, 'toast-success');
           sessionStorage.setItem('alarm-token', res.data.token);
+          sessionStorage.setItem('myId', res.data.id);
 
           setTimeout(() => {
             window.location.href = '/?token=' + res.data.token;
@@ -111,13 +112,13 @@ $(document).ready(() => {
     console.log(obj);
 
     // for patient
-    Axios.get('http://localhost:8080/personalDiagnosis/registerUser.do', {
+    Axios.post('http://localhost:8080/personalDiagnosis/registerUser.do', {
 
-      params: {
+      // params: {
         username: obj.name,
         password: obj.password,
         address: obj.home_address,
-      }
+      // }
 
     }).then((data) => {
       console.log(data.data);
@@ -466,6 +467,7 @@ $(document).ready(() => {
   $('.training_auth').click(getOnClick('training'));
   $('.diagnosis_auth').click(getOnClick('diagnosis'));
   $('.health_auth').click(getOnClick('health'));
+
   $('.index_auth').click(function () {
     const token = sessionStorage.getItem('alarm-token');
     if (token === null) {

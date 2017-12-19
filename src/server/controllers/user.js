@@ -43,6 +43,7 @@ const postUserSignInAuth = async ctx => {
       ctx.body = {
         success: true,
         token: token,
+        id: userInfo.id,
         info: 'success!'
       };
 
