@@ -324,8 +324,31 @@ $(document).ready(() => {
       type: "POST",
       data: obj,
       success: function (data) {
-        console.log(eval(data));
-        let list = document.getElementById('collection');
+        let res = (eval(data));
+        let list = document.getElementById('hospital-collection');
+        console.log('res: ', res);
+        console.log(list.innerHTML);
+        console.log(Array.isArray(res));
+        const res2HTML = res.map(x =>
+          `<li class="collection-item avatar">
+                  <img src="images/user-default.png" alt="" class="circle">
+                  <span class="title">${x.name}</span>
+                  <!--<p>地理位置：XXXXXXX<br>-->
+                  <p>
+                    综合评分：${x.score}
+                  </p>
+                  <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>`);
+        console.log(res2HTML);
+        window.res = res2HTML;
+        let sum = '';
+        for (let val of res2HTML) {
+
+          sum += val;
+        }
+        if (sum) {
+          list.innerHTML = sum;
+        }
 
       },
       error: function () {
