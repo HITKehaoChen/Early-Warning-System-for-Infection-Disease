@@ -108,12 +108,17 @@
 
         <div id="recommend">
           <div class="row">
-            <div class="col s12">
+            <div class="col s12 right">
+              <!--<a class="btn waves-effect right yellow black-text">保存-->
+              <!--</a>-->
               <h5 class="light"><i class="material-icons" style="vertical-align: top">local_hospital</i>&nbsp;附近的医院推荐信息：
               </h5>
+              <button id="loadHospital" class="right btn waves-effect waves-light yellow black-text">加载附近医院</button>
+            </div>
+            <div class="col s12">
 
 
-              <ul class="collection">
+              <ul class="collection" id="hospital-collection">
                 <li class="collection-item avatar">
                   <img src="images/user-default.png" alt="" class="circle">
                   <span class="title">医院 45</span>

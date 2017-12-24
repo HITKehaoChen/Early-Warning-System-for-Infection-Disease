@@ -7,6 +7,7 @@ import '../css/init.css';
 
 const utf = require('utf8');
 const Axios = require('axios');
+const qs = require('qs');
 const _ = require('underscore');
 $(document).ready(() => {
 
@@ -115,9 +116,9 @@ $(document).ready(() => {
     Axios.post('http://localhost:8080/personalDiagnosis/registerUser.do', {
 
       // params: {
-        username: obj.name,
-        password: obj.password,
-        address: obj.home_address,
+      username: obj.name,
+      password: obj.password,
+      address: obj.home_address,
       // }
 
     }).then((data) => {
@@ -310,6 +311,37 @@ $(document).ready(() => {
 
 
   });
+
+
+  $('#loadHospital').click(e => {
+
+    let obj = {};
+
+    obj.patient_id = 54100;
+
+    $.ajax({
+      url: "http://localhost:8080/personalDiagnosis/recommendHospital.do",
+      type: "POST",
+      data: obj,
+      success: function (data) {
+        console.log(eval(data));
+        let list = document.getElementById('collection');
+
+      },
+      error: function () {
+
+      }
+    });
+
+    //
+    // Axios.post('http://localhost:8080/personalDiagnosis/recommendHospital.do', qs.stringify(obj), {
+    //   headers: {
+    //     'Content-Type': "application/x-www-form-urlencoded"
+    //   }
+    // }).then(console.log).catch(console.error);
+  });
+
+
   $('#diagnosis-form').submit(e => {
     e.preventDefault();
     const obj = _.object($("#diagnosis-form").serializeArray().map(function (v) {
