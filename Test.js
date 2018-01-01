@@ -1302,24 +1302,32 @@ const data = {
     }
   }
 };
-
 const { cur_timeList, ...res } = data;
-// console.log(cur_timeList);
-// console.log(res);
-let arr = [];
-for (let i = 0; i < Object.keys(res).length; i++) {
-  // console.log('result' + i + ": \n", res['result' + i]);
-  let { S, I, R } = res['result' + i]['city0'];// for city 0
-  // console.log(S, I, R);
-  let ratio = parseInt(I) / (parseInt(S) + parseInt(I) + parseInt(R));
-  console.log('ratio: ', ratio.toFixed(4));
-  arr.push(Number.parseFloat(ratio.toFixed(4)));
-  console.log(i);
+let series = [];
+let cityNumber = 2;
+console.log('cityNumber: ', cityNumber);
+//
+// for (let i = 0; i < cityNumber; i++) {
+//   series.push({
+//     name: 'city'+(i+1),
+//     type:'line',
+//     data:[]
+//   })
+// }
 
+
+for (let j = 0; j < cityNumber; j++) {
+
+  let tmpObj = {
+    name: 'city' + (j + 1),
+    type: 'line',
+    data: []
+  };
+  for (let i = 0; i < Object.keys(res).length; i++) { // i -> days
+    let { S, I, R } = res['result' + i]['city' + j];// for city j
+    let ratio = parseInt(I) / (parseInt(S) + parseInt(I) + parseInt(R));
+    tmpObj.data.push(100 * Number.parseFloat(ratio.toFixed(4)));
+  }
+  series.push(tmpObj)
 }
-console.log(arr);
-//
-// let city = data.result0.city0;
-// console.log(parseInt(city.S) + city.I);
-// console.log(parseInt(city.R) / (parseInt(city.S) + city.I));
-//
+console.log('series: ', series);

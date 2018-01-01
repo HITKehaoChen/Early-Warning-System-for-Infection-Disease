@@ -8,7 +8,7 @@
         <div class="card-tabs">
           <ul class="tabs tabs-fixed-width tabs-transparent">
             <li class="tab"><a class="active waves-effect" href="#tab1">All Citys</a></li>
-            <li class="tab"><a class="waves-effect" href="#tab2">Citys</a></li>
+            <!--<li class="tab"><a class="waves-effect" href="#tab2">Citys</a></li>-->
             <li class="tab"><a class="waves-effect" href="#tab4">Input Form</a></li>
             <li class="tab"><a class="waves-effect" href="#tab3">About</a></li>
           </ul>
@@ -21,22 +21,22 @@
           <div id="main1" class="col s12" style="height: 600px">
           </div>
         </div>
-        <div id="tab2" class="row">
-          <div class="col s12">
-            <!-- Dropdown Trigger -->
-            <span class="light" style="font-size: 1.6em;vertical-align:middle;">选择城市：</span><a
-                    class='dropdown-button btn' href='#' data-activates='dropdown1'>Choose Citys</a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a id="city_1" class="waves-effect">City 1</a></li>
-              <li><a id="city_2" class="waves-effect">City 2</a></li>
-              <li><a id="city_3" class="waves-effect">City 3</a></li>
-              <li><a id="city_4" class="waves-effect">City 4</a></li>
-            </ul>
-          </div>
-          <div class="col s12"><h5></h5></div>
-          <div class="col s12" id="citys" style="height: 600px"></div>
-        </div>
+        <!--<div id="tab2" class="row">-->
+          <!--<div class="col s12">-->
+            <!--&lt;!&ndash; Dropdown Trigger &ndash;&gt;-->
+            <!--<span class="light" style="font-size: 1.6em;vertical-align:middle;">选择城市：</span><a-->
+                    <!--class='dropdown-button btn' href='#' data-activates='dropdown1'>Choose Citys</a>-->
+            <!--&lt;!&ndash; Dropdown Structure &ndash;&gt;-->
+            <!--<ul id='dropdown1' class='dropdown-content'>-->
+              <!--<li><a id="city_1" class="waves-effect">City 1</a></li>-->
+              <!--<li><a id="city_2" class="waves-effect">City 2</a></li>-->
+              <!--<li><a id="city_3" class="waves-effect">City 3</a></li>-->
+              <!--<li><a id="city_4" class="waves-effect">City 4</a></li>-->
+            <!--</ul>-->
+          <!--</div>-->
+          <!--<div class="col s12"><h5></h5></div>-->
+          <!--<div class="col s12" id="citys" style="height: 600px"></div>-->
+        <!--</div>-->
         <div id="tab3" class="row">
 
 
@@ -409,371 +409,371 @@
     ]
   };
   // 使用刚指定的配置项和数据显示图表。
-  myChart0.setOption(option);
+  // myChart0.setOption(option);
 
-
-  //  Citys
-  // 基于准备好的dom，初始化echarts图表
-  const myChart1 = echarts.init(document.getElementById('citys'));
-  let option1 = {
-    title: {
-      text: 'city1 未来100天传染病变化',
-      subtext: '纯属虚构'
-    },
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      data: ['患病率']
-    },
-    toolbox: {
-      show: true,
-      feature: {
-        mark: { show: true },
-        dataView: {
-          show: true, title: '数据视图', readOnly: true,
-          optionToContent: function (opt) {
-
-            var axisData = opt.xAxis[0].data;
-            var series = opt.series;
-            var table = '<table style="width:100%;text-align:center"><tbody><tr>'
-              + '<td>时间</td>'
-              + '<td>' + series[0].name + '</td>'
-              + '</tr>';
-            for (var i = 0, l = axisData.length; i < l; i++) {
-              table += '<tr>'
-                + '<td>' + axisData[i] + '</td>'
-                + '<td>' + series[0].data[i] + '</td>'
-                + '</tr>';
-            }
-            table += '</tbody></table>';
-            return table;
-          }
-        },
-
-        magicType: { show: true, type: ['line', 'bar'] },
-        restore: { show: true },
-        saveAsImage: { show: true }
-      }
-    },
-    calculable: true,
-    xAxis: [
-      {
-        type: 'category',
-        boundaryGap: false,
-        data: function () {
-          let list = [];
-          for (let i = 1; i <= 100; i++) {
-            list.push('day' + i);
-          }
-          return list;
-        }()
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value',
-        axisLabel: {
-          formatter: '{value} %'
-        }
-      }
-    ],
-    series: [
-      {
-        name: 'city1 患病率百分率',
-        type: 'line',
-        data: [0.00026, 0.00068, 0.00176, 0.00459, 0.01196, 0.03116, 0.08115, 0.21108, 0.54679, 1.40067,
-          3.48685, 8.10780, 16.34858, 26.09628, 31.76689, 31.06176, 26.51937, 21.04125, 16.07407, 12.03468,
-          8.89947, 6.52072, 4.74213, 3.42736, 2.46446, 1.76459, 1.25902, 0.89565, 0.63556, 0.45003,
-          0.31806, 0.22442, 0.15812, 0.11126, 0.07819, 0.05489, 0.03850, 0.02698, 0.01889, 0.01321,
-          0.00924, 0.00645, 0.00450, 0.00314, 0.00219, 0.00153, 0.00106, 0.00074, 0.00052, 0.00036,
-          0.00025, 0.00017, 0.00012, 0.00008, 0.00006, 0.00004, 0.00003, 0.00002, 0.00001, 0.00001,
-          0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
-          0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
-          0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
-          0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
-        ],
-//        markPoint: {
-//          data: [
-//            {type: 'max', name: '最大值'},
-//            {type: 'min', name: '最小值'}
-//          ]
-//        },
-        markLine: {
-          data: [
-            { type: 'average', name: '平均值' }
-          ]
-        }
-      }
-
-    ]
-  };
-  let option2 = {
-    title: {
-      text: 'city2 未来100天传染病变化',
-      subtext: '纯属虚构'
-    },
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      data: ['case rate']
-    },
-    toolbox: {
-      show: true,
-      feature: {
-        mark: { show: true },
-        dataView: {
-          show: true, title: 'DataView', readOnly: true,
-          optionToContent: function (opt) {
-
-            var axisData = opt.xAxis[0].data;
-            var series = opt.series;
-            var table = '<table style="width:100%;text-align:center"><tbody><tr>'
-              + '<td>时间</td>'
-              + '<td>' + series[0].name + '</td>'
-              + '</tr>';
-            for (var i = 0, l = axisData.length; i < l; i++) {
-              table += '<tr>'
-                + '<td>' + axisData[i] + '</td>'
-                + '<td>' + series[0].data[i] + '</td>'
-                + '</tr>';
-            }
-            table += '</tbody></table>';
-            return table;
-          }
-        },
-
-        magicType: { show: true, type: ['line', 'bar'] },
-        restore: { show: true },
-        saveAsImage: { show: true }
-      }
-    },
-    calculable: true,
-    xAxis: [
-      {
-        type: 'category',
-        boundaryGap: false,
-        data: function () {
-          const list = [];
-          for (let i = 1; i <= 100; i++) {
-            list.push('day' + i);
-          }
-          return list;
-        }()
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value',
-        axisLabel: {
-          formatter: '{value} %'
-        }
-      }
-    ],
-    series: [
-      {
-        name: 'city2 患病率百分率',
-        type: 'line',
-        data: [0.00068, 0.00460, 0.03124, 0.21189, 1.40720, 8.14620, 26.15648, 31.03600, 20.99308, 11.99906, 6.49817, 3.41392, 1.75690, 0.89138, 0.44769, 0.22317, 0.11059, 0.05454, 0.02679, 0.01312, 0.00640, 0.00312, 0.00151, 0.00073, 0.00036, 0.00017, 0.00008, 0.00004, 0.00002, 0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000],
-//        markPoint: {
-//          data: [
-//            {type: 'max', name: '最大值'},
-//            {type: 'min', name: '最小值'}
-//          ]
-//        },
-        markLine: {
-          data: [
-            { type: 'average', name: '平均值' }
-          ]
-        }
-      }
-
-    ]
-  };
-  let option3 = {
-    title: {
-      text: 'city3 未来100天传染病变化',
-      subtext: '纯属虚构'
-    },
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      data: ['患病率']
-    },
-    toolbox: {
-      show: true,
-      feature: {
-        mark: { show: true },
-        dataView: {
-          show: true, title: '数据视图', readOnly: true,
-          optionToContent: function (opt) {
-
-            var axisData = opt.xAxis[0].data;
-            var series = opt.series;
-            var table = '<table style="width:100%;text-align:center"><tbody><tr>'
-              + '<td>时间</td>'
-              + '<td>' + series[0].name + '</td>'
-              + '</tr>';
-            for (var i = 0, l = axisData.length; i < l; i++) {
-              table += '<tr>'
-                + '<td>' + axisData[i] + '</td>'
-                + '<td>' + series[0].data[i] + '</td>'
-                + '</tr>';
-            }
-            table += '</tbody></table>';
-            return table;
-          }
-        },
-
-        magicType: { show: true, type: ['line', 'bar'] },
-        restore: { show: true },
-        saveAsImage: { show: true }
-      }
-    },
-    calculable: true,
-    xAxis: [
-      {
-        type: 'category',
-        boundaryGap: false,
-        data: function () {
-          const list = [];
-          for (let i = 1; i <= 100; i++) {
-            list.push('day' + i);
-          }
-          return list;
-        }()
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value',
-        axisLabel: {
-          formatter: '{value} %'
-        }
-      }
-    ],
-    series: [
-      {
-        name: 'city3 患病率百分率',
-        type: 'line',
-        data: [0.00176, 0.03122, 0.54835, 8.13338, 31.77843, 21.00913, 8.88038, 3.41839, 1.25519, 0.44847, 0.15751, 0.05466, 0.01880, 0.00642, 0.00218, 0.00074, 0.00025, 0.00008, 0.00003, 0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000],
-//        markPoint: {
-//          data: [
-//            {type: 'max', name: '最大值'},
-//            {type: 'min', name: '最小值'}
-//          ]
-//        },
-        markLine: {
-          data: [
-            { type: 'average', name: '平均值' }
-          ]
-        }
-      }
-
-    ]
-  };
-
-  let option4 = {
-    title: {
-      text: 'city4 未来100天传染病变化',
-      subtext: '纯属虚构'
-    },
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      data: ['患病率']
-    },
-    toolbox: {
-      show: true,
-      feature: {
-        mark: { show: true },
-        dataView: {
-          show: true, title: '数据视图', readOnly: true,
-          optionToContent: function (opt) {
-
-            var axisData = opt.xAxis[0].data;
-            var series = opt.series;
-            var table = '<table style="width:100%;text-align:center"><tbody><tr>'
-              + '<td>时间</td>'
-              + '<td>' + series[0].name + '</td>'
-              + '</tr>';
-            for (var i = 0, l = axisData.length; i < l; i++) {
-              table += '<tr>'
-                + '<td>' + axisData[i] + '</td>'
-                + '<td>' + series[0].data[i] + '</td>'
-                + '</tr>';
-            }
-            table += '</tbody></table>';
-            return table;
-          }
-        },
-
-        magicType: { show: true, type: ['line', 'bar'] },
-        restore: { show: true },
-        saveAsImage: { show: true }
-      }
-    },
-    calculable: true,
-    xAxis: [
-      {
-        type: 'category',
-        boundaryGap: false,
-        data: function () {
-          var list = [];
-          for (let i = 1; i <= 100; i++) {
-            list.push('day' + i);
-          }
-          return list;
-        }()
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value',
-        axisLabel: {
-          formatter: '{value} %'
-        }
-      }
-    ],
-    series: [
-      {
-        name: 'city4 患病率百分率',
-        type: 'line',
-        data: [0.00459, 0.21149, 8.12698, 31.04891, 12.01686, 3.42063, 0.89351, 0.22379, 0.05472, 0.01316, 0.00313, 0.00074, 0.00017, 0.00004, 0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000],
-//        markPoint : {
-//          data : [
-//            {type : 'max', name: '最大值'},
-//            {type : 'min', name: '最小值'}
-//          ]
-//        },
-        markLine: {
-          data: [
-            { type: 'average', name: '平均值' }
-          ]
-        }
-      }
-
-    ]
-  };
-
-
-  //default city 1 data
-  myChart1.setOption(option1);
-
-  document.getElementById('city_1').onclick = (() => {
-    myChart1.setOption(option1);
-  });
-  document.getElementById('city_2').onclick = (() => {
-    myChart1.setOption(option2);
-  });
-  document.getElementById('city_3').onclick = (() => {
-    myChart1.setOption(option3);
-  });
-  document.getElementById('city_4').onclick = (() => {
-    myChart1.setOption(option4);
-  });
+//
+//   //  Citys
+//   // 基于准备好的dom，初始化echarts图表
+//   const myChart1 = echarts.init(document.getElementById('citys'));
+//   let option1 = {
+//     title: {
+//       text: 'city1 未来100天传染病变化',
+//       subtext: '纯属虚构'
+//     },
+//     tooltip: {
+//       trigger: 'axis'
+//     },
+//     legend: {
+//       data: ['患病率']
+//     },
+//     toolbox: {
+//       show: true,
+//       feature: {
+//         mark: { show: true },
+//         dataView: {
+//           show: true, title: '数据视图', readOnly: true,
+//           optionToContent: function (opt) {
+//
+//             var axisData = opt.xAxis[0].data;
+//             var series = opt.series;
+//             var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+//               + '<td>时间</td>'
+//               + '<td>' + series[0].name + '</td>'
+//               + '</tr>';
+//             for (var i = 0, l = axisData.length; i < l; i++) {
+//               table += '<tr>'
+//                 + '<td>' + axisData[i] + '</td>'
+//                 + '<td>' + series[0].data[i] + '</td>'
+//                 + '</tr>';
+//             }
+//             table += '</tbody></table>';
+//             return table;
+//           }
+//         },
+//
+//         magicType: { show: true, type: ['line', 'bar'] },
+//         restore: { show: true },
+//         saveAsImage: { show: true }
+//       }
+//     },
+//     calculable: true,
+//     xAxis: [
+//       {
+//         type: 'category',
+//         boundaryGap: false,
+//         data: function () {
+//           let list = [];
+//           for (let i = 1; i <= 100; i++) {
+//             list.push('day' + i);
+//           }
+//           return list;
+//         }()
+//       }
+//     ],
+//     yAxis: [
+//       {
+//         type: 'value',
+//         axisLabel: {
+//           formatter: '{value} %'
+//         }
+//       }
+//     ],
+//     series: [
+//       {
+//         name: 'city1 患病率百分率',
+//         type: 'line',
+//         data: [0.00026, 0.00068, 0.00176, 0.00459, 0.01196, 0.03116, 0.08115, 0.21108, 0.54679, 1.40067,
+//           3.48685, 8.10780, 16.34858, 26.09628, 31.76689, 31.06176, 26.51937, 21.04125, 16.07407, 12.03468,
+//           8.89947, 6.52072, 4.74213, 3.42736, 2.46446, 1.76459, 1.25902, 0.89565, 0.63556, 0.45003,
+//           0.31806, 0.22442, 0.15812, 0.11126, 0.07819, 0.05489, 0.03850, 0.02698, 0.01889, 0.01321,
+//           0.00924, 0.00645, 0.00450, 0.00314, 0.00219, 0.00153, 0.00106, 0.00074, 0.00052, 0.00036,
+//           0.00025, 0.00017, 0.00012, 0.00008, 0.00006, 0.00004, 0.00003, 0.00002, 0.00001, 0.00001,
+//           0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
+//           0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
+//           0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
+//           0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000,
+//         ],
+// //        markPoint: {
+// //          data: [
+// //            {type: 'max', name: '最大值'},
+// //            {type: 'min', name: '最小值'}
+// //          ]
+// //        },
+//         markLine: {
+//           data: [
+//             { type: 'average', name: '平均值' }
+//           ]
+//         }
+//       }
+//
+//     ]
+//   };
+//   let option2 = {
+//     title: {
+//       text: 'city2 未来100天传染病变化',
+//       subtext: '纯属虚构'
+//     },
+//     tooltip: {
+//       trigger: 'axis'
+//     },
+//     legend: {
+//       data: ['case rate']
+//     },
+//     toolbox: {
+//       show: true,
+//       feature: {
+//         mark: { show: true },
+//         dataView: {
+//           show: true, title: 'DataView', readOnly: true,
+//           optionToContent: function (opt) {
+//
+//             var axisData = opt.xAxis[0].data;
+//             var series = opt.series;
+//             var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+//               + '<td>时间</td>'
+//               + '<td>' + series[0].name + '</td>'
+//               + '</tr>';
+//             for (var i = 0, l = axisData.length; i < l; i++) {
+//               table += '<tr>'
+//                 + '<td>' + axisData[i] + '</td>'
+//                 + '<td>' + series[0].data[i] + '</td>'
+//                 + '</tr>';
+//             }
+//             table += '</tbody></table>';
+//             return table;
+//           }
+//         },
+//
+//         magicType: { show: true, type: ['line', 'bar'] },
+//         restore: { show: true },
+//         saveAsImage: { show: true }
+//       }
+//     },
+//     calculable: true,
+//     xAxis: [
+//       {
+//         type: 'category',
+//         boundaryGap: false,
+//         data: function () {
+//           const list = [];
+//           for (let i = 1; i <= 100; i++) {
+//             list.push('day' + i);
+//           }
+//           return list;
+//         }()
+//       }
+//     ],
+//     yAxis: [
+//       {
+//         type: 'value',
+//         axisLabel: {
+//           formatter: '{value} %'
+//         }
+//       }
+//     ],
+//     series: [
+//       {
+//         name: 'city2 患病率百分率',
+//         type: 'line',
+//         data: [0.00068, 0.00460, 0.03124, 0.21189, 1.40720, 8.14620, 26.15648, 31.03600, 20.99308, 11.99906, 6.49817, 3.41392, 1.75690, 0.89138, 0.44769, 0.22317, 0.11059, 0.05454, 0.02679, 0.01312, 0.00640, 0.00312, 0.00151, 0.00073, 0.00036, 0.00017, 0.00008, 0.00004, 0.00002, 0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000],
+// //        markPoint: {
+// //          data: [
+// //            {type: 'max', name: '最大值'},
+// //            {type: 'min', name: '最小值'}
+// //          ]
+// //        },
+//         markLine: {
+//           data: [
+//             { type: 'average', name: '平均值' }
+//           ]
+//         }
+//       }
+//
+//     ]
+//   };
+//   let option3 = {
+//     title: {
+//       text: 'city3 未来100天传染病变化',
+//       subtext: '纯属虚构'
+//     },
+//     tooltip: {
+//       trigger: 'axis'
+//     },
+//     legend: {
+//       data: ['患病率']
+//     },
+//     toolbox: {
+//       show: true,
+//       feature: {
+//         mark: { show: true },
+//         dataView: {
+//           show: true, title: '数据视图', readOnly: true,
+//           optionToContent: function (opt) {
+//
+//             var axisData = opt.xAxis[0].data;
+//             var series = opt.series;
+//             var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+//               + '<td>时间</td>'
+//               + '<td>' + series[0].name + '</td>'
+//               + '</tr>';
+//             for (var i = 0, l = axisData.length; i < l; i++) {
+//               table += '<tr>'
+//                 + '<td>' + axisData[i] + '</td>'
+//                 + '<td>' + series[0].data[i] + '</td>'
+//                 + '</tr>';
+//             }
+//             table += '</tbody></table>';
+//             return table;
+//           }
+//         },
+//
+//         magicType: { show: true, type: ['line', 'bar'] },
+//         restore: { show: true },
+//         saveAsImage: { show: true }
+//       }
+//     },
+//     calculable: true,
+//     xAxis: [
+//       {
+//         type: 'category',
+//         boundaryGap: false,
+//         data: function () {
+//           const list = [];
+//           for (let i = 1; i <= 100; i++) {
+//             list.push('day' + i);
+//           }
+//           return list;
+//         }()
+//       }
+//     ],
+//     yAxis: [
+//       {
+//         type: 'value',
+//         axisLabel: {
+//           formatter: '{value} %'
+//         }
+//       }
+//     ],
+//     series: [
+//       {
+//         name: 'city3 患病率百分率',
+//         type: 'line',
+//         data: [0.00176, 0.03122, 0.54835, 8.13338, 31.77843, 21.00913, 8.88038, 3.41839, 1.25519, 0.44847, 0.15751, 0.05466, 0.01880, 0.00642, 0.00218, 0.00074, 0.00025, 0.00008, 0.00003, 0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000],
+// //        markPoint: {
+// //          data: [
+// //            {type: 'max', name: '最大值'},
+// //            {type: 'min', name: '最小值'}
+// //          ]
+// //        },
+//         markLine: {
+//           data: [
+//             { type: 'average', name: '平均值' }
+//           ]
+//         }
+//       }
+//
+//     ]
+//   };
+//
+//   let option4 = {
+//     title: {
+//       text: 'city4 未来100天传染病变化',
+//       subtext: '纯属虚构'
+//     },
+//     tooltip: {
+//       trigger: 'axis'
+//     },
+//     legend: {
+//       data: ['患病率']
+//     },
+//     toolbox: {
+//       show: true,
+//       feature: {
+//         mark: { show: true },
+//         dataView: {
+//           show: true, title: '数据视图', readOnly: true,
+//           optionToContent: function (opt) {
+//
+//             var axisData = opt.xAxis[0].data;
+//             var series = opt.series;
+//             var table = '<table style="width:100%;text-align:center"><tbody><tr>'
+//               + '<td>时间</td>'
+//               + '<td>' + series[0].name + '</td>'
+//               + '</tr>';
+//             for (var i = 0, l = axisData.length; i < l; i++) {
+//               table += '<tr>'
+//                 + '<td>' + axisData[i] + '</td>'
+//                 + '<td>' + series[0].data[i] + '</td>'
+//                 + '</tr>';
+//             }
+//             table += '</tbody></table>';
+//             return table;
+//           }
+//         },
+//
+//         magicType: { show: true, type: ['line', 'bar'] },
+//         restore: { show: true },
+//         saveAsImage: { show: true }
+//       }
+//     },
+//     calculable: true,
+//     xAxis: [
+//       {
+//         type: 'category',
+//         boundaryGap: false,
+//         data: function () {
+//           var list = [];
+//           for (let i = 1; i <= 100; i++) {
+//             list.push('day' + i);
+//           }
+//           return list;
+//         }()
+//       }
+//     ],
+//     yAxis: [
+//       {
+//         type: 'value',
+//         axisLabel: {
+//           formatter: '{value} %'
+//         }
+//       }
+//     ],
+//     series: [
+//       {
+//         name: 'city4 患病率百分率',
+//         type: 'line',
+//         data: [0.00459, 0.21149, 8.12698, 31.04891, 12.01686, 3.42063, 0.89351, 0.22379, 0.05472, 0.01316, 0.00313, 0.00074, 0.00017, 0.00004, 0.00001, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000, 0.00000],
+// //        markPoint : {
+// //          data : [
+// //            {type : 'max', name: '最大值'},
+// //            {type : 'min', name: '最小值'}
+// //          ]
+// //        },
+//         markLine: {
+//           data: [
+//             { type: 'average', name: '平均值' }
+//           ]
+//         }
+//       }
+//
+//     ]
+//   };
+//
+//
+//   //default city 1 data
+//   myChart1.setOption(option1);
+//
+//   document.getElementById('city_1').onclick = (() => {
+//     myChart1.setOption(option1);
+//   });
+//   document.getElementById('city_2').onclick = (() => {
+//     myChart1.setOption(option2);
+//   });
+//   document.getElementById('city_3').onclick = (() => {
+//     myChart1.setOption(option3);
+//   });
+//   document.getElementById('city_4').onclick = (() => {
+//     myChart1.setOption(option4);
+//   });
 
 </script>
