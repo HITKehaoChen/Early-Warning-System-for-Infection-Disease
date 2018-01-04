@@ -110,8 +110,9 @@ $(document).ready(() => {
     }));
     // let formData = new FormData(document.getElementById('form-signup'));
     // console.log('formData: ', formData);
+    console.log('origin: ', obj);
+    delete obj.password_repeat;
     console.log(obj);
-
     // for patient
     Axios.post('http://localhost:8080/personalDiagnosis/registerUser.do', {
 
@@ -123,7 +124,7 @@ $(document).ready(() => {
 
     }).then((data) => {
       console.log(data.data);
-      obj.id = data.data;
+      obj.homeID = data.data;
       Axios.post('/userSignUp', obj)
         .then((res) => {
           console.log('res: ', res);
