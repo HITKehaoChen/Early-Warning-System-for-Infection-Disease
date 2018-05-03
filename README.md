@@ -17,3 +17,11 @@ $ npm start
 |      |      |          |        |              |          |       |
 |      |      |          |        |              |          |       |
 
+# How to work the database
+```mysql
+CREATE DATABASE koa_demo;
+CREATE USER
+```
+then run the .sql
+
+npm start
