@@ -25,3 +25,5 @@ CREATE USER
 then run the .sql
 
 npm start
+
+**if you are using mysql>=8,you should use the legacy mode to save password,or you have to change the code!**
